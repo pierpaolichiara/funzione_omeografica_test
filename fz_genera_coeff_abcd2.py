@@ -1,35 +1,64 @@
 # -*- coding: utf-8 -*-
 """
-Created on Fri Apr  7 14:43:32 2023
 
-@author: Matteo
 """
 
-import fz_genera_dominio_coeff
+import dominio_rel
 
-def assegna_abcd(dominio1, dominio2): 
+def assegna_abcd(dominio1: list, dominio2: list): 
     """Questa funzione assegna un valore random a 4 coefficienti 
-        a, b, c, d nel seguente modo:
+        a, b, c, d nel seguente modo: 
+        - a,b,d vengono scelti random con la funzione random.choice da dominio1
+        - c viene scelto random con la funzione random.choice da dominio2.
+        - viene controllato che 
+        
+            delta = a*d-c*b 
+            
+          sia non nullo come C.N. per avere una quaterna di coefficienti utili a generare una funzione omeografica. 
+          Viene generata e verificata una nuova quaterna di coefficienti ogni volta che delta=0
+          
+          Parametri
+          ---------
+          dominio1: list
+          dominio2: list
+          
+          Output
+          -------
+          [a,b,c,d]: list 
+              sequenza di 4 coefficienti interi appartenenti ai domini in input:
+                  a,b,d ϵ dominio1
+                  c ϵ dominio2
+              
+          Raises ###??? TRADUZIONE?
+          ------
+          TypeError: object of type 'NoneType' has no len():
+              - se dominio1 o dominio2 sono str, cioe' se vengono inseriti 
+                estremo sinistro >= dell'estremo destro
+          
+          Vedi anche
+          ----------
+          random.choice    #TODO
+        
         """
     import random
-    #abd_dominio = list(range(-9,10))
-    #c_dominio= list(range(-9,10))
-    #c_dominio.remove(0)
     print( "il Dominio dei coefficienti a,b,d e\'", dominio1)
     print( "il Dominio del coefficiente c e\'", dominio2)
-    #dominio1, dominio2=domini_abcd
-    #print(dominio1)
-    #print(dominio2)
-    a=random.choice(dominio1)        
-    b=random.choice(dominio1)
-    c=random.choice(dominio2)
-    d=random.choice(dominio1)
-    #print(a,b,c,d)
+    delta=0
+    while delta==0:
+        a=random.choice(dominio1)        
+        b=random.choice(dominio1)
+        c=random.choice(dominio2)
+        d=random.choice(dominio1)
+        delta=a*d-c*b
+    print('[a,b,c,d] = ', [a,b,c,d])
     return [a,b,c,d]
 
-d1,d2=fz_genera_dominio_coeff.domini_abcd()
-coefficienti=assegna_abcd(d1,d2)
-#coefficienti=assegna_abcd(fz_genera_dominio_coeff.domini_abcd)
-print('i coefficienti sono [a,b,c,d]=',coefficienti)
+d_abd=dominio_rel.genera_dominio(-9,10)  
+d_c=dominio_rel.genera_dominio(-9,10,0)
+
+
+abcd=assegna_abcd(d_abd,d_c)
+#print(type(abcd))
+print('i coefficienti sono [a,b,c,d]=',abcd)
     
 #funziona, domini come variabile, assegnati attraverso altra funzione

@@ -13,6 +13,6 @@ def domini_abcd():
     c_dominio.remove(0)
     print( "il Dominio dei coefficienti a,b,d e\'", abd_dominio)
     print( "il Dominio del coefficiente c e\'", c_dominio)
-    return(abd_dominio, c_dominio)
+    return abd_dominio, c_dominio
  
 domini_abcd()

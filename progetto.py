@@ -6,12 +6,10 @@ Ogni coefficiente della funzione viene scelto in maniera casuale all'interno
 di un dominio da specificare. A ogni alunno il programma associa una quaterna 
 di coefficienti [a,b,c,d] diversa, e per ogni alunno stampa il testo del test #in formato...##. 
 L'associazione tra cognome dell'alunno e quaterna di coefficienti viene 
-stampata su un file excel disponibile per l'insegnante'
-
-    
-
+stampata su un file excel disponibile per l'insegnante
 
 """
+
 import numpy as np
 from numpy import random
 from random import random

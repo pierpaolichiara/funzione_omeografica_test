@@ -1,5 +1,5 @@
 """ 
-Questa funzione genera una funzione omeografica:
+Questa funzione genera una funzione omeografica
     
 Parametri in input
 ===================
@@ -25,6 +25,9 @@ def genera_fz_omeografica(a,b,c,d):
 
 
 y=genera_fz_omeografica(1,2,-2,4)
+print ("f(x)=",y)
+
+y=genera_fz_omeografica(1,2,0,4)   #e'una retta
 print ("f(x)=",y)
 
 
