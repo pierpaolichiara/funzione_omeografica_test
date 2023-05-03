@@ -15,7 +15,7 @@ from numpy import random
 from random import random
 import sympy as sp
 from sympy import symbols
-import funzione_omeografica
+import genera_fz_omeografica
 
 
 
@@ -27,7 +27,7 @@ parametri=arr.array('i',[a,b,c,d])
 abcd=[a,b,c,d]
 print (parametri)
 print(abcd)
-y=funzione_omeografica.genera_fz_omeografica(a,b,c,d,)
+y=genera_fz_omeografica.genera_fz_omeografica(a,b,c,d,)
 print ("f(x)=",y)
 
 
