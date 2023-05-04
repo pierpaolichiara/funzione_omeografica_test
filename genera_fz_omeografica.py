@@ -2,11 +2,11 @@
 Questa funzione genera una funzione omeografica
     
 Parametri in input
-===================
+------------------
 a, b, c, d: coefficienti della funzione omeografica
 
 Output
-========
+------
 f(x)=(a*x+b)/(c*x+d)
 
 

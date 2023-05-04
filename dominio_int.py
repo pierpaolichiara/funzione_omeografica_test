@@ -3,11 +3,24 @@
 Questa funzione genera un insieme di numeri interi relativi compresi tra 
 e1(incluso) ed e2(escluso), ad esclusione al massimo di un numero denominato 
 'escludi'. 
+Se non si vuole eliminare nessun numero dall'intervallo non inserire 'escludi' 
 
-Se non si vuole eliminare nessun numero dall'intervallo: 
+Parametri in input 
+------------------
+e1: int, estremo sinistro dell'intervallo, compreso nello stesso
+e2: int, estremo destro dell'intervallo, non compreso nello stesso  
+escludi: int, default=None, eventuale numero da escludere dall'intervallo
 
-Parametri    
+Output
+------
+list: se e1<e2, una sequenza di interi che parte da e1 incluso e si conclude
+     con e2 escluso, eliminando al massimo un numero 'escludi' se compreso tra e1 ed e2   
 
+oppure
+
+str: 'dominio_vuoto', se e1>=e2
+
+       
 """
 
 def genera_dominio(e1: int, e2: int, escludi=None):#->list:

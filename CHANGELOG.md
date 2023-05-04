@@ -1,4 +1,4 @@
-## SCREENSHOT PROGETTO 2023 04 28
+## SCREENSHOT PROGETTO 2023 05 04
 
 #Unrealized
 
@@ -22,9 +22,9 @@
 eliminate funzioni obsolete
 usare 
 - dominio_rel.py
-- fz_genera_coeff_abcd2.py #FIX CASO DELTA=0
+- fz_genera_coeff_abcd2.py #FIX CASO DELTA=0 #DONE
 - def genera dominio da'un output DI TROPPO (nONE) nel caso e1>=e2: tolto return 
-finale pero'il return non avra'tipo predefinito, o list o str
+finale pero'il return non avra'tipo predefinito, o list o str -> test type
 
 #Deprecated
 dominio_rel.py
