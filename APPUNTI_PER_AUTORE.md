@@ -1,19 +1,26 @@
 ## SCREENSHOT PROGETTO 2023 05 05
 
 #Unrealized
-- DUBBIO: eliminare lafunzione dominio_int.genera_dominio, mettendo il controllo sulla c!=0 in un ciclo while come la prima C.N.?
-- cambiare random in random seed--> se lo inserisco prima dei 4 random.choice, per ogni studente avro' lo stesso vettore!!!
+- fare file con approfondimenti e scelte separato dal readme?
+- sistemare gli import nel posto giusto
+- sistemare le descrizioni delle funzioni
+- inserire random seed--> se lo inserisco prima dei 4 random.choice, per ogni studente avro' lo stesso vettore!!!
 	va inizializzato nella funzione di generazione vettori per la classe
 - spostare i suggerimenti di test in file appositi
 - collegamento a random choice in genera ceoff
 
 - modificare random.choice per seq int con random.uniform per float? solo che poi se gli estremi 
-	non sono ordinati vanno cambiati i test e la fuznione perche' funzionerebbe cmq
-
-
+	non sono ordinati vanno cambiati i test e la fuznione perche' funzionerebbe comunque
+-motivare scelta del metodo random in random: random.choice, invece di choices, randint, randrange...
+                                  non in numpy.random....test?
+- aggiungere idea di funzioni separate per essere riutilizzabili per altre evenienze
 
 #Added
-- controllo delta su coefficienti
+-creata assegna_abcd.py, fz da usare con dominio_int.py per generare i 4 coeff: con queste due fz genero dominio che posso testare ed eventualmente 
+ eliminare un elemento, e assegnare i coefficienti a partire da un unico dominio, con ctrl sulle 2 condizioni di esistenza
+-creata fz_dominio_coeff.py, unica fz per creazione vettore coeff a partire da dominio con estremi indicati in input(non posso pero'testare il dominio)- controllo delta su coefficienti
+- controllo su c
+-controllo su delta
 
 #Removed
 - dominio_rel con output solo list
@@ -21,7 +28,6 @@
 - eliminare file fz_dominio
 
 #Changed
-creata fz_dominio_coeff.py, unica fz per creazione vettore coeff a partire da dominio con estremi indicati in input(non posso pero'testare il dominio)
 eliminate funzioni obsolete
 usare 
 - dominio_rel.py

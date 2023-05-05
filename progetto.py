@@ -15,8 +15,11 @@ from numpy import random
 from random import random
 import sympy as sp
 from sympy import symbols
-import genera_fz_omeografica
 
+import genera_fz_omeografica
+import assegna_abcd
+import dominio_int
+import lista
 
 
 

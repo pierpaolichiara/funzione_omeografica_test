@@ -20,3 +20,7 @@ dati=pd.DataFrame.from_dict(zeta).transpose()
 dati.columns=["a","b","c","d"]
 dati.to_excel("DATI.xlsx")
 print(dati['c']['BETA'])
+
+#STAMPARE FOGLI PDF 
+#-UNO PER OGNI ALUNNO CON SUO FZ, E DOMANDE
+#-PER OGNI INSEGNANTE UN FOGLIO CON DOMANDE, COMPITO DI OGNI ALUNNO, PLOT E SOLUZIONI

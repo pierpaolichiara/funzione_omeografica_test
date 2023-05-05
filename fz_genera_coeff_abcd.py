@@ -60,8 +60,6 @@ d_abd=dominio_int.genera_dominio(-9,10)
 d_c=dominio_int.genera_dominio(-9,10,0)
 
 #print(type(d_c))
-
-
 abcd=assegna_abcd(d_abd,d_c)
 #print(type(abcd))
 #print('i coefficienti sono [a,b,c,d]=',abcd)
