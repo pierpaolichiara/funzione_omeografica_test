@@ -19,6 +19,7 @@
 - dominio_rel con output solo list
 - eliminare file genera coeff abcd 0 e 2
 - eliminare file fz_dominio
+
 #Changed
 eliminate funzioni obsolete
 usare 
@@ -32,5 +33,17 @@ dominio_rel.py
 fz_genera_coeff_abcd0.py
 fz_genera_coeff_abcd2.py
 
-#NOTE
+#NOTE E DUBBI
 -tenuta fz per generare dominio separata perche' utilizzabile per altre cose e per variare tipo di dati, magari float
+-la funzione omeografica ha 2 C.N. per essere propria. si potrebbe EVITARE DUE DOMINI IN INGRESSO, inserire cn1 c!=0 
+ nella fz assegna_abcd con un altro while
+	c=0
+	while c==0:			#verifica C.N.1
+		c=radom.choice(dominio1)
+	delta=0
+   	while delta==0:                 #verifica C.N.2
+        	a=random.choice(dominio1)        
+        	b=random.choice(dominio1)
+        	d=random.choice(dominio1)
+        	delta=a*d-c*b
+

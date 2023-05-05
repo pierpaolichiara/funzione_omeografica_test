@@ -51,6 +51,11 @@ def genera_dominio(e1: int, e2: int, escludi=None):#->list:
    #print('Il dominio generato e\':',dominio)   ###FIX
     return(dominio)
 
+#a=genera_dominio(-4,5)
+#print(a)
+#print(type(a))
+
+
 #print(genera_dominio(-3,3, 6))
 #print(genera_dominio(3,3))
 #print(genera_dominio(2.0, 3.0))
@@ -67,9 +72,7 @@ def genera_dominio(e1: int, e2: int, escludi=None):#->list:
 #print(genera_dominio(5,5))
 #print(type(genera_dominio(5,5)))    #-->da'correttamclass str ma perche' non da' errore se ho detto che deve essere una lista nella def?
 
-a=genera_dominio(-4,5)
-#print(a)
-#print(type(a))
+
 
 #controllare come fare se non voglionumeri relativi ma intervallo di reali o razionali
 #controllare come escludere piu'di un valore
