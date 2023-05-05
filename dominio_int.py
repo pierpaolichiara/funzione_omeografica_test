@@ -20,7 +20,20 @@ oppure
 
 str: 'dominio_vuoto', se e1>=e2
 
+Esempi
+-------
+genera_dominio(-4,5,2)
+>>> [-4, -3, -2, -1, 0, 1, 3, 4]
        
+genera_dominio(-4,5)
+>>> [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+
+genera_dominio(5,-4,2)
+>>> dominio vuoto
+
+genera_dominio(-4,5,6)
+>>> Non e' possibile escludere 6 dal dominio perche' non appartiene al dominio selezionato
+[-4, -3, -2, -1, 0, 1, 2, 3, 4]
 """
 
 def genera_dominio(e1: int, e2: int, escludi=None):#->list:
@@ -35,11 +48,12 @@ def genera_dominio(e1: int, e2: int, escludi=None):#->list:
                 dominio.remove(escludi)
             else:
                 print("Non e' possibile escludere", escludi, "dal dominio perche' non appartiene al dominio selezionato")
+   #print('Il dominio generato e\':',dominio)   ###FIX
     return(dominio)
 
 #print(genera_dominio(-3,3, 6))
 #print(genera_dominio(3,3))
-#print(genera_dominio(2.5, 3.1))
+#print(genera_dominio(2.0, 3.0))
 #print(genera_dominio(-3,3,1))
 #print(type(genera_dominio(-3,3,1))) 
 #print(genera_dominio(-9,9))
@@ -50,12 +64,12 @@ def genera_dominio(e1: int, e2: int, escludi=None):#->list:
 #a=[1,3]
 #a=3.5
 
-print(genera_dominio(5,5))
-print(type(genera_dominio(5,5)))    #-->da'correttamclass str ma perche' non da' errore se ho detto che deve essere una lista nella def?
+#print(genera_dominio(5,5))
+#print(type(genera_dominio(5,5)))    #-->da'correttamclass str ma perche' non da' errore se ho detto che deve essere una lista nella def?
 
-a=genera_dominio(3, 6)
-print(a)
-print(type(a))
+a=genera_dominio(-4,5)
+#print(a)
+#print(type(a))
 
 #controllare come fare se non voglionumeri relativi ma intervallo di reali o razionali
 #controllare come escludere piu'di un valore

@@ -1,8 +1,9 @@
 ## SCREENSHOT PROGETTO 2023 05 04
 
 #Unrealized
-
-- cambiare random in random seed
+- DUBBIO: eliminare lafunzione dominio_int.genera_dominio, mettendo il controllo sulla c!=0 in un ciclo while come la prima C.N.?
+- cambiare random in random seed--> se lo inserisco prima dei 4 random.choice, per ogni studente avro' lo stesso vettore!!!
+	va inizializzato nella funzione di generazione vettori per la classe
 - spostare i suggerimenti di test in file appositi
 - collegamento a random choice in genera ceoff
 
@@ -30,3 +31,6 @@ finale pero'il return non avra'tipo predefinito, o list o str -> test type
 dominio_rel.py
 fz_genera_coeff_abcd0.py
 fz_genera_coeff_abcd2.py
+
+#NOTE
+-tenuta fz per generare dominio separata perche' utilizzabile per altre cose e per variare tipo di dati, magari float
