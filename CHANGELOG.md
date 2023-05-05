@@ -1,4 +1,4 @@
-## SCREENSHOT PROGETTO 2023 05 04
+## SCREENSHOT PROGETTO 2023 05 05
 
 #Unrealized
 - DUBBIO: eliminare lafunzione dominio_int.genera_dominio, mettendo il controllo sulla c!=0 in un ciclo while come la prima C.N.?
@@ -21,6 +21,7 @@
 - eliminare file fz_dominio
 
 #Changed
+creata fz_dominio_coeff.py, unica fz per creazione vettore coeff a partire da dominio con estremi indicati in input(non posso pero'testare il dominio)
 eliminate funzioni obsolete
 usare 
 - dominio_rel.py
@@ -34,8 +35,8 @@ fz_genera_coeff_abcd0.py
 fz_genera_coeff_abcd2.py
 
 #NOTE E DUBBI
--tenuta fz per generare dominio separata perche' utilizzabile per altre cose e per variare tipo di dati, magari float
--la funzione omeografica ha 2 C.N. per essere propria. si potrebbe EVITARE DUE DOMINI IN INGRESSO, inserire cn1 c!=0 
+1-tenuta fz per generare dominio separata perche' utilizzabile per altre cose e per variare tipo di dati, magari float
+2-la funzione omeografica ha 2 C.N. per essere propria. si potrebbe EVITARE DUE DOMINI IN INGRESSO, inserire cn1 c!=0 
  nella fz assegna_abcd con un altro while
 	c=0
 	while c==0:			#verifica C.N.1
