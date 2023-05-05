@@ -1,5 +1,5 @@
 """ 
-Questa funzione genera una funzione omeografica
+Questa funzione genera una funzione omeografica a partire da 4 coefficienti
     
 Parametri in input
 ------------------
@@ -16,8 +16,6 @@ f(x)=(a*x+b)/(c*x+d)
 from sympy import symbols
 
 def genera_fz_omeografica(a,b,c,d):
-    #import sympy as sp
-    #from sympy import symbols
     x=symbols("x")
     f_x=(a*x+b)/(c*x+d)
     return f_x
