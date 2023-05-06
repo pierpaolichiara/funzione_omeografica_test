@@ -36,46 +36,47 @@ genera_dominio(-4,5,6)
 [-4, -3, -2, -1, 0, 1, 2, 3, 4]
 """
 
-def genera_dominio(e1: int, e2: int, escludi=None):#->list:
-    if e1>=e2: 
-        dominio="dominio_vuoto"
-   # if type(e1)!=int or type(e2)!=int:  #in realta' non ci arriva qui, da' errore gia'nella riga di definizione
+
+def genera_dominio(e1: int, e2: int, escludi=None):  # ->list:
+    if e1 >= e2:
+        dominio = "dominio_vuoto"
+    # if type(e1)!=int or type(e2)!=int:  #in realta' non ci arriva qui, da' errore gia'nella riga di definizione
     #    print("Errore:e1 o e2 numeri non relativi, dominio vuoto")   #come far riconoscere TypeError: 'float' object cannot be interpreted as an integer
     else:
-        dominio=list(range(e1,e2))
+        dominio = list(range(e1, e2))
         if escludi is not None:
             if escludi in dominio:
                 dominio.remove(escludi)
             else:
-                print("Non e' possibile escludere", escludi, "dal dominio perche' non appartiene al dominio selezionato")
-   #print('Il dominio generato e\':',dominio)   ###FIX
-    return(dominio)
+                print("Non e' possibile escludere", escludi,
+                      "dal dominio perche' non appartiene al dominio selezionato")
+    # print('Il dominio generato e\':',dominio)   ###FIX
+    return (dominio)
 
-#a=genera_dominio(-4,5)
-#print(a)
-#print(type(a))
-
-
-#print(genera_dominio(-3,3, 6))
-#print(genera_dominio(3,3))
-#print(genera_dominio(2.0, 3.0))
-#print(genera_dominio(-3,3,1))
-#print(type(genera_dominio(-3,3,1))) 
-#print(genera_dominio(-9,9))
-#print(len(genera_dominio(-9,9)))  
-#print(genera_dominio(-2,2,0))
-#print(len(genera_dominio(-2,2,0)))
-
-#a=[1,3]
-#a=3.5
-
-#print(genera_dominio(5,5))
-#print(type(genera_dominio(5,5)))    #-->da'correttamclass str ma perche' non da' errore se ho detto che deve essere una lista nella def?
+# a=genera_dominio(-4,5)
+# print(a)
+# print(type(a))
 
 
+# print(genera_dominio(-3,3, 6))
+# print(genera_dominio(3,3))
+# print(genera_dominio(2.0, 3.0))
+# print(genera_dominio(-3,3,1))
+# print(type(genera_dominio(-3,3,1)))
+# print(genera_dominio(-9,9))
+# print(len(genera_dominio(-9,9)))
+# print(genera_dominio(-2,2,0))
+# print(len(genera_dominio(-2,2,0)))
 
-#controllare come fare se non voglionumeri relativi ma intervallo di reali o razionali
-#controllare come escludere piu'di un valore
+# a=[1,3]
+# a=3.5
+
+# print(genera_dominio(5,5))
+# print(type(genera_dominio(5,5)))    #-->da'correttamclass str ma perche' non da' errore se ho detto che deve essere una lista nella def?
+
+
+# controllare come fare se non voglionumeri relativi ma intervallo di reali o razionali
+# controllare come escludere piu'di un valore
 ##test: genera_dominio(e,e)==dominio_vuoto 
 ##test: genera_dominio(e+1,e)==dominio_vuoto  oppure e1>=e2
 ##test: genera_dominio(e,e+1)==[e]
