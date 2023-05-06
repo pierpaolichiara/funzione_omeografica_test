@@ -21,11 +21,15 @@ def genera_fz_omeografica(a,b,c,d):
     return f_x
 
 
+def parse_function_domain(domain_extremes: str) -> tuple:
+    # TODO
+    return tuple()
 
-y=genera_fz_omeografica(1,2,-2,4)
-print ("f(x)=",y)
+if __name__ == "__main__":
+    y=genera_fz_omeografica(1,2,-2,4)
+    print ("f(x)=",y)
 
-y=genera_fz_omeografica(1,2,0,4)   #e'una retta
-print ("f(x)=",y)
+    y=genera_fz_omeografica(1,2,0,4)   #e'una retta
+    print ("f(x)=",y)
 
 

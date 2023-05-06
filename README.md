@@ -1,4 +1,4 @@
-# funzione_omeografica_test
+# Generatore di Test d'Esame basato sulla Funzione Omeografica
 Progetto per docenti di matematica delle scuole secondarie superior)i: il programma funzione_omeografica.py funziona in questo modo:
 - genera un test a risposta aperta sulla funzione omeografica f(x)=(ax +b)/(cx+d) con coefficienti diversi (random relativi tra -9 e 9) per ogni alunno di una classe 
 - corregge i test 
