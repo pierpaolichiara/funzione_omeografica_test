@@ -49,8 +49,6 @@ def parse_function_domain(domain_extremes: str) -> tuple:
 def generate_domain(e1: int, e2: int, exclude_value:int = None) -> list:
     if e1 >= e2:
         raise ValueError("e2 deve essere strettamente maggiore di e1")
-    # if type(e1)!=int or type(e2)!=int:  #in realta' non ci arriva qui, da' errore gia'nella riga di definizione
-    #    print("Errore:e1 o e2 numeri non relativi, dominio vuoto")   #come far riconoscere TypeError: 'float' object cannot be interpreted as an integer
 
     domain = list(range(e1, e2))
     if exclude_value is not None:
@@ -62,6 +60,42 @@ def generate_domain(e1: int, e2: int, exclude_value:int = None) -> list:
 
 
 def generate_abcd_omeo(e1: int, e2: int) -> list:
+    """
+    Questa funzione genera un insieme di numeri interi relativi compresi tra
+    e1(incluso) ed e2(escluso), ad esclusione al massimo di un numero denominato
+    'escludi'.
+    Se non si vuole eliminare nessun numero dall'intervallo non inserire 'escludi'
+
+    Parametri in input
+    ------------------
+    e1: int, estremo sinistro dell'intervallo, compreso nello stesso
+    e2: int, estremo destro dell'intervallo, non compreso nello stesso
+    escludi: int, default=None, eventuale numero da escludere dall'intervallo
+
+    Output
+    ------
+    list: se e1<e2, una sequenza di interi che parte da e1 incluso e si conclude
+         con e2 escluso, eliminando al massimo un numero 'escludi' se compreso tra e1 ed e2
+
+    oppure
+
+    str: 'dominio_vuoto', se e1>=e2
+
+    Esempi
+    -------
+    genera_dominio(-4,5,2)
+    > [-4, -3, -2, -1, 0, 1, 3, 4]
+
+    genera_dominio(-4,5)
+    > [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+
+    genera_dominio(5,-4,2)
+    > dominio vuoto
+
+    genera_dominio(-4,5,6)
+    > Non e' possibile escludere 6 dal dominio perche' non appartiene al dominio selezionato
+    [-4, -3, -2, -1, 0, 1, 2, 3, 4]
+    """
     domain_abd = generate_domain(e1, e2)
     # verifica C.N.1
     domain_c = generate_domain(e1, e2, 0)
@@ -75,7 +109,6 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
         d = random.choice(domain_abd)
         delta = a * d - c * b
 
-    # print('[a,b,c,d] = ', [a, b, c, d])
     return [a, b, c, d]
 
 
@@ -83,7 +116,3 @@ if __name__ == "__main__":
     for _ in range(10):
         abcd = generate_abcd_omeo(-9, 10)
         print('i coefficienti sono [a,b,c,d]=', abcd)
-
-# funziona, domini come variabile, assegnati attraverso altra funzione
-# !!!random.seed da inserire non qui ma nella fz he genera i coefficienti per
-# tutta la classe, altrimenti tutti i ragazzi avranno stesso vettore

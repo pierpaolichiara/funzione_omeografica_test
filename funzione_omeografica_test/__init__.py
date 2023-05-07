@@ -1,1 +1,1 @@
-from funzione_omeografica_test import genera_fz_omeografica
+from funzione_omeografica_test import genera_tests

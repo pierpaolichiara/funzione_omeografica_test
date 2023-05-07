@@ -15,13 +15,8 @@ f(x)=(a*x+b)/(c*x+d)
 from sympy import symbols
 import os
 from datetime import date
-from funzione_omeografica_test.assegna_abcd_omeo import generate_abcd_omeo
+from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
-
-def genera_fz_omeografica(a, b, c, d):
-    x = symbols("x")
-    f_x = (a * x + b) / (c * x + d)
-    return f_x
 
 
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
