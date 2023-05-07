@@ -1,4 +1,10 @@
 import pytest
+import funzione_omeografica_test.genera_fz_omeografica as lib
 
-def test_function():
-    assert True
+def test_replace_placeholder():
+    pass
+    # assert lib.replace_placeholder()
+
+def test_generate_test_from_template():
+    pass
+    # assert lib.generate_test_from_template()

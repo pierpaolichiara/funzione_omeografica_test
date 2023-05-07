@@ -12,26 +12,52 @@ stampata su un file excel disponibile per l'insegnante
 import argparse
 import os
 
-from funzione_omeografica_test.genera_fz_omeografica import parse_function_domain, genera_fz_omeografica
+from funzione_omeografica_test.assegna_abcd_omeo import parse_function_domain
+from funzione_omeografica_test.genera_fz_omeografica import generate_tests
 from funzione_omeografica_test.lista import parse_student_list
+import pathlib
+
+TEMPLATE_PATH = "../templates/test.md"
+
+def get_output_folder(output_folder: str = None):
+    if output_folder:
+        if os.path.isabs(output_folder):
+            # se il path è assoluto (es. C:/Users/Matteo/...) lo prendiamo così com'è
+            cartella_output = output_folder
+        else:
+            # altrimenti è un path relativo, e craiamo una sottocartella nella cartella dove l'utente esegue il comando
+            current_working_dir = os.getcwd()
+            cartella_output = os.path.join(current_working_dir, output_folder)
+    else:
+        # se l'utente non specifica nessuna cartella, creiamo una cartella di nome "output" nella cartella dove l'utente esegue il comando
+        current_working_dir = os.getcwd()
+        cartella_output = os.path.join(current_working_dir, "output")
+
+    return cartella_output
 
 def main():
     parser = argparse.ArgumentParser(description='Comando per generare test individuali sulla funzione omeografica.')
     parser.add_argument('-d', '--estremi_dominio', type=str, required=True, action='store', help='Estremi del dominio da cui vengono estratti i parametri della funzione omeografica diversi per ogni studenti.')
     parser.add_argument('-a', '--elenco_alunni', type=str, action='store', required=True, help='Elenco degli alunni per i quali generare il test')
+    parser.add_argument('-o', '--cartella_output', type=str, action='store', required=False, help='Cartella dove salvare i test generati automaticamente')
     args, _ = parser.parse_known_args()
 
     estremi_dominio = args.estremi_dominio
     print(estremi_dominio)
-    func_domain_extremes = parse_function_domain(estremi_dominio)
+    estremi_dominio = parse_function_domain(estremi_dominio)
 
     file_elenco_alunni = args.elenco_alunni
     nomi_alunni = parse_student_list(file_elenco_alunni)
-    print(nomi_alunni)
 
-    # a, b, c, d = 1, 3, 5, 7
-    # y = genera_fz_omeografica(a, b, c, d, )
-    # print("f(x)=", y)
+    # trova il path assoluto alla cartella dove si trova main.py
+    base_dir = pathlib.Path(__file__).parent.resolve()
+
+    # genera il path del template test.md
+    template_test = os.path.join(base_dir, TEMPLATE_PATH)
+
+    cartella_output = get_output_folder(args.cartella_output)
+
+    generate_tests(template_test, cartella_output, nomi_alunni, estremi_dominio)
 
 
 if __name__ == "__main__":
