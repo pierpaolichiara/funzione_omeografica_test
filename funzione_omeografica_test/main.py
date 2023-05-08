@@ -4,12 +4,10 @@ Progetto per docenti di matematica delle scuole secondarie superiori:
 Questo programma e' pensato per produrre test a risposta aperta sulla funzione 
 omeografica f(x)=(ax +b)/(cx+d) da somministrare a una classe di studenti.
 Ogni coefficiente della funzione viene scelto in maniera casuale all'interno 
-di un dominio da specificare. A ogni alunno il programma associa una quaterna 
-di coefficienti [a,b,c,d] diversa, e per ogni alunno stampa il testo del test #in formato...##. 
-L'associazione tra cognome dell'alunno e quaterna di coefficienti viene 
-stampata su un file excel disponibile per l'insegnante
-
+di un intervallo di interi da specificare. A ogni alunno il programma associa una quaterna
+di coefficienti [a,b,c,d] diversa, e per ogni alunno stampa il testo del test in formato html.
 """
+#TODO IMPORT...
 import argparse
 import os
 

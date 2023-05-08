@@ -1,6 +1,8 @@
 ## SCREENSHOT PROGETTO 2023 05 05
 
 #Unrealized
+- finire documentazione g_omeo.py enerate_abcd 
+- from generate_abcd_omeo.py import parse_function_domain: togliere le virgolette ??? inserire direttamente e1 ed e2?
 - fare file con approfondimenti e scelte separato dal readme?
 - sistemare gli import nel posto giusto
 - sistemare le descrizioni delle funzioni
@@ -37,8 +39,10 @@ finale pero'il return non avra'tipo predefinito, o list o str -> test type
 
 #Deprecated
 dominio_rel.py
+dominio_coeff.py
 fz_genera_coeff_abcd0.py
 fz_genera_coeff_abcd2.py
+fz_genera_coeff_abcd.py
 
 #NOTE E DUBBI
 1-tenuta fz per generare dominio separata perche' utilizzabile per altre cose e per variare tipo di dati, magari float
