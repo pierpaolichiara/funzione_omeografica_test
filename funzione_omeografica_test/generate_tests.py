@@ -11,14 +11,7 @@ f(x)=(a*x+b)/(c*x+d)
 
 
 """
-
-from sympy import symbols
-import os
-from datetime import date
-from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
-import markdown
-
-
+#TODO: COSA FA QUESTA FUNZIONE?
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
     if placeholder_id in text_line:
         new_line = text_line.replace(placeholder_id, placeholder_value)

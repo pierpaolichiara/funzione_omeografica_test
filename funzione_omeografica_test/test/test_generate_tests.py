@@ -1,5 +1,5 @@
 import pytest
-import funzione_omeografica_test.genera_tests as lib
+import funzione_omeografica_test.generate_tests as lib
 
 def test_replace_placeholder():
     pass

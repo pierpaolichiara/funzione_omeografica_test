@@ -12,12 +12,13 @@ import argparse
 import os
 
 from funzione_omeografica_test.generate_abcd_omeo import parse_function_domain
-from funzione_omeografica_test.genera_tests import generate_tests
+from funzione_omeografica_test.generate_tests import generate_tests
 from funzione_omeografica_test.parse_student_list import parse_student_list
 import pathlib
 
+#TODO: controlla DESCRIZIONE
+#assegnazione della cartella contenente il template del test da somministrare agli studenti da cui generare tutti i test
 TEMPLATE_PATH = "../templates/test.md"
-
 
 def get_output_folder(output_folder: str = None):
     if output_folder:
