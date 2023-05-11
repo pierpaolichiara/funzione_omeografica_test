@@ -66,6 +66,7 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     e1(incluso) ed e2(incluso), ad esclusione al massimo di un numero denominato
     exclude_value.
     Se non si vuole eliminare nessun numero dall'intervallo non inserire exclude_value.
+    Se exclude_value e' esterno all'intervallo inserito, compare un warning, ma il dominio viene comuuque generato.
 
     Input
     ------
@@ -111,8 +112,8 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
         if exclude_value in domain:
             domain.remove(exclude_value)
         else:
-            #TODO: si puo'fare un raise Warning?
-            raise Warning(f"Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato.")
+            #si puo' inserire un 'raise Warning', ma a quel punto la funzione non verrebbe calcolata
+            print(f"Warning:Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato.")
     return domain
 
 
@@ -148,7 +149,7 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     domain_abd  = generate_domain(e1, e2)
     # verifica C.N.1
     domain_c = generate_domain(e1, e2, 0)
-    #inizializzazione parametriper essere sicuri di avere un return se il ciclo non dovesse essere svolto
+    #inizializzazione parametri per essere sicuri di avere un return se il ciclo non dovesse essere svolto
     delta = 0
     a = b = c = d = None
     # verifica C.N.2
