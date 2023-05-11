@@ -6,7 +6,7 @@ generare una funzione omeografica propria.
 
 I coefficienti vengono scelti random con la funzione random.choice della libreria random.
 
-Vengono controllate le condizioni necessarie e sufficienti (C.N.S) per l'esistenza di una funzione omeografica propria
+Vengono controllate le condizioni necessarie e sufficienti (C.N.S.1 e 2) per l'esistenza di una funzione omeografica propria
     f(x)=(a*x+b)/(c*x+d)
 associata alla quaterna dei coefficienti selezionati, che sono
  
@@ -144,15 +144,20 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     ------
     list: [a, b, c, d]
         lista dei quattro coefficienti estratti random dal dominio definito in input
+
+    Vedi  #TODO: LINK A generate_domain e random_choice()
+    ----
+    generate_domain(e1, e2)
+    random_choice()
     """
     #calcolo dominio
     domain_abd  = generate_domain(e1, e2)
-    # verifica C.N.1
+    #assegnazione C.N.1
     domain_c = generate_domain(e1, e2, 0)
     #inizializzazione parametri per essere sicuri di avere un return se il ciclo non dovesse essere svolto
     delta = 0
     a = b = c = d = None
-    # verifica C.N.2
+    #verifica C.N.2
     while delta == 0:
         #assegnazione random ai coefficienti
         a = random.choice(domain_abd)
