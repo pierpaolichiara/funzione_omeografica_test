@@ -4,8 +4,7 @@ Questo modulo restituisce una sequenza random di 4 coefficienti interi [a,b,c,d]
 appartenenti al dominio indicato in input, che verificano le condizioni necessarie e sufficienti per
 generare una funzione omeografica propria.
 
-I coefficienti vengono scelti random con la funzione random.choice della libreria random, applicata alla sequenza
-in ingresso.
+I coefficienti vengono scelti random con la funzione random.choice della libreria random.
 
 Vengono controllate le condizioni necessarie e sufficienti (C.N.S) per l'esistenza di una funzione omeografica propria
     f(x)=(a*x+b)/(c*x+d)
@@ -17,42 +16,31 @@ associata alla quaterna dei coefficienti selezionati, che sono
    
 Qualora almeno una delle due C.N.S. non sia rispettata, viene generata una
 nuova sequenza di coefficienti e ricontrollate le C.N.S. fino a quando entrambe risultano verificate
- 
-Input
-------------------
-dominio: list
-    insieme di interi da cui estrarre a, b, c, d
- 
-Output
--------
-[a,b,c,d]: list 
-    sequenza di 4 coefficienti interi appartenenti a dominio in input, idonei a generare una funzione omeografica propria 
- 
-Raises ###??? TRADUZIONE?
-------
- 
- 
-Vedi anche
-----------
-#TODO    random.choice 
-dominio_int.genera_dominio
-
 """
 
 import random
 
 def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? VEDI SPLIT
     """
-    Riceve gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
-    Evita di richiedere gli estremi separatamente e garantisce la definizione del dominio attraverso un unico elemento tupla
+    Riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
+    Evita di richiedere gli estremi separatamente e garantisce la definizione del dominio attraverso un unico elemento
+    tupla definito all'inizio dell'esecuzione e non modificabile
+
     Input
     -----
     domain_extremes: str   #TODO: MEGLIO RICHIEDERE STRINGA DI INT????
         i due estremi del dominio da considerare, se non di tipo int vengono convertiti a interi
+
     Output
     ------
-    tuple: tupla con due elementi
-       Es. (-9,10)
+    tuple: tupla di due elementi
+        i due elementi sono gli estremi del dominio in input
+
+    Raises
+    ------
+    ValueError: invalid literal for int() with base 10: '-9.1'
+        se si inserisce un numero non 'int'
+
     Esempi
     ------
     >>> parse_function_domain(-9,10)
@@ -70,7 +58,7 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
     return tuple(extrs)
 
 
-#    print(parse_function_domain("(-9,9,0)"))
+print(parse_function_domain("(-9,9,0)"))
 
 def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     """

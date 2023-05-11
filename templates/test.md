@@ -14,8 +14,8 @@ Studiare la funzione omeografica `f (x) = (a x + b) / (c x + d)` con i seguenti 
 
 ## Domande
 
-1. Calcola il valore di `y` corrispondente all'asintoto orizzontale
-2. Calcola il valore di `x` corrispondente all'asintoto verticale
+1. Trova, se esiste, l'asintoto orizzontale
+2. Calcola, se esiste, il valore di `x` corrispondente all'asintoto verticale
 3. Calcola le coordinate del centro di simmetria
 4. Calcola l'intersezione della funzione con l'asse `x`
 5. Calcola l'intersezione della funzione con l'asse `y`

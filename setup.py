@@ -19,7 +19,7 @@ tests_require = get_requirements('test')
 setup(
     name='funzione_omeografica_test',
     version='0.1',
-    description="Generatore di Test d'Esame basato sulla Funzione Omeografica.",
+    description="Generatore di Test a risposta aperta sulla Funzione Omeografica.",
     long_description=readme(),
     classifiers=[
         'Development Status :: 3 - Alpha',
