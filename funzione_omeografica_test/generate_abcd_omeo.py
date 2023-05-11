@@ -86,7 +86,7 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     ------
     e1>e2:    "ValueError: e2 deve essere maggiore o uguale a e1"
     exclude_value<e1 oppure exclude_value>e2:
-               "Warning: Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato
+              "Warning: Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato
 
     Esempi
     ------
@@ -112,7 +112,7 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
             domain.remove(exclude_value)
         else:
             #TODO: si puo'fare un raise Warning?
-            print(f"Warning: Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato.")
+            raise Warning(f"Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato.")
     return domain
 
 
