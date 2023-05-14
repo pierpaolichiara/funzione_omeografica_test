@@ -17,8 +17,9 @@ from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 
-#TODO: COSA FA QUESTA FUNZIONE?
+#TODO : COSA FA QUESTA FUNZIONE?
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
+    #legge il tempalte e sostotuisce i <> con i valori opportuni una stringa alla volta perche' cosi riscrive il file
     if placeholder_id in text_line:
         new_line = text_line.replace(placeholder_id, placeholder_value)
         return new_line
@@ -68,7 +69,7 @@ def generate_test_from_template(template_path, output_dir, coeffs, student_name)
     md_input = ''.join(test_text_lines)
     convert_to_html(md_input, output_path)
 
-
+#TODO:estremi
 def generate_tests(template_path: str, output_dir: str, student_lists: list, function_domain: tuple):
     e1, e2 = function_domain
     for student_name in student_lists:
@@ -78,4 +79,5 @@ def generate_tests(template_path: str, output_dir: str, student_lists: list, fun
 
 if __name__ == "__main__":
     studenti = ['alpha', 'beta', 'charlie']
+# TODO:estremi
     generate_tests("C:/dev/repos/funzione_omeografica_test/templates/test.md", "C:/dev/repos/funzione_omeografica_test/output", studenti, (-9, 10))

@@ -7,7 +7,7 @@ Ogni coefficiente della funzione viene scelto in maniera casuale all'interno
 di un intervallo di interi da specificare. A ogni alunno il programma associa una quaterna
 di coefficienti [a,b,c,d] diversa, e per ogni alunno stampa il testo del test in formato html.
 """
-#TODO IMPORT...
+
 import argparse
 import os
 
@@ -47,11 +47,15 @@ def main():
                         help='Cartella dove salvare i test generati automaticamente')
     args, _ = parser.parse_known_args()
 
+#TODO: estremi. RIVEDERE NOMI ESTREMI CHIAMATI IN MODI DIVERSI NEI VARI FILE:
+    # estremi_dominio, function_domain, extr, parse_function_domain(domain_extremes), e1, e2
+
     estremi_dominio = args.estremi_dominio
     print(estremi_dominio)
     estremi_dominio = parse_function_domain(estremi_dominio)
-
+    #print(estremi_dominio)
     file_elenco_alunni = args.elenco_alunni
+
     nomi_alunni = parse_student_list(file_elenco_alunni)
 
     # trova il path assoluto alla cartella dove si trova main.py
@@ -61,7 +65,7 @@ def main():
     template_test = os.path.join(base_dir, TEMPLATE_PATH)
 
     cartella_output = get_output_folder(args.cartella_output)
-
+#todo: estremi
     generate_tests(template_test, cartella_output, nomi_alunni, estremi_dominio)
 
 

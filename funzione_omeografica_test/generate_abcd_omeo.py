@@ -19,7 +19,7 @@ nuova sequenza di coefficienti e ricontrollate le C.N.S. fino a quando entrambe 
 """
 
 import random
-
+#TODO:estremi
 def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? VEDI SPLIT
     """
     Riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
@@ -51,6 +51,8 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
     (-9,10)
     >>> parse_function_domain("[-9.1,10]")
     ValueError: invalid literal for int() with base 10: '-9.1'
+    >>> parse_function_domain("(-9,9,0)")
+    ValueError: invalid literal for int() with base 10: '-9.1'
 
     #TODO: ERRORE, casi con float: dovrebbe convertire ad intero? o dare errore?
     """
@@ -58,8 +60,9 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
     return tuple(extrs)
 
 
-print(parse_function_domain("(-9,9,0)"))
+#print(parse_function_domain("(-9,9,0)"))
 
+#TODO:estremi
 def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     """
     Questa funzione genera un insieme di numeri interi relativi compresi tra
@@ -118,14 +121,13 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
 
 
 #    print(generate_domain(5, 4, 22))
-
+#TODO:estremi
 def generate_abcd_omeo(e1: int, e2: int) -> list:
     """
     Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
     del tipo f(x)=(ax+b)/(cx+d).
     In particolare i 4 coefficienti:
     - appartengono al dominio di estremi specificati in input
-
     - vengono scelti con la funzione random.choice dal dominio
     - verificano le due condizioni necessarie e sufficienti (C.N.S.) per dare origine a una funzione omeografica propria:
 
@@ -136,9 +138,9 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     Input
     -----
     e1: int
-        estremo sinistro del dominio da cui estrarre i coefficienti
+        estremo inferiore del dominio da cui estrarre i coefficienti
     e2: int
-        estremo destro del dominio da cui estrarre i coefficienti
+        estremo superiore del dominio da cui estrarre i coefficienti
 
     Output
     ------
@@ -169,8 +171,9 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
 
 #print(generate_abcd_omeo(-2,4))
 
+#TODO:estremi
 if __name__ == "__main__":  # TODO: VA BENE QUI?
    for _ in range(10):  #TODO: Perche'10?
-       abcd = generate_abcd_omeo(e1, e2)    #controllare se va bene o extrs
+       abcd = generate_abcd_omeo(-9, 9)    #controllare se va bene o extrs
        print('i coefficienti sono [a,b,c,d]=', abcd)
 

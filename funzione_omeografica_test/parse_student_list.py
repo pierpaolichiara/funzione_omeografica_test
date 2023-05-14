@@ -15,6 +15,6 @@ def parse_student_list(student_list_path: str):
         raise TypeError("La lista degli studenti deve essere in formato excel")
 
     dataframe = pd.read_excel(student_list_path, index_col=0)
-
+#legge la colonna cognome del file e genera lista di nomi
     names = dataframe["COGNOME"].values.tolist()
     return names
