@@ -52,22 +52,31 @@ o <classe>.xls
 - Avere una Common Line Interface (CLI) nel dispositivo in uso.
 - Avere Python installato nel dispositivo in uso. La libreria e' stata testata per la versione di Python 3.9.13. 
 
-#### Insallazione e utilizzo
+#### Installazione e utilizzo
 Per poter usare la libreria e' necessario:
+
 4. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI
-'git clone https://github.com/pierpaolichiara/funzione_omeografica_test'
+`git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
+
 5. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
-'cd funzione_omeografica_test'
+`cd funzione_omeografica_test`
+
 6. aprire il file main.py come segue
-'`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx`'
+`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=esempio_input\CLASSE_1A
+.xlsx`
+
+oppure
+
+`genera_test --estremi_dominio=(e1,e2) --elenco_alunni=esempio_input\CLASSE_1A
+.xlsx`
+
 dove sostituire a e1 ed e2 gli estremi scelti nel punto 1 e a esempio_input\CLASSE_1A
-.xlsx il percorso del file excel con lélenco degli alunni del punto 2
+.xlsx il percorso del file excel con l'elenco degli alunni del punto 2
 
 
 
 
-### Come usare la libreria
+### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
 Es. [e1, e2] = (-9,9)
     <classe>.xlsx = CLASSE_1A
