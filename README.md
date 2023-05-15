@@ -47,44 +47,62 @@ scritta in maiuscolo, e nelle righe successive della stessa colonna i cognomi de
 e stampare i test
 3. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls
+4. Facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
+verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
 - Avere una Common Line Interface (CLI) nel dispositivo in uso.
 - Avere Python installato nel dispositivo in uso. La libreria e' stata testata per la versione di Python 3.9.13. 
 
+Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_base.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-base.txt) e in [requirements-test.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-test.txt) vengono installate automaticamente se necessario una volta lanciato il file principale.
+
 #### Installazione e utilizzo
 Per poter usare la libreria e' necessario:
 
-4. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI
+5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI
+
 `git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
 
-5. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
+6. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
+
 `cd funzione_omeografica_test`
+7. installare la libreria 
 
-6. aprire il file main.py come segue
-`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx`
+`pipi install .`
 
-oppure
+8. lanciare il file main.py come segue
 
-`genera_test --estremi_dominio=(e1,e2) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx`
+`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=`
+<classe.xlsx>
+   oppure
 
-dove sostituire a e1 ed e2 gli estremi scelti nel punto 1 e a esempio_input\CLASSE_1A
-.xlsx il percorso del file excel con l'elenco degli alunni del punto 2
-
+`genera_test --estremi_dominio=(e1,e2) --elenco_alunni=<classe.xlsx>`
 
 
+dove sostituire 
+- a `e1` ed `e2` gli estremi scelti nel punto 1 
+- a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente) con l'elenco degli alunni del punto 2
+- (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. Per farlo bisogna 
+aggiungere al comando scelto nel punto 8 quanto segue:
+
+` --cartella_output=<percorso_cartella_output>`
+
+e sostituendo a `<percorso_cartella_output>` il percorso assoluto della cartella di output desiderata individuato 
+nel punto 5
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
-Es. [e1, e2] = (-9,9)
-    <classe>.xlsx = CLASSE_1A
-    percorso file CLASSE_1A = esempio_input\CLASSE_1A
+
+`(e1, e2)` = `(-9,9)`
+
+<classe.xlsx> = `CLASSE_1A.xlsx`
+
+percorso file CLASSE_1A = esempio_input\CLASSE_1A
+
 ![img_1.png](img_1.png)
 
 Per stampare in .html i test a risposta aperta sulla Funzione Omeografica con i dati dell'esempio come input: 
-- Scaricare la libreria???
+- Scaricare la libreria
 - Aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
 - Da linea di comando lanciare il modulo 'main' come segue:
 
@@ -96,6 +114,12 @@ oppure
 `genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
 .xlsx`
 
-- i test stampati in .html sono disponibili nella cartella 'output', denominati con il cognome dell'alunno....
+- i test stampati in .html sono disponibili nella cartella 'funzione_omeografica_test/output', denominati con il cognome dell'alunno nel seguente modo:
+`test_<COGNOME>.html`
+ad esempio test_ALFA.html, test_BETA.html... Riportiamo un esempio di
+test di verifica stampato:
+![img_2.png](img_2.png)
 
+## Struttura della libreria funzione_omeografica_test
+La libreria
 
