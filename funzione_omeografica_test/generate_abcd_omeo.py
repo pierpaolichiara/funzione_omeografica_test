@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
-Questo modulo restituisce una sequenza random di 4 coefficienti interi [a,b,c,d]
-appartenenti al dominio indicato in input, che verificano le condizioni necessarie e sufficienti per
+Questo modulo restituisce una sequenza di 4 coefficienti interi [a,b,c,d]
+appartenenti al dominio indicato in input e scelti in maniera casuale, che verificano le condizioni necessarie e sufficienti per
 generare una funzione omeografica propria.
 
 I coefficienti vengono scelti random con la funzione random.choice della libreria random.
@@ -28,7 +28,7 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
 
     Input
     -----
-    domain_extremes: str   #TODO: MEGLIO RICHIEDERE STRINGA DI INT????
+    domain_extremes: str
         i due estremi del dominio da considerare, se non di tipo int vengono convertiti a interi
 
     Output
@@ -54,7 +54,6 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
     >>> parse_function_domain("(-9,9,0)")
     ValueError: invalid literal for int() with base 10: '-9.1'
 
-    #TODO: ERRORE, casi con float: dovrebbe convertire ad intero? o dare errore?
     """
     extrs = [int(piece.strip("()[], ")) for piece in domain_extremes.split(",")]
     return tuple(extrs)
@@ -76,19 +75,19 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     e1: int
         estremo sinistro dell'intervallo, compreso nello stesso
     e2: int
-        estremo destro dell'intervallo, compreso nello stesso
+        estremo destro dell'intervallo, compreso nello stesso e maggiore di e1
     exclude_value: int, default=None
         eventuale numero da escludere dall'intervallo
 
     Output
     ------
     list: [e1, e1+1, e1+2, ..., e2-2, e2]
-          se e1<=e2, e' una sequenza di interi che parte da e1 incluso e si conclude
-          con e2 incluso, eliminando al massimo un numero exclude_value se compreso tra e1 ed e2
+          se e1<e2, e' una sequenza di interi che parte da e1 incluso e si conclude
+          con e2 incluso, eliminando al massimo un numero exclude_value se compreso o uguale a tra e1 ed e2
 
     Raises
     ------
-    e1>e2:    "ValueError: e2 deve essere maggiore o uguale a e1"
+    e1>=e2:    "ValueError: e2 deve essere maggiore di e1"
     exclude_value<e1 oppure exclude_value>e2:
               "Warning: Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato
 
@@ -101,21 +100,21 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     >>> [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
 
     generate_domain(5,-4,2)
-    >>> ValueError: e2 deve essere maggiore o uguale a e1
+    >>> ValueError: e2 deve essere maggiore di e1
 
     generate_domain(-5,4, 22)
     >>> Warning: Non é possibile escludere 22 dal dominio perché non appartiene al dominio selezionato.
     >>> [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4]
     """
-    if e1 > e2:
-        raise ValueError("e2 deve essere maggiore o uguale a e1")
+    if e1 >= e2:
+        raise ValueError("e2 deve essere maggiore di e1")
 
     domain = list(range(e1, e2+1))
     if exclude_value is not None:
         if exclude_value in domain:
             domain.remove(exclude_value)
         else:
-            #si puo' inserire un 'raise Warning', ma a quel punto la funzione non verrebbe calcolata
+            #si potrebbe inserire un 'raise Warning', ma a quel punto la funzione non verrebbe calcolata
             print(f"Warning:Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato.")
     return domain
 
@@ -152,7 +151,7 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     generate_domain(e1, e2)
     random_choice()
     """
-    #calcolo dominio
+    #calcolo dominio:
     domain_abd  = generate_domain(e1, e2)
     #assegnazione C.N.1
     domain_c = generate_domain(e1, e2, 0)
@@ -161,11 +160,16 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     a = b = c = d = None
     #verifica C.N.2
     while delta == 0:
-        #assegnazione random ai coefficienti
+        #assegnazione random ai coefficienti: la scelta random permette di uscire sicuramente dal ciclo dopo un certo
+        #numero finito di iterazioni dello stesso perche' la probabilita' di avere un delta sempre uguale a 0 e' non
+        #nulla per un dominio di almeno due numeri interi diversi.
+        #Utilizzare la funzione generate_domain in cui i due estremi sono diversi, ci garantisce che il dominio non e'
+        # un solo numero, caso che produrrebbe un delta=0
         a = random.choice(domain_abd)
         b = random.choice(domain_abd)
-        c = random.choice(domain_c)
         d = random.choice(domain_abd)
+        c = random.choice(domain_c)
+
         delta = a * d - c * b
     return [a, b, c, d]
 
