@@ -55,6 +55,8 @@ def generate_test_from_template(template_path, output_dir, coeffs, student_name)
     test_text_lines = []
 
     for template_line in template_text:
+        #ad ogni linea di testo del template vengono sostituiti ad eventuali segnaposto 'placeholder...' definiti sopra
+        # il loro valore
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
         for placeholder_param, coef in zip(placeholder_parameters, coeffs):
@@ -78,6 +80,6 @@ def generate_tests(template_path: str, output_dir: str, student_lists: list, fun
 
 
 if __name__ == "__main__":
-    studenti = ['alpha', 'beta', 'charlie']
+#    studenti = ['alpha', 'beta', 'charlie']
 # TODO:estremi
-    generate_tests("C:/dev/repos/funzione_omeografica_test/templates/test.md", "C:/dev/repos/funzione_omeografica_test/output", studenti, (-9, 10))
+   generate_tests("C:/dev/repos/funzione_omeografica_test/templates/test.md", "C:/dev/repos/funzione_omeografica_test/output", studenti, (-9, 10))

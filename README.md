@@ -59,22 +59,23 @@ Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_ba
 #### Installazione e utilizzo
 Per poter usare la libreria e' necessario:
 
-5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI
+5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI con il seguente comando:
 
 `git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
 
 6. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
 
 `cd funzione_omeografica_test`
+
 7. installare la libreria 
 
-`pipi install .`
+`pip install .`
 
 8. lanciare il file main.py come segue
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=`
-<classe.xlsx>
-   oppure
+`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=<classe.xlsx>`
+   
+oppure
 
 `genera_test --estremi_dominio=(e1,e2) --elenco_alunni=<classe.xlsx>`
 
@@ -88,7 +89,7 @@ aggiungere al comando scelto nel punto 8 quanto segue:
 ` --cartella_output=<percorso_cartella_output>`
 
 e sostituendo a `<percorso_cartella_output>` il percorso assoluto della cartella di output desiderata individuato 
-nel punto 5
+nel punto 5.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
@@ -115,8 +116,9 @@ oppure
 .xlsx`
 
 - i test stampati in .html sono disponibili nella cartella 'funzione_omeografica_test/output', denominati con il cognome dell'alunno nel seguente modo:
-`test_<COGNOME>.html`
-ad esempio test_ALFA.html, test_BETA.html... Riportiamo un esempio di
+`test_<COGNOME>.html`,
+ad esempio test_ALFA.html, test_BETA.html... 
+Riportiamo un esempio di
 test di verifica stampato:
 ![img_2.png](img_2.png)
 
