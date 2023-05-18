@@ -20,7 +20,7 @@ import pathlib
 #assegnazione della cartella contenente il template del test da somministrare agli studenti da cui generare tutti i test
 TEMPLATE_PATH = "../templates/test.md"
 
-def get_output_folder(output_folder: str = None):
+def get_output_folder(output_folder: str = None)->str:#indirizzo assoluto
     if output_folder:
         if os.path.isabs(output_folder):
             # se il path è assoluto (es. C:/Users/Matteo/...) lo prendiamo così com'è
@@ -30,10 +30,10 @@ def get_output_folder(output_folder: str = None):
             current_working_dir = os.getcwd()
             cartella_output = os.path.join(current_working_dir, output_folder)
     else:
-        # se l'utente non specifica nessuna cartella, creiamo una cartella di nome "output" nella cartella dove l'utente esegue il comando
+        #se l'utente non specifica nessuna cartella, creiamo una cartella di nome "output" nella cartella da cui l'utente
+        # esegue il comando
         current_working_dir = os.getcwd()
         cartella_output = os.path.join(current_working_dir, "output")
-
     return cartella_output
 
 
@@ -49,11 +49,11 @@ def main():
 
 #TODO: estremi. RIVEDERE NOMI ESTREMI CHIAMATI IN MODI DIVERSI NEI VARI FILE:
     # estremi_dominio, function_domain, extr, parse_function_domain(domain_extremes), e1, e2
-
+    #TODO: sistemare linguaggio
+    #assegno gli input ricevuti a delle variabili python, dopo averli resi in una forma piu'funzioanle al programma
     estremi_dominio = args.estremi_dominio
     print(estremi_dominio)
     estremi_dominio = parse_function_domain(estremi_dominio)
-    #print(estremi_dominio)
     file_elenco_alunni = args.elenco_alunni
 
     nomi_alunni = parse_student_list(file_elenco_alunni)

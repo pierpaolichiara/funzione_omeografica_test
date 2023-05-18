@@ -1,6 +1,8 @@
-## SCREENSHOT PROGETTO 2023 05 05
+## SCREENSHOT PROGETTO 2023 05 18
 
 #Unrealized
+https://realpython.com/lessons/with-open-pattern/#transcript
+https://codefather.tech/blog/python-with-open/
 - finire documentazione g_omeo.py enerate_abcd 
 - from generate_abcd_omeo.py import parse_function_domain: togliere le virgolette ??? inserire direttamente e1 ed e2?
 - fare file con approfondimenti e scelte separato dal readme?

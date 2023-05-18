@@ -9,7 +9,6 @@ Output
 ------
 f(x)=(a*x+b)/(c*x+d)
 
-
 """
 from sympy import symbols
 import os
@@ -17,7 +16,6 @@ from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 
-#TODO : COSA FA QUESTA FUNZIONE?
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
     #legge il tempalte e sostotuisce i <> con i valori opportuni una stringa alla volta perche' cosi riscrive il file
     if placeholder_id in text_line:
@@ -33,19 +31,20 @@ def convert_to_html(md_input_string:str, htm_output_file:str):
         f.write(html_string)
 
 
-def generate_test_from_template(template_path, output_dir, coeffs, student_name):
+def generate_test_from_template(template_path:str, output_dir:str, coeffs:list, student_name:str):
     if not os.path.exists(template_path):
         raise IOError(f"Il template {template_path} non esiste.")
 
     if not os.path.basename(template_path).endswith('md'):
         raise TypeError("Il template deve essere in formato .md")
 
-    # Conosciamo già i placeholder, quindi li listiamo direttamente
+    #Conosciamo già i placeholder, quindi li listiamo direttamente
     placeholder_student_name = '*NOME_STUDENTE*'
     placeholder_date = '*DATA*'
     placeholder_parameters = ['*VALORE_A*', '*VALORE_B*', '*VALORE_C*', '*VALORE_D*']
 
     with open(template_path, 'r') as t:
+        #apre il file in lettura e associa a ogni riga una stringa, elemento di una lista di stringhe template_text
         template_text = t.readlines()
 
     today = date.today()
@@ -55,19 +54,22 @@ def generate_test_from_template(template_path, output_dir, coeffs, student_name)
     test_text_lines = []
 
     for template_line in template_text:
-        #ad ogni linea di testo del template vengono sostituiti ad eventuali segnaposto 'placeholder...' definiti sopra
-        # il loro valore
+        #ad ogni linea di testo del template vengono sostituiti ad eventuali segnaposto (placeholder) definiti sopra
+        #i loro rispettivi valori
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
         for placeholder_param, coef in zip(placeholder_parameters, coeffs):
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
         test_text_lines.append(maybe_processed_line)
 
+    #TODO: descrivere meglio e controllare
+    #crea una cartella 'output' se non la trova, dove?
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     output_path = os.path.join(output_dir, f"test_{student_name}.html")
 
+    #concateniamo le linee di testo per avere tutto il testo in una unica stringa da convertire in un file html
     md_input = ''.join(test_text_lines)
     convert_to_html(md_input, output_path)
 
@@ -76,7 +78,7 @@ def generate_tests(template_path: str, output_dir: str, student_lists: list, fun
     e1, e2 = function_domain
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
-        generate_test_from_template(template_path, output_dir, abcd_list, student_name)
+        generate_test_from_template(template_path=template_path, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
 
 
 if __name__ == "__main__":
