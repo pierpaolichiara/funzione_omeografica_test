@@ -121,12 +121,12 @@ def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
 
 #    print(generate_domain(5, 4, 22))
 #TODO:estremi
-def generate_abcd_omeo(e1: int, e2: int) -> list:
+def generate_abcd_omeo(e_min: int, e_max: int) -> list:
     """
     Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
     del tipo f(x)=(ax+b)/(cx+d).
     In particolare i 4 coefficienti:
-    - appartengono al dominio di estremi specificati in input
+    - appartengono al dominio di estremi specificati in input, estremi inclusi
     - vengono scelti con la funzione random.choice dal dominio
     - verificano le due condizioni necessarie e sufficienti (C.N.S.) per dare origine a una funzione omeografica propria:
 
@@ -136,9 +136,9 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
 
     Input
     -----
-    e1: int
+    e_min: int
         estremo inferiore del dominio da cui estrarre i coefficienti
-    e2: int
+    e_max: int
         estremo superiore del dominio da cui estrarre i coefficienti
 
     Output
@@ -148,13 +148,13 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
 
     Vedi  #TODO: LINK A generate_domain e random_choice()
     ----
-    generate_domain(e1, e2)
+    generate_domain(e_min, e_max)
     random_choice()
     """
     #calcolo dominio:
-    domain_abd  = generate_domain(e1, e2)
+    domain_abd  = generate_domain(e_min, e_max)
     #assegnazione C.N.1
-    domain_c = generate_domain(e1, e2, 0)
+    domain_c = generate_domain(e_min, e_max, 0)
     #inizializzazione parametri per essere sicuri di avere un return se il ciclo non dovesse essere svolto
     delta = 0
     a = b = c = d = None
@@ -162,7 +162,8 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
     while delta == 0:
         #assegnazione random ai coefficienti: la scelta random permette di uscire sicuramente dal ciclo dopo un certo
         #numero finito di iterazioni dello stesso perche' la probabilita' di avere un delta sempre uguale a 0 e' non
-        #nulla per un dominio di almeno due numeri interi diversi.
+        #nulla per un dominio di almeno due numeri interi diversi, considerate tutte le possibili combinazioni dei valori
+        # dei 4 coefficienti.
         #Utilizzare la funzione generate_domain in cui i due estremi sono diversi, ci garantisce che il dominio non e'
         # un solo numero, caso che produrrebbe un delta=0
         a = random.choice(domain_abd)
@@ -176,8 +177,8 @@ def generate_abcd_omeo(e1: int, e2: int) -> list:
 #print(generate_abcd_omeo(-2,4))
 
 #TODO:estremi
-if __name__ == "__main__":  # TODO: VA BENE QUI?
-   for _ in range(10):  #TODO: Perche'10?
-       abcd = generate_abcd_omeo(-9, 9)    #controllare se va bene o extrs
+if __name__ == "__main__":
+   for _ in range(10):
+       abcd = generate_abcd_omeo(-9, 9)
        print('i coefficienti sono [a,b,c,d]=', abcd)
 
