@@ -62,33 +62,33 @@ def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? 
 #print(parse_function_domain("(-9,9,0)"))
 
 #TODO:estremi
-def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
+def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
     """
     Questa funzione genera un insieme di numeri interi relativi compresi tra
-    e1(incluso) ed e2(incluso), ad esclusione al massimo di un numero denominato
+    e_min(incluso) ed e_max(incluso), ad esclusione al massimo di un numero denominato
     exclude_value.
     Se non si vuole eliminare nessun numero dall'intervallo non inserire exclude_value.
     Se exclude_value e' esterno all'intervallo inserito, compare un warning, ma il dominio viene comuuque generato.
 
     Input
     ------
-    e1: int
+    e_min: int
         estremo sinistro dell'intervallo, compreso nello stesso
-    e2: int
-        estremo destro dell'intervallo, compreso nello stesso e maggiore di e1
+    e_max: int
+        estremo destro dell'intervallo, compreso nello stesso e maggiore di e_min
     exclude_value: int, default=None
         eventuale numero da escludere dall'intervallo
 
     Output
     ------
-    list: [e1, e1+1, e1+2, ..., e2-2, e2]
-          se e1<e2, e' una sequenza di interi che parte da e1 incluso e si conclude
-          con e2 incluso, eliminando al massimo un numero exclude_value se compreso o uguale a tra e1 ed e2
+    list: [e_min, e_min+1, e_min+2, ..., e_max-1, e_max]
+          se e_min<e2, e' una sequenza di interi che parte da e1 incluso e si conclude
+          con e2 incluso, eliminando al massimo un numero exclude_value se compreso o uguale a tra e_min ed e2
 
     Raises
     ------
-    e1>=e2:    "ValueError: e2 deve essere maggiore di e1"
-    exclude_value<e1 oppure exclude_value>e2:
+    e_min>=e_max:    "ValueError: e_max deve essere maggiore di e_min"
+    exclude_value<e_min oppure exclude_value>e_max:
               "Warning: Non é possibile escludere {exclude_value} dal dominio perché non appartiene al dominio selezionato
 
     Esempi
@@ -100,16 +100,16 @@ def generate_domain(e1: int, e2: int, exclude_value: int = None) -> list:
     >>> [-4, -3, -2, -1, 0, 1, 2, 3, 4, 5]
 
     generate_domain(5,-4,2)
-    >>> ValueError: e2 deve essere maggiore di e1
+    >>> ValueError: e_max deve essere maggiore di e_min
 
     generate_domain(-5,4, 22)
     >>> Warning: Non é possibile escludere 22 dal dominio perché non appartiene al dominio selezionato.
     >>> [-5, -4, -3, -2, -1, 0, 1, 2, 3, 4]
     """
-    if e1 >= e2:
-        raise ValueError("e2 deve essere maggiore di e1")
+    if e_min >= e_max:
+        raise ValueError("e_max deve essere maggiore di e_min")
 
-    domain = list(range(e1, e2+1))
+    domain = list(range(e_min, e_max+1))
     if exclude_value is not None:
         if exclude_value in domain:
             domain.remove(exclude_value)
