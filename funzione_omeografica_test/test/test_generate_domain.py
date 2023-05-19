@@ -11,13 +11,24 @@ def test_consecutive_extrs_generate_domain(e):
 
 @given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10))
 def test_standard_generate_domain(e1,e2):
-   # with pytest.raises(expected_result):
-    if e1<e2:
-        assert mod.generate_domain(e_min=e1, e_max=e2) == list(range(e1,e2+1))
+    if e1 < e2:
+        assert mod.generate_domain(e_min=e1, e_max=e2) == list(range(e1, e2 + 1))
 
+ #FIXME: caso e min > =  e max non funziona
+"""
+@given(e1=st.integers(min_value=-10, max_value=+10), e2=st.integers(min_value=-10, max_value=+10))
+def test_standard_generate_domain(e1, e2, expected_result: ValueError):
+    with pytest.raises(expected_result):
+        if e1 >= e2:
+            assert mod.generate_domain(e_min=e1, e_max=e2) == ValueError
+"""
 
-
-
+@given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10),escludi=st.integers(min_value=-10, max_value=+10))
+def test_lenght_generate_domain(e1,e2,escludi):
+    if e1 < e2:
+        if escludi is not None:
+            if escludi in mod.generate_domain(e_min=e1, e_max=e2):
+                assert len(mod.generate_domain(e_min=e1, e_max=e2, exclude_value=escludi)) == abs(e1-e2)
 
     # assert lib.generate_domain()
 # controllare cosa succede escludendo piu' di un valore
