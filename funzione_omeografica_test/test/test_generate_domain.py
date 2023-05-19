@@ -4,15 +4,15 @@ from hypothesis import given
 import hypothesis.strategies as st
 import funzione_omeografica_test.generate_abcd_omeo as mod
 
-#@given(e_inf=st.integers(),e_sup=st.integers())
+
+@given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10))
+def test_basic_generate_domain(e1,e2):
+    if e1 < e2:
+        assert mod.generate_domain(e_min=e1, e_max=e2) == list(range(e1, e2 + 1))
+
 @given(e=st.integers())
 def test_consecutive_extrs_generate_domain(e):
     assert mod.generate_domain(e_min=e,e_max=e+1)==[e,e+1]
-
-@given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10))
-def test_standard_generate_domain(e1,e2):
-    if e1 < e2:
-        assert mod.generate_domain(e_min=e1, e_max=e2) == list(range(e1, e2 + 1))
 
  #FIXME: caso e min > =  e max non funziona
 """
@@ -32,6 +32,16 @@ def test_lenght_generate_domain(e1,e2,escludi):
         else:
             assert len(mod.generate_domain(e_min=e1, e_max=e2, exclude_value=None)) == abs(e1-e2+1)
 
+#FIXME: trasformare lista in vettore di interi
+"""
+@given(e1=st.integers(min_value=-10, max_value=+10), e2=st.integers(min_value=-10, max_value=+10))
+def test_reverse_generate_domain(e1, e2):
+    if e1 < e2:
+        list_pos=mod.generate_domain(e_min=e1, e_max=e2)
+        list_neg=mod.generate_domain(e_min=-e2, e_max=-e1))
+     #   assert int(str(mod.generate_domain(e_min=e1, e_max=e2))) == -int(str(mod.generate_domain(e_min=-e2, e_max=-e1)))
+    return
+"""
     # assert lib.generate_domain()
 # controllare cosa succede escludendo piu' di un valore
 #generate_domain da rivedere perche' cambiata def di generate domain con estremo sup incluso
