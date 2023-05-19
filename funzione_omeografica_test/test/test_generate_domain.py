@@ -29,6 +29,8 @@ def test_lenght_generate_domain(e1,e2,escludi):
         if escludi is not None:
             if escludi in mod.generate_domain(e_min=e1, e_max=e2):
                 assert len(mod.generate_domain(e_min=e1, e_max=e2, exclude_value=escludi)) == abs(e1-e2)
+        else:
+            assert len(mod.generate_domain(e_min=e1, e_max=e2, exclude_value=None)) == abs(e1-e2+1)
 
     # assert lib.generate_domain()
 # controllare cosa succede escludendo piu' di un valore
