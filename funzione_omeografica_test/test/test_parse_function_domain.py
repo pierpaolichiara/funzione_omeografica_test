@@ -2,7 +2,7 @@ import pytest
 import hypothesis
 from hypothesis import given
 import hypothesis.strategies as st
-import funzione_omeografica_test.generate_abcd_omeo as lib
+import funzione_omeografica_test.generate_abcd_omeo as mod
 
 
 #lista di liste di due elementi:
@@ -24,7 +24,7 @@ def test_parse_function_domain(input_str: str, expected_result:tuple):
     il test verifica che la funzione parse_function_domain restituisca la tupla corretta
     """
     input_values = input_str
-    extrs = lib.parse_function_domain(input_values)
+    extrs = mod.parse_function_domain(input_values)
     assert extrs == expected_result
 
 
@@ -41,11 +41,11 @@ test_list_no_int = [
 def test_raises_parse_function_domain(input_str: str, expected_result: ValueError):
     """
         Date delle stringhe in input di tipologia o numero elementi errati,
-        il test verifica che eseguedo la funzione parse_function_domain riscontri un ValueError
+        il test verifica che la funzione parse_function_domain riscontri un ValueError
         """
     with pytest.raises(expected_result):
         input_values = input_str
-        extrs = lib.parse_function_domain(input_values)
+        extrs = mod.parse_function_domain(input_values)
         assert extrs == expected_result
 
 
@@ -58,7 +58,7 @@ def test_floats_parse_function_domain(domain_extremes):
     print(domain_extremes)
     domain_extremes_str = str(domain_extremes)
     with pytest.raises(ValueError):
-        extrs = lib.parse_function_domain(domain_extremes_str)
+        extrs = mod.parse_function_domain(domain_extremes_str)
 
 @given(domain_extremes=st.lists(st.integers(), #- utilizziamo una st.lists perche' non esiste una st.str() che sarebbe
                                                # il tipo di variabile di parse_function_domain
@@ -75,31 +75,9 @@ def test_lenght_parse_function_domain(domain_extremes: list):
     il test verifica che la tupla, associata alla lista convertita in stringa, generata da parse_function_domain abbia lunghezza 2.
     """
     domain_extremes_str = str(domain_extremes)
-    extrs = lib.parse_function_domain(domain_extremes_str)
+    extrs = mod.parse_function_domain(domain_extremes_str)
     assert len(extrs)==2
 
-#TODO: idee di test
-
-##test
 
 
 
-#def test_generate_domain():
-
-    # assert lib.generate_domain()
-# controllare cosa succede escludendo piu' di un valore
-#generate_domain da rivedere perche' cambiata def di generate domain con estremo sup incluso
-
-##test: genera_dominio(e+1,e)==dominio_vuoto  oppure e1>e2
-##test: genera_dominio(e,e)==[e]
-##test: genera_dominio[0]==e1???????
-##test  assert escludi in dominio==False  --> se metto ""???
-##test: len(genera dominio(e1,e2))==abs(e1-e2+1)   #e2 incluso
-##test: len(genera dominio(e1,e2,escludi))==abs(e1-e2)    #e2 incluso
-##test: len(genera dominio(e1,e2,escludi))==len(genera dominio(-e2,-e1,escludi))
-##test: type(genera_dominio(e1,e2))==str????ValueError    if e1>e2
-##test: type(genera_dominio(e1,e2))==list   if e1<e2
-##test:(genera_dominio(2.5, 3.1))==TypeError
-#Sdef test_generate_abcd_omeo():
-    #pass
-    # assert lib.generate_abcd_omeo()

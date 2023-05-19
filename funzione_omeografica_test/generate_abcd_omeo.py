@@ -82,8 +82,8 @@ def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
     Output
     ------
     list: [e_min, e_min+1, e_min+2, ..., e_max-1, e_max]
-          se e_min<e2, e' una sequenza di interi che parte da e1 incluso e si conclude
-          con e2 incluso, eliminando al massimo un numero exclude_value se compreso o uguale a tra e_min ed e2
+          se e_min<e_max, e' una sequenza di interi che parte da e1 incluso e si conclude
+          con e_max incluso, eliminando al massimo un numero exclude_value se compreso o uguale a tra e_min ed e_max
 
     Raises
     ------
