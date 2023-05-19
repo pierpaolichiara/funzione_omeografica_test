@@ -40,9 +40,9 @@ test_list_no_int = [
 @pytest.mark.parametrize(('input_str, expected_result'), test_list_no_int)
 def test_raises_parse_function_domain(input_str: str, expected_result: ValueError):
     """
-        Date delle stringhe in input di tipologia o numero elementi errati,
-        il test verifica che la funzione parse_function_domain riscontri un ValueError
-        """
+    Date delle stringhe in input di tipologia o numero elementi errati,
+    il test verifica che la funzione parse_function_domain riscontri un ValueError
+    """
     with pytest.raises(expected_result):
         input_values = input_str
         extrs = mod.parse_function_domain(input_values)
