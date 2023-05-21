@@ -6,13 +6,22 @@ from hypothesis import given
 import hypothesis.strategies as st
 import funzione_omeografica_test.generate_abcd_omeo as mod
 
-@given(e1=st.integers(min_value=-10, max_value=+10),
-       e2=st.integers(min_value=-10, max_value=+10)
-       )                                                #limitiamo superiormente e inferiormente i valori di e1 ed e2
-                                                        # per evitare che pytest abbia un crush.
-                                                        # In alternativa si potrebbe utilizzare un @settings(max_examples = ...),
-                                                        # ma preferiamo la prima opzione perche' piu' significativa aif inni del progetto
+@given(e=st.integers())
+def test_same_extrs_generate_domain(e):
+    """
+    Dati due interi uguali come variabili,
+    il test verifica che la funzione generate_domain restituisca un ValueError
+    """
+    expected_error = ValueError
+    with pytest.raises(expected_error):
+        assert mod.generate_domain(e_min=e,e_max=e)
 
+#Qui e in seguito, limitiamo superiormente e inferiormente i valori di e1 ed e2 per evitare di andare incontro a un crush
+# di pytest.
+#In alternativa si potrebbe utilizzare un @settings(max_examples = ...),ma preferiamo la prima opzione perche' lavora su
+# un set di interi piu' significativo ai fini del progetto
+
+@given(e1=st.integers(min_value=-10, max_value=+10), e2=st.integers(min_value=-10, max_value=+10))
 def test_basic_generate_domain(e1, e2):
     """
     Dati due interi compresi tra -10 e 10,
@@ -26,15 +35,6 @@ def test_basic_generate_domain(e1, e2):
         domain = mod.generate_domain(e_min=e1, e_max=e2)
         assert domain == list(range(e1, e2+1))
 
-@given(e=st.integers())
-def test_consecutive_extrs_generate_domain(e):
-    """
-    Dati due interi consecutivi come variabili,
-    il test verifica che la funzione generate_domain restituisca una lista che contiene esattamente solo i due interi
-    """
-    assert mod.generate_domain(e_min=e,e_max=e+1)==[e,e+1]
-
- #FIXME: caso e min > =  e max non funziona
 
 @given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10),escludi=st.integers(min_value=-10, max_value=+10))
 def test_lenght_generate_domain(e1,e2,escludi):
@@ -45,7 +45,6 @@ def test_lenght_generate_domain(e1,e2,escludi):
         else:
             assert len(mod.generate_domain(e_min=e1, e_max=e2, exclude_value=None)) == abs(e1-e2+1)
 
-#FIXME: trasformare lista in vettore di interi
 
 @given(e1=st.integers(min_value=-10, max_value=+10), e2=st.integers(min_value=-10, max_value=+10))
 def test_reverse_generate_domain(e1, e2):
