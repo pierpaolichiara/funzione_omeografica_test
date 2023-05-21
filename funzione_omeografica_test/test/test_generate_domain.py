@@ -35,6 +35,11 @@ def test_basic_generate_domain(e1, e2):
         domain = mod.generate_domain(e_min=e1, e_max=e2)
         assert domain == list(range(e1, e2+1))
 
+@given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10),escludi=st.integers(min_value=-10, max_value=+10))
+def test_escludi_generate_domain(e1,e2,escludi):
+    if e1 < e2:
+        domain=mod.generate_domain(e_min=e1, e_max=e2, exclude_value=escludi)
+        assert (escludi in domain) == False
 
 @given(e1=st.integers(min_value=-10, max_value=+10),e2=st.integers(min_value=-10, max_value=+10),escludi=st.integers(min_value=-10, max_value=+10))
 def test_lenght_generate_domain(e1,e2,escludi):
