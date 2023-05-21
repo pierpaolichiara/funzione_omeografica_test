@@ -27,14 +27,15 @@ def test_not_xls_parse_student_list():
         assert mod.parse_student_list(es)
 
 
-this_file_path=os.path.abspath(__file__)
-xls_path=os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
-#TODO:nei sistemi operativi con / invece che \?mi da' un warning, inserire le righe sentro il test?
-names=os.path.join(xls_path,"esempio_input\CLASSE_1A.xlsx")
 def test_xls_parse_student_list(xls=names):
     """
-    Dato un file excel esistente nel dispositivo, esattamente quello di esempio_input,
+    Dato un file excel esistente nel dispositivo in uso, esattamente il file nella cartella 'esempio_input',
     il test verifica che venga estratta la lista correta dei cognomi
     """
+    this_file_path = os.path.abspath(__file__)
+    xls_path = os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
+    # TODO:nei sistemi operativi con / invece che \?mi da' un warning, inserire le righe sentro il test?
+    names = os.path.join(xls_path, "esempio_input\CLASSE_1A.xlsx")
     lista=mod.parse_student_list(names)
-    assert lista==['ALFA', 'BETA', 'CHARLIE', 'DELTA', 'ECHO', 'GOLF', 'INDIA', 'KILO', 'LIMA', 'MIKE', 'SIERRA', 'TANGO']
+    cognomi=['ALFA', 'BETA', 'CHARLIE', 'DELTA', 'ECHO', 'GOLF', 'INDIA', 'KILO', 'LIMA', 'MIKE', 'SIERRA', 'TANGO']
+    assert lista==cognomi
