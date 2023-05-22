@@ -26,7 +26,7 @@ def get_output_folder(output_folder: str = None)->str:#indirizzo assoluto
             # se il path è assoluto (es. C:/Users/Matteo/...) lo prendiamo così com'è
             cartella_output = output_folder
         else:
-            # altrimenti è un path relativo, e craiamo una sottocartella nella cartella dove l'utente esegue il comando
+            # altrimenti è un path relativo, e creiamo una sottocartella nella cartella dove l'utente esegue il comando
             current_working_dir = os.getcwd()
             cartella_output = os.path.join(current_working_dir, output_folder)
     else:
@@ -40,17 +40,18 @@ def get_output_folder(output_folder: str = None)->str:#indirizzo assoluto
 def main():
     parser = argparse.ArgumentParser(description='Comando per generare test individuali sulla funzione omeografica.')
     parser.add_argument('-d', '--estremi_dominio', type=str, required=True, action='store',
-                        help='Estremi del dominio da cui vengono estratti i parametri della funzione omeografica diversi per ogni studenti.')
+                        help='Estremi del dominio da cui vengono estratti i parametri della funzione omeografica diversi per ogni studente.')
     parser.add_argument('-a', '--elenco_alunni', type=str, action='store', required=True,
-                        help='Elenco degli alunni per i quali generare il test')
+                        help='File excel con elenco degli alunni per i quali generare il test')
     parser.add_argument('-o', '--cartella_output', type=str, action='store', required=False,
+
                         help='Cartella dove salvare i test generati automaticamente')
     args, _ = parser.parse_known_args()
 
 #TODO: estremi. RIVEDERE NOMI ESTREMI CHIAMATI IN MODI DIVERSI NEI VARI FILE:
     # estremi_dominio, function_domain, extr, parse_function_domain(domain_extremes), e1, e2
     #TODO: sistemare linguaggio
-    #assegno gli input ricevuti a delle variabili python, dopo averli resi in una forma piu'funzioanle al programma
+    #assegno gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzioanle al programma
     estremi_dominio = args.estremi_dominio
     print(estremi_dominio)
     estremi_dominio = parse_function_domain(estremi_dominio)

@@ -83,5 +83,5 @@ def generate_tests(template_path: str, output_dir: str, student_lists: list, fun
 
 if __name__ == "__main__":
 #    studenti = ['alpha', 'beta', 'charlie']
-# TODO:estremi
+# TODO:inserire gli estremi letti in ingresso
    generate_tests("C:/dev/repos/funzione_omeografica_test/templates/test.md", "C:/dev/repos/funzione_omeografica_test/output", studenti, (-9, 10))
