@@ -37,5 +37,19 @@ print(c)
 #a=parse_student_list(c)
 #print(a)
 #fixme: provare parse_student_list con file xls di prova
-a=parse_student_list(C:\Users\Matteo\funzione_omeografica_test\esempio_input\PRIMACOL.xlsx)
-print(a)
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/PRIMACOL.xlsx')
+#print(a)
+#KeyError: 'COGNOME'
+
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/SOLOTIT.xlsx')
+#print(a)
+#da' lista []
+
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/VUOTO.xlsx')
+#print(a)
+#    raise KeyError(key) from err
+#KeyError: 'COGNOME'
+
+
+
+
