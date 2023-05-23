@@ -31,21 +31,15 @@ def convert_to_html(md_input_string:str, htm_output_file:str):
         f.write(html_string)
 
 
-def generate_test_from_template(template_path:str, output_dir:str, coeffs:list, student_name:str):
-    if not os.path.exists(template_path):
-        raise IOError(f"Il template {template_path} non esiste.")
-
-    if not os.path.basename(template_path).endswith('md'):
-        raise TypeError("Il template deve essere in formato .md")
-
+def generate_test_from_template(template_content_str:str, output_dir:str, coeffs:list, student_name:str):
     #Conosciamo già i placeholder, quindi li listiamo direttamente
     placeholder_student_name = '*NOME_STUDENTE*'
     placeholder_date = '*DATA*'
     placeholder_parameters = ['*VALORE_A*', '*VALORE_B*', '*VALORE_C*', '*VALORE_D*']
 
-    with open(template_path, 'r') as t:
-        #apre il file in lettura e associa a ogni riga una stringa, elemento di una lista di stringhe template_text
-        template_text = t.readlines()
+    # divide la stringa con il testo del template in righe in corrispondenza del carattere di accapo.
+    # Ri-aggiunge il carattere accapo ad ogni riga
+    template_text = [l + "\n" for l in template_content_str.split("\n")]
 
     today = date.today()
     # dd/mm/YY
@@ -62,23 +56,23 @@ def generate_test_from_template(template_path:str, output_dir:str, coeffs:list, 
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
         test_text_lines.append(maybe_processed_line)
 
-    #TODO: descrivere meglio e controllare
-    #crea una cartella 'output' se non la trova, dove?
+    # TODO: descrivere meglio e controllare
+    # crea una cartella 'output' se non la trova, dove?
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
     output_path = os.path.join(output_dir, f"test_{student_name}.html")
 
-    #concateniamo le linee di testo per avere tutto il testo in una unica stringa da convertire in un file html
-    md_input = ''.join(test_text_lines)
-    convert_to_html(md_input, output_path)
+    # concateniamo le linee di testo per avere tutto il testo in una unica stringa da convertire in un file html
+    md_input_str = ''.join(test_text_lines)
+    convert_to_html(md_input_str, output_path)
 
 #TODO:estremi
-def generate_tests(template_path: str, output_dir: str, student_lists: list, function_domain: tuple):
+def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple):
     e1, e2 = function_domain
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
-        generate_test_from_template(template_path=template_path, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
+        generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
 
 
 if __name__ == "__main__":
