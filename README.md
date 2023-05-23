@@ -42,7 +42,7 @@ Le domande proposte possono essere modificate direttamente dall'utente nel file 
 Per utilizzare la libreria e' necessario:
 1. decidere gli estremi dell'intervallo [e1, e2] a cui appartengono i coefficienti a, b, c, d. Il dominio da inserire deve 
 essere un intervallo di interi, gli estremi verranno considerati inclusi
-2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna che ha nella prima riga la voce "COGNOME" 
+2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella prima riga la voce "COGNOME" 
 scritta in maiuscolo, e nelle righe successive della stessa colonna i cognomi degli alunni della classe per cui generare
 e stampare i test
 3. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
@@ -57,7 +57,7 @@ verifica generati in output per la classe scelta
 Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_base.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-base.txt) e in [requirements-test.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-test.txt) vengono installate automaticamente se necessario una volta lanciato il file principale.
 
 #### Installazione e utilizzo
-Per poter usare la libreria e' necessario:
+Per poter usare la libreria e' necessario, da linea di comando:
 
 5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test da CLI con il seguente comando:
 
@@ -114,14 +114,35 @@ oppure
 
 `genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
 .xlsx`
+  
+  E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
+  sostituendo al comando precedente uno dei seguenti:
 
-- i test stampati in .html sono disponibili nella cartella 'funzione_omeografica_test/output', denominati con il cognome dell'alunno nel seguente modo:
+`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
+.xlsx --cartell_output=<percorso_cartella_output>`
+
+  oppure
+
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
+.xlsx --cartell_output=<percorso_cartella_output>`
+
+- i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
+o nella cartella indicata dall'utente al punto precedente, denominati con il cognome dell'alunno nel seguente modo:
 `test_<COGNOME>.html`,
 ad esempio test_ALFA.html, test_BETA.html... 
-Riportiamo un esempio di
-test di verifica stampato:
+Riportiamo un esempio di test di verifica stampato:
+
 ![img_2.png](img_2.png)
 
 ## Struttura della libreria funzione_omeografica_test
-La libreria
+All'interno del progetto 'funzione_omeografica_test' scaricato, disponibile nel repository del punto 5, troviamo alcuni
+file e sottocartelle. Elenchiamo quelli di interesse per l'utente:
+
+a. [`funzione_omeografica_test`](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test)
+b. [`esempio_input`](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/esempio_input): contiene file excel di esempio formattato e scritto in modo corretto con una lista di cognomi di prova
+c. [`templates`](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/templates): contiene il template 
+   con il testo della verifica sulla funzione omeografica
+d. [README.md]: questo file di testo che stai leggendo con spiegazione della libreria e indicazioni di installazione e utilizzo
+
+Approfondiamo ora la cartella del punto a, `funzione_omeografica_test`.
 

@@ -45,3 +45,5 @@ def test_xls_parse_student_list():
     lista=mod.parse_student_list(names)
     cognomi=['ALFA', 'BETA', 'CHARLIE', 'DELTA', 'ECHO', 'GOLF', 'INDIA', 'KILO', 'LIMA', 'MIKE', 'SIERRA', 'TANGO']
     assert lista==cognomi
+
+#TODO: TEST PER CASO DI XLS VUOTO, CON SOLO TITOLO, CON LISTA IN PRIMA COLONNA

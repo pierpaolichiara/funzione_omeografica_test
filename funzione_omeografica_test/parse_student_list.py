@@ -37,15 +37,15 @@ print(c)
 #a=parse_student_list(c)
 #print(a)
 #fixme: provare parse_student_list con file xls di prova
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/PRIMACOL.xlsx')
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/PRIMACOL.xlsx')
 #print(a)
 #KeyError: 'COGNOME'
 
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/SOLOTIT.xlsx')
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/SOLOTIT.xlsx')
 #print(a)
 #da' lista []
 
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/esempio_input/VUOTO.xlsx')
+#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/VUOTO.xlsx')
 #print(a)
 #    raise KeyError(key) from err
 #KeyError: 'COGNOME'
