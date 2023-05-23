@@ -3,7 +3,10 @@
 ### Nome: *NOME_STUDENTE*
 ### Data: *DATA*
 
-Studiare la funzione omeografica `f (x) = (a x + b) / (c x + d)` con i seguenti valori dei parametri:
+Studiare la funzione omeografica 
+![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\frac{ax&plus;b}{cx&plus;d})
+
+con i seguenti valori dei parametri:
 
 | Parametro | Valore     |
 |-----|------------|

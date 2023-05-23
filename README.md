@@ -81,15 +81,15 @@ Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando
 
 8. lanciare il file main.py come segue
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e1,e2) --elenco_alunni=<classe.xlsx>`
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
    
 oppure
 
-`genera_test --estremi_dominio=(e1,e2) --elenco_alunni=<classe.xlsx>`
+`genera_test --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
 
 
 dove sostituire 
-- a `e1` ed `e2` gli estremi scelti nel punto 1 
+- a `e_min` ed `e_max` gli estremi scelti nel punto 1 
 - a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente) con l'elenco degli alunni del punto 2
 - (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. Per farlo bisogna 
 aggiungere al comando scelto nel punto 8 quanto segue:
@@ -102,7 +102,7 @@ nel punto 5.
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
 
-`(e1, e2)` = `(-9,9)`
+`(e_min, e_max)` = `(-9,9)`
 
 <classe.xlsx> = `CLASSE_5A.xlsx`
 
