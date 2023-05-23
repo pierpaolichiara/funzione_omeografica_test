@@ -90,7 +90,7 @@ oppure
 
 dove sostituire 
 - a `e_min` ed `e_max` gli estremi scelti nel punto 1 
-- a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente) con l'elenco degli alunni del punto 2
+- a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente), estensione compresa xls o xlsx, con l'elenco degli alunni del punto 2
 - (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. Per farlo bisogna 
 aggiungere al comando scelto nel punto 8 quanto segue:
 
