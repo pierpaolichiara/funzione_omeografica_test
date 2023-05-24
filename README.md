@@ -119,13 +119,11 @@ Per stampare in .html i test a risposta aperta sulla FO con i dati di questo ese
 - Aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
 - Da linea di comando lanciare il modulo 'main' come segue:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx`
+`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
 
 oppure
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
   
   E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
   sostituendo al comando precedente uno dei seguenti:
@@ -144,7 +142,7 @@ o nella cartella indicata dall'utente al punto precedente, denominati con il cog
 ad esempio test_ALFA.html, test_BETA.html... 
 Riportiamo un esempio di test di verifica stampato:
 
-![img_2.png](img_2.png)
+![img_3.png](img_3.png)
 
 ## Struttura della libreria 'funzione_omeografica_test'
 All'interno del progetto 'funzione_omeografica_test' scaricato, disponibile nel repository indicato al punto 5, troviamo alcuni

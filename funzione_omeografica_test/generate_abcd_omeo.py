@@ -20,7 +20,7 @@ nuova sequenza di coefficienti e ricontrollate le C.N.S. fino a quando entrambe 
 
 import random
 #TODO:estremi
-def parse_function_domain(domain_extremes: str) -> tuple:  # PERCHE' UNA TUPLA? VEDI SPLIT
+def parse_function_domain(domain_extremes: str) -> tuple:
     """
     Riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
     Evita di richiedere gli estremi separatamente e garantisce la definizione del dominio attraverso un unico elemento
