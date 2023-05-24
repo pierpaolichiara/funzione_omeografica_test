@@ -27,7 +27,7 @@ def main():
     #assegniamo a args.*** ogni dato *** in input riconosciuto
     args, _ = parser.parse_known_args()
 
-    #assegniamo gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzioanle al programma
+    #assegniamo gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzionale al programma
     estremi_dominio = args.estremi_dominio
     print(estremi_dominio)
     estremi_dominio = parse_function_domain(domain_extremes=estremi_dominio)
