@@ -53,7 +53,8 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     Questa funzione genera e salva, in una cartella indicata, un testo a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
 
-    Il file generato si chiama "test_{student_name}.html" e si trova nella cartella [output](#todo: inserire indirizzo).
+    Il file generato si chiama "test_{student_name}.html" e si trova nella cartella "output" che viene generata quando
+    si lancia il main.py.
 
     Input
     -----

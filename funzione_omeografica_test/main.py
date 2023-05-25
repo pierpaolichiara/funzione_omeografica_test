@@ -28,9 +28,9 @@ def main():
     args, _ = parser.parse_known_args()
 
     #assegniamo gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzionale al programma
-    estremi_dominio = args.estremi_dominio
-    print(estremi_dominio)
-    estremi_dominio = parse_function_domain(domain_extremes=estremi_dominio)
+    estremi_dominio_input = args.estremi_dominio
+    print(estremi_dominio_input)
+    estremi_dominio = parse_function_domain(domain_extremes=estremi_dominio_input)
 
     file_elenco_alunni = args.elenco_alunni
     nomi_alunni = parse_student_list(student_list_path=file_elenco_alunni)

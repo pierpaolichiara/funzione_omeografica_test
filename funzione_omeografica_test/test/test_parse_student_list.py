@@ -11,7 +11,8 @@ import pathlib
 def test_not_path_parse_student_list(path:str):
     """
     Data una stringa generica come input, che non e' un *.xls ne' un  *.xlsx,
-    il test verifica che la funzione parse_student_list fornisca il corretto tipo di errore
+    il test verifica che la funzione [parse_student_list](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py)
+    fornisca il corretto tipo di errore.
     """
     expected_error = NameError
     with pytest.raises(expected_error):
@@ -20,7 +21,7 @@ def test_not_path_parse_student_list(path:str):
 
 def test_not_xls_parse_student_list():
     """
-    Dato l'indirizzo assoluto del file corrente, che non e' un *.xls ne' un  *.xlsx,
+    Dato l'indirizzo assoluto del file corrente, che esiste ma non e' un *.xls ne' un  *.xlsx,
     il test verifica che la funzione parse_student_list fornisca il corretto tipo di errore
     """
     #ci serve un indirizzo assoluto di file esistente, e valido per test effettuati su ogni dispositivo:
