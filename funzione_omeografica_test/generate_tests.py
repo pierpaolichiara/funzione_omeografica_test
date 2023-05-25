@@ -8,11 +8,26 @@ import os
 from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
+import subprocess
+import pandoc
 
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
     """
     Questa funzione legge il template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
     riscrivendo il testo del file riga per riga
+
+    Input
+    ------
+    text_line: str
+        stringa di testo
+    placeholder_id: str
+        nome del segnaposto eventualemente presente nella stringa
+    placeholder_value: str
+        valore del segnaposto da sostituire al posto del placeholder_id
+
+    Output
+    ------
+    str: e'la stringa in input con eventuale segnaposto sostituito col suo valore
     """
     if placeholder_id in text_line:
         new_line = text_line.replace(placeholder_id, placeholder_value)
@@ -22,16 +37,34 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
 
 
 def convert_to_html(md_input_string:str, htm_output_file:str):
-    """Questa funzione prende una stringa di testo in formato md e la scrive in un file html"""
+    """Questa funzione converte un testo in formato md in un file html"""
     html_string = markdown.markdown(md_input_string, extensions=['markdown.extensions.tables'])
     with open(htm_output_file, 'w') as f:
         f.write(html_string)
 
-
-def generate_test_from_template(template_content_str:str, output_dir:str, coeffs:list, student_name:str):
+#TODO: togliere o far funzionare conversione in pdf
+"""
+def convert_html_to_pdf(html_file, pdf_file):
+    command = f"pandoc {html_file} -o {pdf_file}"
+    subprocess.run(command, shell=True)
+"""
+def generate_test_from_template(template_content_str: str, output_dir: str, coeffs: list, student_name: str):
     """"
     Questa funzione genera e salva, in una cartella indicata, un testo a partire da un template sotto forma di stringa,
-    sostituendo a dei segnaposti i valori indicati in input
+    sostituendo a dei segnaposti i valori indicati in input.
+
+    Il file generato si chiama "test_{student_name}.html" e si trova nella cartella [output](#todo: inserire indirizzo).
+
+    Input
+    -----
+    template_content_str: str
+        stringa che contiene il template del testo
+    output_dir: str
+        indirizzo cartella dove salvare i testi generati dalla funzione
+    coeffs: list
+        lista di valori di 4 coefficienti interi [a, b, c, d], da inserire al posto degli omologhi placeholders
+    student_name: str
+        cognome dello studente da inserire al posto dell' omologo placeholder
     """
     #Conosciamo già i placeholder, quindi li listiamo direttamente
     placeholder_student_name = '*NOME_STUDENTE*'
@@ -71,23 +104,46 @@ def generate_test_from_template(template_content_str:str, output_dir:str, coeffs
         os.makedirs(output_dir)
 
     #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
-    output_path = os.path.join(output_dir, f"test_{student_name}.html")
+    output_path_html = os.path.join(output_dir, f"test_{student_name}.html")
 
     #data la lista di stringhe text_test_lines, concatena ogni stringa di testo per avere tutto il testo in una unica
     #stringa perche e'piu' semplice da convertire in un file html rispetto a una lista di stringhe
     md_input_str = ''.join(test_text_lines)
-    convert_to_html(md_input_string=md_input_str, htm_output_file=output_path)
+    convert_to_html(md_input_string=md_input_str, htm_output_file=output_path_html)
+
+    #TODO: togliere o far funzionare conversione in pdf
+    """
+    #convertiamo i testi di verifica anche in pdf per maggiore praticita' di uso e stampa cartacea per l'utente
+    output_path_pdf = os.path.join(output_dir, f"test_{student_name}.pdf")
+    convert_html_to_pdf(html_file=f"test_{student_name}.html", pdf_file=f"test_{student_name}.pdf")
+    """
+
 
 
 def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple):
     """
-    Questa funzione genera, con un ciclo, un insieme di testi di verifica, uno diverso per ogni cognome di studente, dove
+    Questa funzione genera, con un ciclo, un insieme di testi di verifica, uno diverso per studente di una lista, dove
     a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato.
+
+    Input
+    -----
+    template_content_str: str
+        stringa con il template del testo, da passare alla funzione `generate_test_from_template()`
+    output_dir: str
+        cartella dove vengono salvati i test generati in .html, da passare alla funzione `generate_test_from_template()`
+    student_lists: list
+        lista dei cognomi degli studenti su cui iterare la generazione dei test
+    function_domain: tuple
+        intervallo di interi, estremi compresi, in cui vengono scelti i coefficienti della lista di interi associata a
+        ogni cognome con il modulo [generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test)
+    #TODO: controllare se il link si mette cosi'
     """
     e1, e2 = function_domain
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
+
+    #  html_file =generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
 
 
 if __name__ == "__main__":
