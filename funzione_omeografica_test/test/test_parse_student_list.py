@@ -36,7 +36,7 @@ file_input=[ "esempio_input\CLASSE_5A.xlsx", "funzione_omeografica_test/test/exc
 @pytest.mark.parametrize('path_input',file_input)
 def test_xls_ok_parse_student_list(path_input: str):
     """
-    Dato un file excel esistente nel dispositivo in uso, formattato nel modo richiesto dalprogramma,
+    Dato un file excel esistente nel dispositivo in uso, formattato nel modo richiesto dal programma,
     il test verifica che venga estratta la lista correta dei cognomi
     """
     this_file_path = os.path.abspath(__file__)
@@ -50,3 +50,22 @@ def test_xls_ok_parse_student_list(path_input: str):
               'TANGO']
     assert lista == cognomi
 
+#selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma di generazione dei test funzioni
+input=[("funzione_omeografica_test/test/excel_di_prova/ERR_TITOLO.xlsx", KeyError),
+       ("funzione_omeografica_test/test/excel_di_prova/PRIMA_COL.xlsx", TypeError),
+       ("funzione_omeografica_test/test/excel_di_prova/SOLO_TIT.xlsx", TypeError),
+       ("funzione_omeografica_test/test/excel_di_prova/VUOTO.xlsx", TypeError)]
+
+@pytest.mark.parametrize(('path_input, expected_error'), input)
+def test_xls_raises_parse_student_list(path_input, expected_error):
+    """
+    Dati file excel non idonei come parametri della funzione 'parse_student_list',
+    il test verifica che venga riportato all'utente un errore, accompagnato dal giusto messaggio di 'raise
+    """
+    this_file_path = os.path.abspath(__file__)
+    xls_path = os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
+    # TODO:nei sistemi operativi con / invece che \?mi da' un warning,
+    #  "DeprecationWarning: invalid escape sequence \C" inserire le righe sentro il test?
+    names = os.path.join(xls_path, path_input)
+    with pytest.raises(expected_error):
+        assert mod.parse_student_list(names)
