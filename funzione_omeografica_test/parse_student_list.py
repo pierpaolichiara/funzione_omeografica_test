@@ -34,16 +34,22 @@ def parse_student_list(student_list_path: str)->list:
 
     # legge la colonna "COGNOME" del file e genera la lista dei cognomi
     dataframe = pd.read_excel(student_list_path, index_col=0)
+    print(dataframe)
 
     if dataframe.empty:
-        print("Il file excel indicato contiene una lista di cognomi vuota")
+        raise TypeError("\n\nERRORE:Il file excel indicato e' vuoto o la seconda colonna (colonna B) del file e'vuota: "
+                        "non riesco ad estrarre nessuna lista di cognomi.\n "
+                        "Rileggi le indicazioni sulla formattazione dei file di input qui: https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/README.md \n")
     #non continuiamo con un else perche' altrimenti, quando si fa girare il main con un excel vuoto non compare la
     #scritta del print sopra ma errori in altre funzioni che hanno come argomento il return di questa funzione
-    if not 'COGNOME' in dataframe['COGNOME'].values:
-        print("La lista dei cognomi non e' accessibile dalla seconda colonna del file excel indicato. \n"
-              "Controlla che la seconda colonna del file excel abbia la scritta COGNOME nella cella della prima riga")
-    names = dataframe["COGNOME"].tolist()
-    return names
+
+    elif not 'COGNOME' in dataframe.columns:
+        #TODO: la formattazione in questo case del messaggio non esce bene, prova con file ERR_titolo.xlsx
+            raise KeyError("\n\nERRORE: La lista dei cognomi non e' accessibile dalla seconda colonna, ne' dalle successive,  del file excel indicato. "
+                        "Controlla che il file excel abbia la scritta COGNOME nella cella B1, cioe' prima riga e seconda colonna.\n\n")
+    else:
+        names = dataframe["COGNOME"].tolist()
+        return names
 
 #controesempio al fixme
 #b=ont.xls

@@ -31,20 +31,22 @@ def test_not_xls_parse_student_list():
     with pytest.raises(expected_error):
         assert mod.parse_student_list(es)
 
-
-def test_xls_parse_student_list():
+#selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma di generazione dei test funzioni
+file_input=[ "esempio_input\CLASSE_5A.xlsx", "funzione_omeografica_test/test/excel_di_prova/COLONNA_D.xlsx"]
+@pytest.mark.parametrize('path_input',file_input)
+def test_xls_ok_parse_student_list(path_input: str):
     """
-    Dato un file excel esistente nel dispositivo in uso, esattamente il file nella cartella 'esempio_input',
+    Dato un file excel esistente nel dispositivo in uso, formattato nel modo richiesto dalprogramma,
     il test verifica che venga estratta la lista correta dei cognomi
     """
     this_file_path = os.path.abspath(__file__)
     xls_path = os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
-    print(xls_path)
-    # TODO:nei sistemi operativi con / invece che \?mi da' un warning, inserire le righe sentro il test?
-    names = os.path.join(xls_path, "esempio_input/CLASSE_1A.xlsx")
+    # TODO:nei sistemi operativi con / invece che \?mi da' un warning,
+    #  "DeprecationWarning: invalid escape sequence \C" inserire le righe sentro il test?
+    names = os.path.join(xls_path, path_input)
     print(names)
-    lista=mod.parse_student_list(names)
-    cognomi=['ALFA', 'BETA', 'CHARLIE', 'DELTA', 'ECHO', 'GOLF', 'INDIA', 'KILO', 'LIMA', 'MIKE', 'SIERRA', 'TANGO']
-    assert lista==cognomi
+    lista = mod.parse_student_list(names)
+    cognomi = ['ALFA', 'BETA', 'CHARLIE', 'DELTA', 'ECHO', 'GOLF', 'INDIA', 'KILO', 'LIMA', 'MIKE', 'SIERRA',
+              'TANGO']
+    assert lista == cognomi
 
-#TODO: TEST PER CASO DI XLS VUOTO, CON SOLO TITOLO, CON LISTA IN PRIMA COLONNA
