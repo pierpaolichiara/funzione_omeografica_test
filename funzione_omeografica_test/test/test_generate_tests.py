@@ -1,10 +1,10 @@
 import pytest
-import funzione_omeografica_test.generate_tests as lib
+import funzione_omeografica_test.generate_tests as mod
 
 def test_replace_placeholder():
     pass
-    # assert lib.replace_placeholder()
+    # assert mod.replace_placeholder()
 
-def test_generate_test_from_template():
+def test_generate_tests:
     pass
-    # assert lib.generate_test_from_template()
+    # assert mod.generate_test_from_template()

@@ -8,7 +8,7 @@ import os
 from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
-import subprocess
+#import subprocess
 import pandoc
 
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):

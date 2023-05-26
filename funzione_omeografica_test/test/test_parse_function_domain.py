@@ -33,7 +33,7 @@ def test_parse_function_domain(input_str: str, expected_result:tuple):
 #- ValueError nell'esecuzione di parse_function_domain
 test_list_no_int = [
     [ "-42.5,3.0", ValueError],     #test su inserimento di floats
-   #FIXME:test con 3 interi non funziona #TODO:sistemare test con 3 interi
+
  #   ["2,3,0", ValueError],         #test su inserimento di piu' di due estremi / di un intero scritto con la virgola
     ["zero, 11", ValueError]        #test su inserimento di char
     ]

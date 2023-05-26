@@ -31,7 +31,8 @@ def test_not_xls_parse_student_list():
     with pytest.raises(expected_error):
         assert mod.parse_student_list(es)
 
-#selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma di generazione dei test funzioni
+#selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma
+# di generazione dei test funzioni
 file_input=[ "esempio_input\CLASSE_5A.xlsx", "funzione_omeografica_test/test/excel_di_prova/COLONNA_D.xlsx"]
 @pytest.mark.parametrize('path_input',file_input)
 def test_xls_ok_parse_student_list(path_input: str):
@@ -50,7 +51,8 @@ def test_xls_ok_parse_student_list(path_input: str):
               'TANGO']
     assert lista == cognomi
 
-#selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma di generazione dei test funzioni
+#selezioniamo quattro file all'interno del nostro pacchetto formattati e configurati in modo da testare se il programma
+# trova e restituisce il giusto errore
 input=[("funzione_omeografica_test/test/excel_di_prova/ERR_TITOLO.xlsx", KeyError),
        ("funzione_omeografica_test/test/excel_di_prova/PRIMA_COL.xlsx", TypeError),
        ("funzione_omeografica_test/test/excel_di_prova/SOLO_TIT.xlsx", TypeError),
