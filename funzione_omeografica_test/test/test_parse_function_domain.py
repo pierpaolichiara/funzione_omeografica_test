@@ -60,21 +60,23 @@ def test_floats_parse_function_domain(domain_extremes):
     with pytest.raises(ValueError):
         extrs = mod.parse_function_domain(domain_extremes_str)
 
-@given(domain_extremes=st.lists(st.integers(), #- utilizziamo una st.lists di interi perche' non esiste una st.str() che sarebbe
-                                               # il tipo di variabile di parse_function_domain
-                                               #- utilizziamo una st.lists di interi perche':
-                                               #        - e' il tipo di estremi che ci aspettiamo in input e ci interessa verificare
-                                               #        - per escludere dal test casi con eventuali errori di conversione
-                                               #          da lista a tupla dovuti al separatore dei decimali
-                                min_size=2,
-                                max_size=2)
-       )
+@given((domain_extremes=st.lists(st.integers(), min_value=None, max_value=None)))
+#- utilizziamo una st.lists di interi perche' non esiste una st.str() che sarebbe
+# il tipo di variabile di parse_function_domain
+#- utilizziamo una st.lists di interi perche':
+#        - e' il tipo di estremi che ci aspettiamo in input e ci interessa verificare
+#        - per escludere dal test casi con eventuali errori di conversione
+#          da lista a tupla dovuti al separatore dei decimali
+
+
 def test_lenght_parse_function_domain(domain_extremes: list):
     """
     Data una lista di 2 interi,
     il test verifica che la tupla, associata alla lista convertita in stringa, generata da parse_function_domain
     abbia lunghezza 2.
     """
+    # la nostra strategia prevede di passare una lista di 2 elementi, 'domain_extremes', perche' dobbiamo compararne
+    # la lunghezza con quella della tupla generata dalla funzione 'parse_function_domain' che deve essere 2
     domain_extremes_str = str(domain_extremes)
     extrs = mod.parse_function_domain(domain_extremes_str)
     assert len(extrs)==2

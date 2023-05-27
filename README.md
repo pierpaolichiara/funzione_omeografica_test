@@ -47,9 +47,11 @@ Per utilizzare la libreria e' necessario:
 1. decidere gli estremi dell'intervallo [e_min, e_max] a cui appartengono i coefficienti a, b, c, d. Il dominio da inserire deve 
 essere un intervallo di interi, gli estremi verranno considerati inclusi
 
-1. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella prima riga la voce "COGNOME" 
+1. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella della prima riga la voce "COGNOME" 
 scritta in maiuscolo, e nelle righe successive della stessa colonna i cognomi degli alunni della classe per cui generare
-e stampare i test
+e stampare i test. Riportiamo un esempio di compilazione del file:
+
+![img_2.png](img_2.png)
 
 1. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls del punto 2
@@ -124,17 +126,16 @@ Per stampare in .html i test a risposta aperta sulla FO con i dati di questo ese
 oppure
 
 `genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
-  
+
   E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
   sostituendo al comando precedente uno dei seguenti:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx --cartell_output=<percorso_cartella_output>`
+`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx 
+--cartell_output=<percorso_cartella_output>`
 
   oppure
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_1A
-.xlsx --cartell_output=<percorso_cartella_output>`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx --cartell_output=<percorso_cartella_output>`
 
 - i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
 o nella cartella indicata dall'utente al punto precedente, denominati con il cognome dell'alunno nel seguente modo:
