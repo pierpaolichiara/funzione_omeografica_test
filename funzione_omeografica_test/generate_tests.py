@@ -10,6 +10,7 @@ from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 #import subprocess
 import pandoc
+import random as rn
 
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
     """
@@ -37,8 +38,9 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
 
 
 def convert_to_html(md_input_string:str, htm_output_file:str):
-    """Questa funzione converte un testo in formato md in un file html"""
+    """Questa funzione converte un testo da formato .md a formato .html in un nuovo file"""
     html_string = markdown.markdown(md_input_string, extensions=['markdown.extensions.tables'])
+    #utilizziamo il costrutto with open per garantire una sicura chiusura del file quando non e' piu' utilizzato
     with open(htm_output_file, 'w') as f:
         f.write(html_string)
 
@@ -86,7 +88,7 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     # dd/mm/YY
     today_date_str = today.strftime("%d/%m/%Y")
 
-    #inizializzazione del testo della verifica come stringa vuota che ci servira' da riempire nel ciclo sottostante
+    #inizializzazione del testo della verifica come stringa vuota che riempiremo nel ciclo sottostante
     test_text_lines = []
 
     for template_line in template_text:
@@ -138,8 +140,16 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
         intervallo di interi, estremi compresi, in cui vengono scelti i coefficienti della lista di interi associata a
         ogni cognome con il modulo [generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test)
     #TODO: controllare se il link si mette cosi'
+
+    Vedi anche:
+    ----------
+    random.seed
     """
     e1, e2 = function_domain
+    #prima di generare i test per ogni alunno con coefficienti random, inizializziamo un random seed, perche' vogliamo
+    # che se l'utente si dovesse trovare, per via di piccole modifiche o altro, a lanciare piu' volte il programma,
+    # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
+    rn.seed(10)
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
