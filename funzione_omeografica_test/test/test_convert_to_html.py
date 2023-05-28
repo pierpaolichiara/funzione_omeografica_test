@@ -16,8 +16,4 @@ def test_convert_to_html():
 
     expected_html = '''<h1>Verifica sullo studio di funzione omeografica</h1>\n<ol>\n<li>Calcola, se esiste, il valore di <code>x</code> corrispondente all'asintoto verticale</li>\n</ol>'''
 
-    print(html_content)
-    print(expected_html)
-    print(type(html_content))
-    print(type(expected_html))
     assert html_content == expected_html

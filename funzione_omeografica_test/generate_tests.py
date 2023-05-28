@@ -46,7 +46,7 @@ def convert_to_html(md_input_string:str, htm_output_file:str):
 
 def generate_test_from_template(template_content_str: str, output_dir: str, coeffs: list, student_name: str):
     """
-    Questa funzione genera e salva, in una cartella indicata, un testo a partire da un template sotto forma di stringa,
+    Questa funzione genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
 
     Il file generato si chiama "test_{student_name}.html" e si trova nella cartella "output" che viene generata quando
@@ -97,8 +97,8 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
 
     #crea una cartella 'output', se quella indicata non esiste, che ci serve perche' altrimenti si genera un errore nella
     # generazione dei test individuali
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
+  #  if not os.path.exists(output_dir):
+   #     os.makedirs(output_dir)
 
     #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
     output_path_html = os.path.join(output_dir, f"test_{student_name}.html")

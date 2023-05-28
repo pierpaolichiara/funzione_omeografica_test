@@ -42,15 +42,13 @@ input= [
 
 @pytest.mark.parametrize(('student_list, extremes'),input)
 def test_generate_tests(student_list, extremes):
-""" Data una lista di nomi e una tupla di estremi interi, con estremo sinistro<estremo destro,
+    """ Data una lista di nomi e una tupla di estremi interi, con estremo sinistro<estremo destro,
     questa funzione controlla che i test generati da 'generate_tests' a partire dai dati in input siano in numero uguale
     alla lunghezza della lista in input"""
     current_working_dir = os.getcwd()
     cartella_output = os.path.join(current_working_dir, 'html_di_prova')
     text='0+. -abc{}'
     mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list, function_domain=extremes)
-    print(text)
-    print(student_list)
     num_files = count_files_in_folder(cartella_output)
     #e' necessario svuotare la cartella_output ogni volta che il test viene eseguito su una lista di quelle in input
     # perche' altrimenti i file che si generano per ogni lista in input si sommerebbero a quelli creati

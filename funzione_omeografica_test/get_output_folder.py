@@ -24,8 +24,7 @@ def get_output_folder(output_folder: str = None) -> str:  # indirizzo assoluto
             cartella_output = os.path.join(current_working_dir, output_folder)
     else:
         # se il path non esiste, non e' scritto correttamente o se l'utente non specifica nessuna cartella, creiamo una
-        # cartella di nome "output" nella cartella da cui l'utente esegue il comando
+        # sottocartella di nome "output" nella cartella da cui l'utente esegue il comando
         current_working_dir = os.getcwd()
         cartella_output = os.path.join(current_working_dir, "output")
-    print(os.getcwd())
     return cartella_output
