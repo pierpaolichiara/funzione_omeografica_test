@@ -18,7 +18,8 @@ def get_output_folder(output_folder: str = None) -> str:  # indirizzo assoluto
             # se il path è assoluto lo prendiamo così com'è
             cartella_output = output_folder
         else:
-            # altrimenti è un path relativo, e creiamo una sottocartella nella cartella dove l'utente esegue il comando
+            # altrimenti è un path relativo:creiamo una sottocartella nella cartella dove l'utente esegue il comando
+            # che termina con il path indicato
             current_working_dir = os.getcwd()
             cartella_output = os.path.join(current_working_dir, output_folder)
     else:
@@ -26,4 +27,5 @@ def get_output_folder(output_folder: str = None) -> str:  # indirizzo assoluto
         # cartella di nome "output" nella cartella da cui l'utente esegue il comando
         current_working_dir = os.getcwd()
         cartella_output = os.path.join(current_working_dir, "output")
+    print(os.getcwd())
     return cartella_output

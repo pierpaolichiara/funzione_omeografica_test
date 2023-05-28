@@ -47,16 +47,16 @@ Per utilizzare la libreria e' necessario:
 1. decidere gli estremi dell'intervallo [e_min, e_max] a cui appartengono i coefficienti a, b, c, d. Il dominio da inserire deve 
 essere un intervallo di interi, gli estremi verranno considerati inclusi
 
-1. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella della prima riga la voce "COGNOME" 
+2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella della prima riga la voce "COGNOME" 
 scritta in maiuscolo, e nelle righe successive della stessa colonna i cognomi degli alunni della classe per cui generare
 e stampare i test. Riportiamo un esempio di compilazione del file:
 
 ![img_2.png](img_2.png)
 
-1. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
+3. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls del punto 2
 
-1. facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
+4. facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
 verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
@@ -93,13 +93,13 @@ oppure
 dove sostituire 
 - a `e_min` ed `e_max` gli estremi scelti nel punto 1 
 - a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente), estensione compresa xls o xlsx, con l'elenco degli alunni del punto 2
-- (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. Per farlo bisogna 
-aggiungere al comando scelto nel punto 8 quanto segue:
+- (facoltativo) si puo' specificare, volendo, la cartella (percorso assoluto) in cui si vuole vengano salvati i test generati. 
+Per farlo bisogna aggiungere al comando scelto nel punto 8 quanto segue:
 
 ` --cartella_output=<percorso_cartella_output>`
 
 e sostituire a `<percorso_cartella_output>` il percorso assoluto della cartella di output desiderata individuato 
-nel punto 5.
+nel punto 4.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:

@@ -8,8 +8,6 @@ import os
 from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
-#import subprocess
-import pandoc
 import random as rn
 
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
@@ -44,14 +42,10 @@ def convert_to_html(md_input_string:str, htm_output_file:str):
     with open(htm_output_file, 'w') as f:
         f.write(html_string)
 
-#TODO: togliere o far funzionare conversione in pdf
-"""
-def convert_html_to_pdf(html_file, pdf_file):
-    command = f"pandoc {html_file} -o {pdf_file}"
-    subprocess.run(command, shell=True)
-"""
+
+
 def generate_test_from_template(template_content_str: str, output_dir: str, coeffs: list, student_name: str):
-    """"
+    """
     Questa funzione genera e salva, in una cartella indicata, un testo a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
 
@@ -101,7 +95,7 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
         test_text_lines.append(maybe_processed_line)
 
-    #crea una cartella 'output' se non la trova che ci serve perche' altrimenti si genera un errore nella
+    #crea una cartella 'output', se quella indicata non esiste, che ci serve perche' altrimenti si genera un errore nella
     # generazione dei test individuali
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
@@ -113,14 +107,6 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     #stringa perche e'piu' semplice da convertire in un file html rispetto a una lista di stringhe
     md_input_str = ''.join(test_text_lines)
     convert_to_html(md_input_string=md_input_str, htm_output_file=output_path_html)
-
-    #TODO: togliere o far funzionare conversione in pdf
-    """
-    #convertiamo i testi di verifica anche in pdf per maggiore praticita' di uso e stampa cartacea per l'utente
-    output_path_pdf = os.path.join(output_dir, f"test_{student_name}.pdf")
-    convert_html_to_pdf(html_file=f"test_{student_name}.html", pdf_file=f"test_{student_name}.pdf")
-    """
-
 
 
 def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple):
