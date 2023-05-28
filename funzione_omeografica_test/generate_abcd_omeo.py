@@ -125,6 +125,7 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
     """
     Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
     del tipo f(x)=(ax+b)/(cx+d).
+
     In particolare i 4 coefficienti:
     - appartengono al dominio di estremi specificati in input, estremi inclusi
     - vengono scelti con la funzione random.choice dal dominio
@@ -153,12 +154,12 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
     """
     #calcolo dominio:
     domain_abd  = generate_domain(e_min, e_max)
-    #assegnazione C.N.1
+    #assegnazione C.N.S.1
     domain_c = generate_domain(e_min, e_max, 0)
     #inizializzazione parametri per essere sicuri di avere un return se il ciclo non dovesse essere svolto
     delta = 0
     a = b = c = d = None
-    #verifica C.N.2
+    #verifica C.N.S.2
     while delta == 0:
         #assegnazione random ai coefficienti: la scelta random permette di uscire sicuramente dal ciclo dopo un certo
         #numero finito di iterazioni dello stesso perche' la probabilita' di avere un delta sempre uguale a 0 e' non
