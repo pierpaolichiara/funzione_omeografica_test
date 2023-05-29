@@ -39,17 +39,18 @@ Le risposte corrette possono essere valutate calcolando i corrispondenti risulta
 4. x = -b/a
 5. y = b/d
 
-Le domande proposte possono essere modificate direttamente dall'utente nel file 'templates\test.md'.
+Le domande proposte possono essere modificate direttamente dall'utente nel file 'template_content_string.py' visionabile [qua](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py).
 
 ### Cosa serve per usare la libreria 
 #### Dati in input
 Per utilizzare la libreria e' necessario:
-1. decidere gli estremi dell'intervallo [e_min, e_max] a cui appartengono i coefficienti a, b, c, d. Il dominio da inserire deve 
+1. decidere gli estremi dell'intervallo [e_min, e_max] a cui appartengono i coefficienti a, b, c, d della FO. Il dominio da inserire deve 
 essere un intervallo di interi, gli estremi verranno considerati inclusi
 
-2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella della prima riga la voce "COGNOME" 
-scritta in maiuscolo, e nelle righe successive della stessa colonna i cognomi degli alunni della classe per cui generare
-e stampare i test. Riportiamo un esempio di compilazione del file:
+2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella 
+della prima riga (in un foglio di calcolo la cella e' la B1) la voce "COGNOME" scritta in maiuscolo, e nelle righe 
+successive della stessa colonna i cognomi degli alunni della classe per cui generare e stampare i test. 
+Riportiamo un esempio di compilazione del file:
 
 ![img_2.png](img_2.png)
 
@@ -61,14 +62,21 @@ verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
 - Avere una Common Line Interface (CLI) nel dispositivo in uso.
-- Avere Python installato nel dispositivo in uso. La libreria e' stata testata per la versione di Python 3.9.13. 
+- Avere Python installato nel dispositivo in uso. 
 
 Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_base.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-base.txt) 
 e in [requirements-test.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-test.txt)) 
 vengono installate automaticamente, se necessario, una volta lanciato il file principale main.py come vedremo nella sezione successiva.
 
+La libreria e' stata testata 
+- per la versione di Python 3.9.13
+- come CLI e'stata usato il 'Prompt dei comandi' del Sistema Operativo Windows 10 PRO, versione 22H2 
+- libreria pytest, versione 7.1.2
+- libreria hypothesis, versione 6.70.0
+
 #### Installazione e utilizzo
-Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando
+Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando,
+
 5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test con il seguente comando:
 
 `git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
@@ -93,13 +101,14 @@ oppure
 dove sostituire 
 - a `e_min` ed `e_max` gli estremi scelti nel punto 1 
 - a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente), estensione compresa xls o xlsx, con l'elenco degli alunni del punto 2
-- (facoltativo) si puo' specificare, volendo, la cartella (percorso assoluto) in cui si vuole vengano salvati i test generati. 
+- (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. 
 Per farlo bisogna aggiungere al comando scelto nel punto 8 quanto segue:
 
 ` --cartella_output=<percorso_cartella_output>`
 
-e sostituire a `<percorso_cartella_output>` il percorso assoluto della cartella di output desiderata individuato 
-nel punto 4.
+e sostituire a `<percorso_cartella_output>`, o il percorso assoluto della cartella di output desiderata individuato nel 
+punto 4, o il nome desiderato per la cartella di output, che verra' creata all'interno della cartella 'funzione_omeografica_test'
+del punto 6. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli aoutput verra' comunicata da CLI. 
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
