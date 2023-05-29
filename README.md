@@ -177,26 +177,26 @@ e altri file e cartelle di settaggio e configurazione che non interessano dirett
 
 Approfondiamo ora i contenuti della cartella nel punto b, [`funzione_omeografica_test`](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test). 
 
-###Funzione_omeografica_test
+### Funzione_omeografica_test
 
 Troviamo disponibili:
 
-b.[main.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
+b1.[main.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
 e' il file da lanciare per avviare la procedura di generazione dei test. Assegna i dati forniti in input dall'utente a
 delle variabili Python, utilizzate come argomento delle altre funzioni della libreria che vengono richiamate in questo file per generare i test.
 
-b. [get_output_folder_name.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
+b2. [get_output_folder_name.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
 crea il nome di una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste, 
 altrimenti lo crea a partire dall'input indicato
 
-b. [template_content_string.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
+b3. [template_content_string.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
 e' il file con il testo della verifica sulla funzione omeografica, modificabile dall'utente
 
-b.[parse_student_list.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
+b4.[parse_student_list.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
 e' il file che permette di leggere un file excel impostato come da indicazioni ed estrarne una lista di cognomi.questo modulo serve a estrarre i cognomi degli alunni di una classe da un file excel e generare una lista con i cognomi,
 da utilizzare nel modulo 'main.py' come variabile della funzione 'generate_tests'.
 
-b.[generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
+b5.[generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
 e' un modulo che permette di generare una quaterna di coefficienti che rispettano le due C.N.S. per dare origine a una funzione omeografica propria.
 Contiene tre funzioni:
 
@@ -218,7 +218,7 @@ Contiene tre funzioni:
     
             C.N.S.2:  a*d-c*b≠0
 
-b. [generate_test.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
+b6. [generate_test.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
 questo modulo contiene le funzioni necessarie a generare, per ogni cognome di una lista, un testo in cui compaiono la data corrente,
 il cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore fruibilita' da parte dell'utente finale.
 E' un modulo costituito da piu'funzioni:
@@ -235,7 +235,7 @@ E' un modulo costituito da piu'funzioni:
       a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato
 
 
-##Verificare il corretto funzionamento del codice
+## Verificare il corretto funzionamento del codice
 
 Per assicurarsi che il codice funzioni correttamente si possono compilare dei test forniti scaricando il repository,
 posizionandosi da linea di comando, nella sottocartella "funzione_omeografica_test\funzione_omeografica_test\test" e poi 
