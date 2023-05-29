@@ -44,25 +44,25 @@ Le domande proposte possono essere modificate direttamente dall'utente nel file 
 ### Cosa serve per usare la libreria 
 #### Dati in input
 Per utilizzare la libreria e' necessario:
-1. decidere gli estremi dell'intervallo [e_min, e_max] a cui appartengono i coefficienti a, b, c, d della FO. Il dominio da inserire deve 
+1. decidere gli `**estremi dell'intervallo [e_min, e_max]**` a cui appartengono i coefficienti a, b, c, d della FO. Il dominio da inserire deve 
 essere un intervallo di interi, gli estremi verranno considerati inclusi
 
-2. avere a disposizione un file <classe>.xlsx o <classe>.xls con una colonna, diversa dalla prima, che ha nella cella 
-della prima riga (in un foglio di calcolo la cella e' la B1) la voce "COGNOME" scritta in maiuscolo, e nelle righe 
+2. avere a disposizione un `**file <classe>.xlsx o <classe>.xls**` con una colonna, diversa dalla prima, che ha nella cella 
+della prima riga (in un foglio di calcolo la cella e' la B1) la voce "`**COGNOME**`" scritta in maiuscolo, e nelle righe 
 successive della stessa colonna i cognomi degli alunni della classe per cui generare e stampare i test. 
 Riportiamo un esempio di compilazione del file:
 
 ![img_2.png](img_2.png)
 
-3. avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
+3. avere a disposizione il `**percorso assoluto**`, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls del punto 2
 
 4. facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
 verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
-- Avere una Common Line Interface (CLI) nel dispositivo in uso.
-- Avere Python installato nel dispositivo in uso. 
+- Avere una `**Common Line Interface (CLI)**` nel dispositivo in uso.
+- Avere `**Python installato nel dispositivo**` in uso. 
 
 Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_base.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-base.txt) 
 e in [requirements-test.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-test.txt)) 
@@ -149,7 +149,7 @@ oppure
 o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, denominati con il cognome dell'alunno nel seguente modo:
 `test_<COGNOME>.html`, ad esempio "test_ALFA.html", "test_BETA.html"...
 
-N.B.: ogni volta che si esegue il programma come da punto 8, utilizzando come input un determinato file excel con i cognomi di 
+`**N.B.**`: ogni volta che si esegue il programma come da punto 8, utilizzando come input un determinato file excel con i cognomi di 
 una classe, per ogni alunno si ottengono ogni volta gli stessi coefficienti, in modo che se l'utente fosse costretto a 
 chiudere il programma o rilanciarlo per qualche motivo dopo aver magari gia' stampato le verifiche, e'sicuro che i coefficienti di 
 ogni alunno non vengono cambiati.
@@ -249,5 +249,7 @@ linea di testo in verde che comunica che 43 test sono stati superati ("43 passed
 Documentazione piu' dettagliata su cosa testa ogni singolo test svolto e' reperibile all'interno della cartella [test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test/test).
 Qui sono a disposizione gli scripts dei test eseguiti. Aprendo ogni file *.py, sotto la definizione del test, c'e'
 una breve descrizione di cosa verifica il test eseguito. 
+
+Per qualsiasi evenienza, l'autore rimane a disposizione all'indirizzo mail `**chiara.pierpaoli@studio.unibo.it**`. 
 
 ##
