@@ -109,7 +109,7 @@ e sostituire a `<percorso_cartella_output>`, o il percorso assoluto della cartel
 punto 4, o il nome desiderato per la cartella di output, che verra' creata all'interno della cartella 'funzione_omeografica_test'
 del punto 6. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli output verra' comunicata da CLI
 (se l'utente riscontra problemi di riconoscimento del percorso assoluto, puo' provare a inserirlo tra " "). 
-Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi'denominati: **test_<COGNOME>.html**.
+Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi'denominati: **test_"COGNOME".html**.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
