@@ -1,6 +1,6 @@
 import os
 
-def get_output_folder(output_folder: str = None) -> str:  # indirizzo assoluto
+def get_output_folder_name(output_folder: str = None) -> str:  # indirizzo assoluto
     """"Questa funzione crea una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste,
         altrimenti la crea a partire dall'input indicato.
 
