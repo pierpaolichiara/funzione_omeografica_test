@@ -140,8 +140,5 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
 
-    #  html_file =generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
-
-
 if __name__ == "__main__":
     main()

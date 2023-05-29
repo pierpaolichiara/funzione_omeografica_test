@@ -29,7 +29,7 @@ def parse_function_domain(domain_extremes: str) -> tuple:
     Input
     -----
     domain_extremes: str
-        i due estremi del dominio da considerare, se non di tipo int vengono convertiti a interi
+        i due estremi interi del dominio da considerare
 
     Output
     ------
@@ -53,15 +53,15 @@ def parse_function_domain(domain_extremes: str) -> tuple:
     ValueError: invalid literal for int() with base 10: '-9.1'
     >>> parse_function_domain("(-9,9,0)")
     ValueError: invalid literal for int() with base 10: '-9.1'
-
+    >>> parse_function_domain("")
+    ValueError: invalid literal for int() with base 10: ''
+    >>> parse_function_domain("[-9]")
+    ValueError: not enough values to unpack (expected 2, got 1)
     """
     extrs = [int(piece.strip("()[], ")) for piece in domain_extremes.split(",")]
     return tuple(extrs)
 
 
-#print(parse_function_domain("(-9,9,0)"))
-
-#TODO:estremi
 def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
     """
     Questa funzione genera un insieme di numeri interi relativi compresi tra
@@ -119,8 +119,6 @@ def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
     return domain
 
 
-#    print(generate_domain(5, 4, 22))
-#TODO:estremi
 def generate_abcd_omeo(e_min: int, e_max: int) -> list:
     """
     Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
@@ -147,9 +145,8 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
     list: [a, b, c, d]
         lista dei quattro coefficienti estratti random dal dominio definito in input
 
-    Vedi  #TODO: LINK A generate_domain e random_choice()
+    Vedi
     ----
-    generate_domain(e_min, e_max)
     random_choice()
     """
     #calcolo dominio:
@@ -175,11 +172,6 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
         delta = a * d - c * b
     return [a, b, c, d]
 
-#print(generate_abcd_omeo(-2,4))
 
-#TODO:estremi
 if __name__ == "__main__":
-   for _ in range(10):
-       abcd = generate_abcd_omeo(-9, 9)
-       print('i coefficienti sono [a,b,c,d]=', abcd)
-
+    main()

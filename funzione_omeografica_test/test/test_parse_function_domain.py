@@ -35,12 +35,14 @@ test_list_no_int = [
     [ "-42.5,3.0", ValueError],     #test su inserimento di floats
 
  #   ["2,3,0", ValueError],         #test su inserimento di piu' di due estremi / di un intero scritto con la virgola
+    [ "", ValueError],              #test su inserimento dominio vuoto
+ #   [ "4", ValueError],             #test su inserimento di un solo estremo
     ["zero, 11", ValueError]        #test su inserimento di char
     ]
 @pytest.mark.parametrize(('input_str, expected_result'), test_list_no_int)
 def test_raises_parse_function_domain(input_str: str, expected_result: ValueError):
     """
-    Date delle stringhe in input di tipoerrato #FIXME o numero elementi errati,
+    Date delle stringhe in input di tipo errato #FIXME o numero elementi errati,
     il test verifica che la funzione parse_function_domain riscontri un ValueError
     """
     with pytest.raises(expected_result):
@@ -60,7 +62,7 @@ def test_floats_parse_function_domain(domain_extremes):
     with pytest.raises(ValueError):
         extrs = mod.parse_function_domain(domain_extremes_str)
 
-@given((domain_extremes=st.lists(st.integers(), min_value=None, max_value=None)))
+@given(domain_extremes_list=st.lists(st.integers(), min_size=2, max_size=2))
 #- utilizziamo una st.lists di interi perche' non esiste una st.str() che sarebbe
 # il tipo di variabile di parse_function_domain
 #- utilizziamo una st.lists di interi perche':
@@ -68,8 +70,7 @@ def test_floats_parse_function_domain(domain_extremes):
 #        - per escludere dal test casi con eventuali errori di conversione
 #          da lista a tupla dovuti al separatore dei decimali
 
-
-def test_lenght_parse_function_domain(domain_extremes: list):
+def test_lenght_parse_function_domain(domain_extremes_list: list):
     """
     Data una lista di 2 interi,
     il test verifica che la tupla, associata alla lista convertita in stringa, generata da parse_function_domain
@@ -77,7 +78,10 @@ def test_lenght_parse_function_domain(domain_extremes: list):
     """
     # la nostra strategia prevede di passare una lista di 2 elementi, 'domain_extremes', perche' dobbiamo compararne
     # la lunghezza con quella della tupla generata dalla funzione 'parse_function_domain' che deve essere 2
-    domain_extremes_str = str(domain_extremes)
+    #if not len(domain_extremes_list) == 2:
+     #   raise ValueError('Gli estremi inseriti non sono due. Per favore inserisci 2 estremi')
+    #else:
+    domain_extremes_str = str(domain_extremes_list)
     extrs = mod.parse_function_domain(domain_extremes_str)
     assert len(extrs)==2
 

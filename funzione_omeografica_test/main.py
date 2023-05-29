@@ -37,7 +37,7 @@ def main():
 
     #con la seguente funzione, se viene indicata una cartella in input, si usa quella come cartella_output, altrimenti
     # ne viene creata una
-    cartella_output = get_output_folder_name(output_folder=args.cartella_output)
+    cartella_output = get_output_folder_name(output_folder_path=args.cartella_output)
 
     generate_tests(template_content_str=TEMPLATE_CONTENT, output_dir=cartella_output, student_lists=nomi_alunni, function_domain=estremi_dominio)
 

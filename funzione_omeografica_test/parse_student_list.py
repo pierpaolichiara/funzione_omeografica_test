@@ -34,7 +34,7 @@ def parse_student_list(student_list_path: str)->list:
 
     # legge la colonna "COGNOME" del file e genera la lista dei cognomi
     dataframe = pd.read_excel(student_list_path, index_col=0)
-    print(dataframe)
+#    print(dataframe)
 
     if dataframe.empty:
         raise TypeError("\n\nERRORE:Il file excel indicato e' vuoto o la seconda colonna (colonna B) del file e'vuota: "
@@ -51,30 +51,8 @@ def parse_student_list(student_list_path: str)->list:
         names = dataframe["COGNOME"].tolist()
         return names
 
-#controesempio al fixme
-#b=ont.xls
-#print(b)
-#a=parse_student_list(b)
-#print(a)
 
-#controesempio caso non xls che funziona
-c= os.path.abspath(__file__)
-print(c)
-#a=parse_student_list(c)
-#print(a)
-#fixme: TEST: provare parse_student_list con file xls di prova
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/PRIMACOL.xlsx')
-#print(a)
-#KeyError: 'COGNOME'
 
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/SOLOTIT.xlsx')
-#print(a)
-#da' lista []
-
-#a=parse_student_list('C:/Users/Matteo/funzione_omeografica_test/test/excel_di_prova/VUOTO.xlsx')
-#print(a)
-#    raise KeyError(key) from err
-#KeyError: 'COGNOME'
 
 
 
