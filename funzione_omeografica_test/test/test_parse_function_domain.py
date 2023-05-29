@@ -32,23 +32,21 @@ def test_parse_function_domain(input_str: str, expected_result:tuple):
 #- possibili stringhe in input, errate per tipo di dato o numero estremi inseriti
 #- ValueError nell'esecuzione di parse_function_domain
 test_list_no_int = [
-    [ "-42.5,3.0", ValueError],     #test su inserimento di floats
-
- #   ["2,3,0", ValueError],         #test su inserimento di piu' di due estremi / di un intero scritto con la virgola
-    [ "", ValueError],              #test su inserimento dominio vuoto
- #   [ "4", ValueError],             #test su inserimento di un solo estremo
-    ["zero, 11", ValueError]        #test su inserimento di char
+    "-42.5,3.0",     #test su inserimento di floats
+    "2,3,0",         #test su inserimento di piu' di due estremi / di un intero scritto con la virgola
+     "",             #test su inserimento dominio vuoto
+     "4",            #test su inserimento di un solo estremo
+    "zero, 11",      #test su inserimento di char
+    "(0; 11)"        #test su inserimento di separator
     ]
-@pytest.mark.parametrize(('input_str, expected_result'), test_list_no_int)
-def test_raises_parse_function_domain(input_str: str, expected_result: ValueError):
+@pytest.mark.parametrize('input_str', test_list_no_int)
+def test_raises_parse_function_domain(input_str: str):
     """
-    Date delle stringhe in input di tipo errato #FIXME o numero elementi errati,
+    Date delle stringhe in input di tipo errato,
     il test verifica che la funzione parse_function_domain riscontri un ValueError
     """
-    with pytest.raises(expected_result):
-        input_values = input_str
-        extrs = mod.parse_function_domain(input_values)
-        assert extrs == expected_result
+    with pytest.raises(ValueError):
+        mod.parse_function_domain(input_str)
 
 
 @given(domain_extremes=st.lists(st.floats()))

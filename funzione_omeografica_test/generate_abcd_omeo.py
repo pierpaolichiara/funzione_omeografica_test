@@ -19,7 +19,6 @@ nuova sequenza di coefficienti e ricontrollate le C.N.S. fino a quando entrambe 
 """
 
 import random
-#TODO:estremi
 def parse_function_domain(domain_extremes: str) -> tuple:
     """
     Riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
@@ -43,8 +42,6 @@ def parse_function_domain(domain_extremes: str) -> tuple:
 
     Esempi
     ------
-    >>> parse_function_domain(-9,10)
-    (-9,10)
     >>> parse_function_domain("(-9,10)")
     (-9,10)
     >>> parse_function_domain("[-9,10]")
@@ -52,13 +49,16 @@ def parse_function_domain(domain_extremes: str) -> tuple:
     >>> parse_function_domain("[-9.1,10]")
     ValueError: invalid literal for int() with base 10: '-9.1'
     >>> parse_function_domain("(-9,9,0)")
-    ValueError: invalid literal for int() with base 10: '-9.1'
+    ValueError: "`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio ..."
     >>> parse_function_domain("")
-    ValueError: invalid literal for int() with base 10: ''
+    ValueError: "`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio ..."
     >>> parse_function_domain("[-9]")
-    ValueError: not enough values to unpack (expected 2, got 1)
+    ValueError: "`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio ..."
     """
     extrs = [int(piece.strip("()[], ")) for piece in domain_extremes.split(",")]
+    if len(extrs) != 2:
+        raise ValueError("`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio, "
+                         "separati da virgola o spazio. \nEsempi validi:\n - (-5, 5)\n - [-5, 5]\n - (-5 5)\n - [-5 5]\n ")
     return tuple(extrs)
 
 
