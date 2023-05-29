@@ -160,16 +160,17 @@ Riportiamo un esempio di test di verifica stampato:
 
 ![img_3.png](img_3.png)
 
-## Struttura della libreria 'funzione_omeografica_test'
+## Funzione_omeografica_test: struttura della libreria 
+
 All'interno del progetto 'funzione_omeografica_test' scaricato, disponibile nel repository indicato al punto 5, troviamo alcuni
 file e sottocartelle. Elenchiamo quelli di interesse per l'utente:
 
-a. il file [README.md](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/README.md): questo file di
+a. il file [**README.md**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/README.md): questo file di
 testo che stai leggendo con spiegazione della libreria e indicazioni di installazione e utilizzo
 
-b. la cartella [funzione_omeografica_test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test): ne approfondiamo il contenuto nel successivo paragrafo
+b. la cartella [**funzione_omeografica_test**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test): ne approfondiamo il contenuto nel successivo paragrafo
 
-c. la cartella [esempio_input](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/esempio_input): 
+c. la cartella [**esempio_input**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/esempio_input): 
 contiene un file excel di esempio formattato e scritto in modo corretto con una lista di cognomi di prova. Si puo' utilizzare 
 come nell'esempio sopra per generare 12 test di prova. 
 
@@ -177,38 +178,38 @@ e altri file e cartelle di settaggio e configurazione che non interessano dirett
 
 Approfondiamo ora i contenuti della cartella nel punto b, [`funzione_omeografica_test`](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test). 
 
-### Funzione_omeografica_test
+### ## Funzione_omeografica_test: contenuti della libreria 
 
 Troviamo disponibili:
 
-b1.[main.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
+b1.[**main.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
 e' il file da lanciare per avviare la procedura di generazione dei test. Assegna i dati forniti in input dall'utente a
 delle variabili Python, utilizzate come argomento delle altre funzioni della libreria che vengono richiamate in questo file per generare i test.
 
-b2. [get_output_folder_name.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
+b2. [**get_output_folder_name.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
 crea il nome di una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste, 
 altrimenti lo crea a partire dall'input indicato
 
-b3. [template_content_string.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
+b3. [**template_content_string.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
 e' il file con il testo della verifica sulla funzione omeografica, modificabile dall'utente
 
-b4.[parse_student_list.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
+b4.[**parse_student_list.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
 e' il file che permette di leggere un file excel impostato come da indicazioni ed estrarne una lista di cognomi.questo modulo serve a estrarre i cognomi degli alunni di una classe da un file excel e generare una lista con i cognomi,
 da utilizzare nel modulo 'main.py' come variabile della funzione 'generate_tests'.
 
-b5.[generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
+b5.[**generate_abcd_omeo.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
 e' un modulo che permette di generare una quaterna di coefficienti che rispettano le due C.N.S. per dare origine a una funzione omeografica propria.
 Contiene tre funzioni:
 
-- `parse_function_domain`: riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
+- **parse_function_domain**: riceve una stringa con gli estremi dell'intervallo di interi da considerare e li associa ad una tupla.
     Evita di richiedere gli estremi separatamente e garantisce la definizione del dominio attraverso un unico elemento
     tupla definito all'inizio dell'esecuzione e non modificabile
 
-- `generate_domain`: genera un insieme di numeri interi relativi compresi tra
+- **generate_domain**: genera un insieme di numeri interi relativi compresi tra
     e_min(incluso) ed e_max(incluso), ad esclusione al massimo di un numero denominato
     exclude_value
 
-- `generate_abcd_omeo`: Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
+- **generate_abcd_omeo**: Questa funzione genera una lista di 4 coefficienti interi [a, b, c, d] in grado di dare origine a una funzione omeografica propria
     del tipo f(x)=(ax+b)/(cx+d). In particolare i 4 coefficienti:
         - appartengono al dominio di estremi specificati in input, estremi inclusi
         - vengono scelti con la funzione random.choice dal dominio
@@ -218,20 +219,20 @@ Contiene tre funzioni:
     
             C.N.S.2:  a*d-c*b≠0
 
-b6. [generate_test.py](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
+b6. [**generate_test.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
 questo modulo contiene le funzioni necessarie a generare, per ogni cognome di una lista, un testo in cui compaiono la data corrente,
 il cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore fruibilita' da parte dell'utente finale.
 E' un modulo costituito da piu'funzioni:
 
--   `replace_placeholder`: legge un template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
+-   **replace_placeholder**: legge un template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
     riscrivendo il testo del file riga per riga
  
--  `generate_test_from_template`: genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
+-  **generate_test_from_template**: genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input
 
--   `convert_to_html`: converte un testo da formato .md a formato .html in un nuovo file  
+-   **convert_to_html**: converte un testo da formato .md a formato .html in un nuovo file  
 
--   `generate_tests`:genera, con un ciclo, un insieme di testi di verifica, uno diverso per ogni studente di una lista, dove
+-   **generate_tests**:genera, con un ciclo, un insieme di testi di verifica, uno diverso per ogni studente di una lista, dove
       a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato
 
 
@@ -241,7 +242,7 @@ Per assicurarsi che il codice funzioni correttamente si possono compilare dei te
 posizionandosi da linea di comando, nella sottocartella "funzione_omeografica_test\funzione_omeografica_test\test" e poi 
 lanciando il comando
 
-`pytest`
+**`pytest`**
 
 In questo modo tutti i test presenti nella cartella [test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test/test),
 il cui nome del file inizia con "test_", verranno eseguiti. Nel caso in cui tutto funziona correttamente dovrebbe comparire una 
