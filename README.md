@@ -108,7 +108,8 @@ Per farlo bisogna aggiungere al comando scelto nel punto 8 quanto segue:
 e sostituire a `<percorso_cartella_output>`, o il percorso assoluto della cartella di output desiderata individuato nel 
 punto 4, o il nome desiderato per la cartella di output, che verra' creata all'interno della cartella 'funzione_omeografica_test'
 del punto 6. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli output verra' comunicata da CLI
-(se l'utente riscontra problemi di riconoscimento del percorso assoluto, puo' provare a inserirlo tra " ").
+(se l'utente riscontra problemi di riconoscimento del percorso assoluto, puo' provare a inserirlo tra " "). 
+Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi'denominati: **test_<COGNOME>.html**.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
@@ -117,7 +118,7 @@ Consideriamo questi dati come esempio di utilizzo della libreria:
 
 <classe.xlsx> = `CLASSE_5A.xlsx`
 
-percorso file CLASSE_5A = esempio_input\CLASSE_5A
+percorso file CLASSE_5A = `esempio_input\CLASSE_5A`
 
 Dunque vogliamo generare test di verifica sulla FO, con coefficienti [a,b,c,d] generati automaticamente dal programma, 
 scelti all'interno dell'intervallo (-9,9)  estremi inclusi, per la classe 5A il cui elenco degli studenti e' presente nel 
@@ -148,7 +149,7 @@ oppure
 
 - i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
 o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, denominati con il cognome dell'alunno nel seguente modo:
-`test_<COGNOME>.html`, ad esempio "test_ALFA.html", "test_BETA.html"...
+*test_<COGNOME>.html* , ad esempio "test_ALFA.html", "test_BETA.html"...
 
 **N.B.**: ogni volta che si esegue il programma come da punto 8, utilizzando come input un determinato file excel con i cognomi di 
 una classe, per ogni alunno si ottengono ogni volta gli stessi coefficienti, in modo che se l'utente fosse costretto a 
@@ -165,12 +166,12 @@ Riportiamo un esempio di test di verifica stampato:
 All'interno del progetto 'funzione_omeografica_test' scaricato, disponibile nel repository indicato al punto 5, troviamo alcuni
 file e sottocartelle. Elenchiamo quelli di interesse per l'utente:
 
-a. il file [**README.md**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/README.md): questo file di
+**a.** il file [**README.md**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/README.md): questo file di
 testo che stai leggendo con spiegazione della libreria e indicazioni di installazione e utilizzo
 
-b. la cartella [**funzione_omeografica_test**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test): ne approfondiamo il contenuto nel successivo paragrafo
+**b.** la cartella [**funzione_omeografica_test**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test): ne approfondiamo il contenuto nel successivo paragrafo
 
-c. la cartella [**esempio_input**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/esempio_input): 
+**c.** la cartella [**esempio_input**](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/esempio_input): 
 contiene un file excel di esempio formattato e scritto in modo corretto con una lista di cognomi di prova. Si puo' utilizzare 
 come nell'esempio sopra per generare 12 test di prova. 
 
@@ -182,22 +183,22 @@ Approfondiamo ora i contenuti della cartella nel punto b, [`funzione_omeografica
 
 Troviamo disponibili:
 
-b1.[**main.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
+**b1.**[**main.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/main.py):
 e' il file da lanciare per avviare la procedura di generazione dei test. Assegna i dati forniti in input dall'utente a
 delle variabili Python, utilizzate come argomento delle altre funzioni della libreria che vengono richiamate in questo file per generare i test.
 
-b2. [**get_output_folder_name.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
+**b2.** [**get_output_folder_name.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/get_output_folder_name.py):
 crea il nome di una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste, 
 altrimenti lo crea a partire dall'input indicato
 
-b3. [**template_content_string.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
+**b3.** [**template_content_string.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/template_content_string.py):
 e' il file con il testo della verifica sulla funzione omeografica, modificabile dall'utente
 
-b4.[**parse_student_list.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
+**b4.** [**parse_student_list.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
 e' il file che permette di leggere un file excel impostato come da indicazioni ed estrarne una lista di cognomi.questo modulo serve a estrarre i cognomi degli alunni di una classe da un file excel e generare una lista con i cognomi,
 da utilizzare nel modulo 'main.py' come variabile della funzione 'generate_tests'.
 
-b5.[**generate_abcd_omeo.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
+**b5.**[**generate_abcd_omeo.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
 e' un modulo che permette di generare una quaterna di coefficienti che rispettano le due C.N.S. per dare origine a una funzione omeografica propria.
 Contiene tre funzioni:
 
@@ -219,7 +220,7 @@ Contiene tre funzioni:
     
             C.N.S.2:  a*d-c*b≠0
 
-b6. [**generate_test.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
+**b6.** [**generate_test.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
 questo modulo contiene le funzioni necessarie a generare, per ogni cognome di una lista, un testo in cui compaiono la data corrente,
 il cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore fruibilita' da parte dell'utente finale.
 E' un modulo costituito da piu'funzioni:
