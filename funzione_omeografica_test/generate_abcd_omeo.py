@@ -172,6 +172,3 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
         delta = a * d - c * b
     return [a, b, c, d]
 
-
-if __name__ == "__main__":
-    main()
