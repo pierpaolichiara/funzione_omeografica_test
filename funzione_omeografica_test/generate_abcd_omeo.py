@@ -55,11 +55,11 @@ def parse_function_domain(domain_extremes: str) -> tuple:
     >>> parse_function_domain("[-9]")
     ValueError: "`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio ..."
     """
-    extrs = [int(piece.strip("()[], ")) for piece in domain_extremes.split(",")]
+    extrs = [piece.strip("()[], ") for piece in domain_extremes.split(",")]
     if len(extrs) != 2:
         raise ValueError("`estremi_dominio` deve essere una stringa contenente i due estremi interi del dominio, "
-                         "separati da virgola o spazio. \nEsempi validi:\n - (-5, 5)\n - [-5, 5]\n - (-5 5)\n - [-5 5]\n ")
-    return tuple(extrs)
+                         "separati da virgola o spazio. \nEsempi validi:\n > (-5, 5)\n > [-5, 5]\n > (-5 5)\n > [-5 5]\n ")
+    return tuple([int(extr) for extr in extrs])
 
 
 def generate_domain(e_min: int, e_max: int, exclude_value: int = None) -> list:
