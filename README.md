@@ -2,14 +2,14 @@
 ## Progetto per docenti di matematica delle scuole secondarie superiori
 
 ### Introduzione
-Questa libreria permette di generare un test di verifica a risposta aperta sulla Funzione Omeografica (in seguito FO) 
+**SCOPO**: Questa libreria permette di **generare un test di verifica a risposta aperta sulla Funzione Omeografica (in seguito FO)** 
 
 ![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\frac{ax&plus;b}{cx&plus;d})
 
-con coefficienti [a,b,c,d] (random interi compresi in un intervallo tra due estremi inclusi) che variano per ogni alunno 
-di una data classe. 
+**con coefficienti [a,b,c,d]** (random interi compresi in un intervallo tra due estremi inclusi) **che variano per ogni alunno 
+di una data classe**. 
 
-La FO e' una funzione razionale fratta, trattata qui a coefficienti interi, che si presta molto bene allo studio di 
+La FO e' una **funzione razionale fratta**, trattata qui a **coefficienti interi**, che si presta molto bene allo studio di 
 funzione, previsto dalle Indicazioni Nazionali in tutte le scuole secondarie superiori italiane.
 Permette di verificare le competenze dell'alunno nell'affrontare i seguenti argomenti:
 - dominio di una funzione
@@ -76,7 +76,7 @@ La libreria e' stata testata
 #### Installazione e utilizzo
 Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando,
 
-5. clonare il repository https://github.com/pierpaolichiara/funzione_omeografica_test con il seguente comando:
+5. clonare il repository **https://github.com/pierpaolichiara/funzione_omeografica_test** con il seguente comando:
 
 `git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
 
