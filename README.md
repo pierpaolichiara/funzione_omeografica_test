@@ -173,4 +173,15 @@ Contiene tre funzioni:
 
     -   
 
+
+##Verificare corretto funzionamento del codice
+
+Per assicurarsi che il codice funzioni correttamente si possono compilare dei test forniti scaricando il repository,
+posizionandosi da linea di comando, nella sottocartella "funzione_omeografica_test\funzione_omeografica_test\test" e poi 
+lanciando il comando
+
+`pytest`
+
+In questo modo tutti i test presenti nella cartella [test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test/test)
+il cui nome file inizia con "test_"
 ##
