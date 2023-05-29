@@ -147,19 +147,19 @@ def generate_abcd_omeo(e_min: int, e_max: int) -> list:
 
     Vedi
     ----
-    random_choice()
+    random_choice(): https://docs.python.org/3/library/random.html?highlight=random%20choice#random.choice
     """
-    #calcolo dominio:
+    #calcolo dominio per a, b, d:
     domain_abd  = generate_domain(e_min, e_max)
-    #assegnazione C.N.S.1
+    #calcolo dominio per c: assegnazione C.N.S.1 (c≠0)
     domain_c = generate_domain(e_min, e_max, 0)
     #inizializzazione parametri per essere sicuri di avere un return se il ciclo non dovesse essere svolto
     delta = 0
     a = b = c = d = None
-    #verifica C.N.S.2
+    #verifica C.N.S.2 (delta≠0)
     while delta == 0:
         #assegnazione random ai coefficienti: la scelta random permette di uscire sicuramente dal ciclo dopo un certo
-        #numero finito di iterazioni dello stesso perche' la probabilita' di avere un delta sempre uguale a 0 e' non
+        #numero finito di iterazioni dello stesso perche' la probabilita' di avere un delta diverso da 0 e' non
         #nulla per un dominio di almeno due numeri interi diversi, considerate tutte le possibili combinazioni dei valori
         # dei 4 coefficienti.
         #Utilizzare la funzione generate_domain in cui i due estremi sono diversi, ci garantisce che il dominio non e'

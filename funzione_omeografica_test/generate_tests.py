@@ -1,6 +1,7 @@
 """ 
 Questo modulo contiene le funzioni necessarie a generare, per ogni cognome di una lista, un testo in cui compaiono la data corrente,
-il cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore fruibilita' da parte dell'utente finale.
+un cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore
+fruibilita' da parte dell'utente finale.
 """
 
 from sympy import symbols
@@ -10,7 +11,7 @@ from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 import random as rn
 
-def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str):
+def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str)-> str:
     """
     Questa funzione legge il template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
     riscrivendo il testo del file riga per riga
@@ -41,7 +42,6 @@ def convert_to_html(md_input_string:str, htm_output_file:str):
     #utilizziamo il costrutto with open per garantire una sicura chiusura del file quando non e' piu' utilizzato
     with open(htm_output_file, 'w') as f:
         f.write(html_string)
-
 
 
 def generate_test_from_template(template_content_str: str, output_dir: str, coeffs: list, student_name: str):
@@ -95,8 +95,8 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
         test_text_lines.append(maybe_processed_line)
 
-    #crea una cartella 'output', se quella indicata non esiste, che ci serve perche' altrimenti si genera un errore nella
-    # generazione dei test individuali
+    #crea una cartella 'output', se al percorso in input non corrisponde nessuna cartella, che ci serve perche' altrimenti
+    # si genera un errore nella generazione dei test individuali
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
@@ -125,11 +125,11 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     function_domain: tuple
         intervallo di interi, estremi compresi, in cui vengono scelti i coefficienti della lista di interi associata a
         ogni cognome con il modulo [generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test)
-    #TODO: controllare se il link si mette cosi'
+
 
     Vedi anche:
     ----------
-    random.seed
+    random.seed(): https://docs.python.org/3/library/random.html?highlight=random%20seed#random.seed
     """
     e1, e2 = function_domain
     #prima di generare i test per ogni alunno con coefficienti random, inizializziamo un random seed, perche' vogliamo
