@@ -50,7 +50,7 @@ def parse_student_list(student_list_path: str)-> list:
         names = dataframe["COGNOME"].tolist()
         return names
 
-
+print(parse_student_list())
 
 
 

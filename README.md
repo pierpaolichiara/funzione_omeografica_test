@@ -61,8 +61,9 @@ o <classe>.xls del punto 2
 verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
-- Avere una **Common Line Interface (CLI)** nel dispositivo in uso.
-- Avere **Python installato nel dispositivo** in uso. 
+- Avere una **Common Line Interface (CLI)** nel dispositivo in uso
+- avere **Python** installato nel dispositivo in uso 
+- avere **Git** installato nel dispositivo in uso
 
 Librerie aggiuntive necessarie (che si possono leggere nei file [requirements_base.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-base.txt) 
 e in [requirements-test.txt](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/requirements-test.txt)) 
