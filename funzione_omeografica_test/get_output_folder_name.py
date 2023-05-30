@@ -1,7 +1,8 @@
 import os
 
-def get_output_folder_name(output_folder_path: str = None) -> str:
-""" Questa funzione crea il nome di una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste,
+def get_output_folder_name(output_folder_path: str = None):
+    """
+    Questa funzione crea il nome di una cartella (cartella_output) vuota allo stesso livello del file corrente se l'input non esiste,
     altrimenti lo crea a partire dall'input indicato.
 
     Input
