@@ -42,8 +42,7 @@ def test_xls_ok_parse_student_list(path_input: str):
     """
     this_file_path = os.path.abspath(__file__)
     xls_path = os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
-    # TODO:nei sistemi operativi con / invece che \?mi da' un warning,
-    #  "DeprecationWarning: invalid escape sequence \C" inserire le righe sentro il test?
+
     names = os.path.join(xls_path, path_input)
     print(names)
     lista = mod.parse_student_list(names)
@@ -66,8 +65,7 @@ def test_xls_raises_parse_student_list(path_input, expected_error):
     """
     this_file_path = os.path.abspath(__file__)
     xls_path = os.path.dirname(os.path.dirname(os.path.dirname(this_file_path)))
-    # TODO:nei sistemi operativi con / invece che \?mi da' un warning,
-    #  "DeprecationWarning: invalid escape sequence \C" inserire le righe sentro il test?
+
     names = os.path.join(xls_path, path_input)
     with pytest.raises(expected_error):
         assert mod.parse_student_list(names)
