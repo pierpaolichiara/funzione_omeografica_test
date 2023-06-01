@@ -3,6 +3,10 @@ import markdown
 import funzione_omeografica_test.generate_tests as mod
 
 def test_convert_to_html():
+    """
+    Fissata una stringa di testo,
+    questo test verifica che la funzione 'convert_to_html' converta correttamente la stringa di testo da formato .md a .html
+    """
     md_input_string = "# Verifica sullo studio di funzione omeografica\n" \
                       "\n" \
                       "2. Calcola, se esiste, il valore di `x` corrispondente all'asintoto verticale\n" \

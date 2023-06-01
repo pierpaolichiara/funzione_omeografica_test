@@ -9,6 +9,7 @@ input = [
          ]
 @pytest.mark.parametrize(('text, placeholder, value, expected_result'), input)
 def test_replace_placeholder(text: str, placeholder: str, value: str, expected_result: str):
+#FIXME: DESCRIZIONE
     final_text=mod.replace_placeholder(text_line=text, placeholder_id=placeholder, placeholder_value=value)
     assert final_text==expected_result
 

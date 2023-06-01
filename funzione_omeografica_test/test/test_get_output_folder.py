@@ -1,6 +1,6 @@
 import os
 import funzione_omeografica_test.get_output_folder_name as mod
-
+#FIXME: DIVIDERE IN TRE TEST DIVERSI
 def test_get_output_folder():
     """Dato il percorso di una cartella,
     il test verifica che la funzione 'get_output_folder' produca corettamente una cartella di 'output' all'interno

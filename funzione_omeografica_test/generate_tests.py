@@ -95,6 +95,8 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
         test_text_lines.append(maybe_processed_line)
 
+#FIXME:DA DIVIDERE QUI IN DUE FUNZIONI DIVERSE
+
     #crea una cartella 'output', se al percorso in input non corrisponde nessuna cartella, che ci serve perche' altrimenti
     # si genera un errore nella generazione dei test individuali
     if not os.path.exists(output_dir):
@@ -135,7 +137,9 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     #prima di generare i test per ogni alunno con coefficienti random, inizializziamo un random seed, perche' vogliamo
     # che se l'utente si dovesse trovare, per via di piccole modifiche o altro, a lanciare piu' volte il programma,
     # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
-    rn.seed(10)
+
+  #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED
+    #rn.seed(10)
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
