@@ -91,18 +91,13 @@ Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando,
 
 8. lanciare il file main.py come segue
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
-   
-oppure
-
 `genera_test --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
-
 
 dove sostituire 
 - a `e_min` ed `e_max` gli estremi scelti nel punto 1 
 - a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente), estensione compresa xls o xlsx, con l'elenco degli alunni del punto 2
 - (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. 
-Per farlo bisogna aggiungere al comando scelto nel punto 8 quanto segue:
+Per farlo bisogna aggiungere al comando precedente quanto segue:
 
 ` --cartella_output=<percorso_cartella_output>`
 
@@ -111,6 +106,14 @@ punto 4, o il nome desiderato per la cartella di output, che verra' creata all'i
 del punto 6. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli output verra' comunicata da CLI
 (se l'utente riscontra problemi di riconoscimento del percorso assoluto, puo' provare a inserirlo tra " "). 
 Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi'denominati: **test_COGNOME.html**.
+
+9. Qualora il comando del punto 8 non dovesse funzionare, l'installazione della libreria non dovesse andare a buon fine o 
+se non si vuole installare la libreria (punto 7), si possono comunque generare i test di verifica sulla FO 
+procedendo dopo il punto 6 con l'esecuzione del seguente comando:
+
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
+
+per cui valgono tutte le sostituzioni e aggiunte indicate nel punto 8.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
@@ -132,21 +135,20 @@ Per stampare in .html i test a risposta aperta sulla FO con i dati di questo ese
 - Aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
 - Da linea di comando lanciare il modulo 'main' come segue:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
-
-oppure
-
 `genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
 
-  E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
-  sostituendo al comando precedente uno dei seguenti:
+(se non funziona, o se siamo nel caso  del punto 9, utilizzare il comando:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx 
---cartell_output=<percorso_cartella_output>`
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`   )
 
-  oppure
+9. E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
+  sostituendo al comando precedente il seguente:
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx --cartell_output=<percorso_cartella_output>`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx --cartella_output=<percorso_cartella_output>`
+
+(se non funziona, o se siamo nel caso  del punto 9, utilizzare il comando:
+
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>  --cartella_output=<percorso_cartella_output>`   )
 
 - i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
 o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, denominati con il cognome dell'alunno nel seguente modo:
@@ -161,6 +163,7 @@ Riportiamo un esempio di test di verifica stampato:
 
 
 ![img_3.png](img_3.png)
+
 
 ## Funzione_omeografica_test: struttura della libreria 
 
