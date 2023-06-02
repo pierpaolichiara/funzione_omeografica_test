@@ -29,7 +29,8 @@ def main():
 
     #assegniamo gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzionale al programma
     estremi_dominio_input = args.estremi_dominio
-    print(estremi_dominio_input)
+    #fixme: modifica sotto non recepita
+    print(f"Gli estremi del dominio sono {estremi_dominio_input}.")
     estremi_dominio = parse_function_domain(domain_extremes=estremi_dominio_input)
 
     #estrazione lista di nomi alunni
@@ -39,6 +40,8 @@ def main():
     #con la seguente funzione, se viene indicata una cartella in input, si usa quella come cartella_output, altrimenti
     # ne viene creata una
     cartella_output = get_output_folder_name(output_folder_path=args.cartella_output)
+    #fixme: modifica sotto non recepita
+    print(f"I test verranno salvati in {cartella_output}.")
 
     #generazione dei test in html a partire dai dati in input
     generate_tests(template_content_str=TEMPLATE_CONTENT, output_dir=cartella_output, student_lists=nomi_alunni, function_domain=estremi_dominio)

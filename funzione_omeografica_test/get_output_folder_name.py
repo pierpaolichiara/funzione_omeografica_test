@@ -28,5 +28,4 @@ def get_output_folder_name(output_folder_path: str = None):
         # sottocartella di nome "output" nella cartella da cui l'utente esegue il comando
         current_working_dir = os.getcwd()
         cartella_output = os.path.join(current_working_dir, "output")
-    print(f"I test verranno salvati in {cartella_output}")
     return cartella_output
