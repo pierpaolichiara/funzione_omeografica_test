@@ -37,7 +37,16 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
 
 
 def convert_to_html(md_input_string:str, htm_output_file:str):
-    """Questa funzione converte un testo da formato .md a formato .html in un nuovo file"""
+    """
+    Questa funzione converte un testo da formato .md a formato .html in un nuovo file.
+
+    Input
+    -----
+    md_input_string: str
+        stringa di testo in .md da convertire in html
+    htm_output_file: str
+        file .html in cui viene trascritta la stringa di testo in input
+   """
     html_string = markdown.markdown(md_input_string, extensions=['markdown.extensions.tables'])
     #utilizziamo il costrutto with open per garantire una sicura chiusura del file quando non e' piu' utilizzato
     with open(htm_output_file, 'w') as f:
