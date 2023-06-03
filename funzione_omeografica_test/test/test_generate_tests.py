@@ -2,8 +2,9 @@ import pytest
 import os
 import glob
 import funzione_omeografica_test.generate_tests as mod
-#Abbiamo provato a estare la funzione generate_test inserendo (template_content_str, student list, function domain)
-#parametrizzati con hypothesis, ma ssi e'preferito procedere qui con pochi casi mirati al sovraccarico di calcolo
+import funzione_omeografica_test.empty_folder as ef
+#Abbiamo provato a estarre la funzione generate_test inserendo (template_content_str, student list, function domain)
+#parametrizzati con hypothesis, ma si e'preferito procedere qui con pochi casi mirati al sovraccarico di calcolo
 # di tutte le combinazioni possibili degli input con hypothesis
 
 
@@ -26,13 +27,6 @@ def count_files_in_folder(folder_path: str) -> int:
     file_list = glob.glob(os.path.join(folder_path, '*'))
     return len(file_list)
 
-def empty_folder(folder_path: str):
-    """Questa funzione svuota rimuove tutti i file all'interno della cartella in input."""
-    for file_name in os.listdir(folder_path):
-        file_path = os.path.join(folder_path, file_name)
-        if os.path.isfile(file_path):
-            os.remove(file_path)
-
 
 input= [
     [["chiara", "enrico", "giampiero"], (-3, 3)],
@@ -54,5 +48,5 @@ def test_generate_tests(student_list, extremes):
     # perche' altrimenti i file che si generano per ogni lista in input si sommerebbero a quelli creati
     # a partire dalla lista in input precedente, e il valore num_files sarebbe quindi non legato a un input ma cumulativa
     # di tutti gli input
-    empty_folder(cartella_output)
+    ef.empty_folder(cartella_output)
     assert len(student_list)==num_files
