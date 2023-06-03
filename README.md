@@ -2,11 +2,11 @@
 ## Progetto per docenti di matematica delle scuole secondarie superiori
 
 ### Introduzione
-**SCOPO**: Questa libreria permette di **generare un test di verifica a risposta aperta sulla Funzione Omeografica (in seguito FO)** 
+**SCOPO**: Questa libreria permette di **generare un test di verifica a risposta aperta sulla Funzione Omeografica** (in seguito FO)
 
 ![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\frac{ax&plus;b}{cx&plus;d})
 
-**con coefficienti [a,b,c,d]** (random interi compresi in un intervallo tra due estremi inclusi) **che variano per ogni alunno 
+**i cui coefficienti [a,b,c,d]** (random interi compresi in un intervallo tra due estremi inclusi) **che variano per ogni alunno 
 di una data classe**. 
 
 La FO e' una **funzione razionale fratta**, trattata qui a **coefficienti interi**, che si presta molto bene allo studio di 
@@ -53,6 +53,9 @@ successive della stessa colonna i cognomi degli alunni della classe per cui gene
 Riportiamo un esempio di compilazione del file:
 
 ![img_2.png](img_2.png)
+
+Nelcaso in cui nella stessa classe si dovessero avere piu' alunni con lo stesso cognome, si puo' ovviare inserendo dopo
+il cognome, nella stessa cella, l'iniziale del nome degli alunni.
 
 3. avere a disposizione il **percorso assoluto**, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls del punto 2
