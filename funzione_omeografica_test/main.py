@@ -47,8 +47,8 @@ def main():
     #con la seguente funzione, se viene indicata una cartella in input, si usa quella come cartella_output, altrimenti
     # ne viene creata una
     cartella_output = get_output_folder_name(output_folder_path=args.cartella_output)
-    #fixme: modifica sotto non recepita
-    print(f"I test verranno salvati in {cartella_output}.")
+    #fixme: modifica sotto non recepita, aggiunto "generati"
+    print(f"I test generati verranno salvati in {cartella_output}.")
 
     #generazione dei test in html a partire dai dati in input
     generate_tests(template_content_str=TEMPLATE_CONTENT, output_dir=cartella_output, student_lists=nomi_alunni, function_domain=estremi_dominio, class_id=id_classe)

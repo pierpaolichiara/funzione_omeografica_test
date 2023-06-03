@@ -151,8 +151,8 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     # che se l'utente si dovesse trovare, per via di piccole modifiche o altro, a lanciare piu' volte il programma,
     # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
 
-  #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED
-   rn.seed(class_id)
+    #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED-> lo prendo dal main
+    rn.seed(class_id)
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
