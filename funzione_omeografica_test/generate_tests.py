@@ -10,7 +10,7 @@ from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 import random as rn
-
+import funzione_omeografica_test.empty_folder as ef
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str)-> str:
     """
     Questa funzione legge il template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
@@ -111,6 +111,10 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     if not os.path.exists(output_dir):
         os.makedirs(output_dir)
 
+    #svuota la cartella di output se gia' esistente
+#FIXME: SVUOTARE OUTPUT DIR PRIMA DI SALVARCI I NUOVI TEST DENTRO
+    ef.empty_folder(output_dir)
+
     #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
     output_path_html = os.path.join(output_dir, f"test_{student_name}.html")
 
@@ -148,7 +152,7 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
 
   #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED
-    #rn.seed(10)
+   # rn.seed(5c)
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
