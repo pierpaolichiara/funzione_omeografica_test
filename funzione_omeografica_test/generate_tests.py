@@ -124,7 +124,7 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     convert_to_html(md_input_string=md_input_str, htm_output_file=output_path_html)
 
 
-def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple):
+def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple, class_id: str):
     """
     Questa funzione genera, con un ciclo, un insieme di testi di verifica, uno diverso per studente di una lista, dove
     a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato.
@@ -152,7 +152,7 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
 
   #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED
-   # rn.seed(5c)
+   rn.seed(class_id)
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
         generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
