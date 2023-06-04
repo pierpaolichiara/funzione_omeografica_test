@@ -165,7 +165,7 @@ ogni alunno non vengono cambiati.
 Riportiamo un esempio di test di verifica stampato:
 
 
-![img_3.png](img_3.png)
+![img_5.png](img_5.png)
 
 
 ## Funzione_omeografica_test: struttura della libreria 
