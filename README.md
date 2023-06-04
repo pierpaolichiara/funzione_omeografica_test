@@ -54,7 +54,7 @@ Riportiamo un esempio di compilazione del file:
 
 ![img_2.png](img_2.png)
 
-Nelcaso in cui nella stessa classe si dovessero avere piu' alunni con lo stesso cognome, si puo' ovviare inserendo dopo
+Nel caso in cui nella stessa classe si dovessero avere piu' alunni con lo stesso cognome, si puo' ovviare inserendo dopo
 il cognome, nella stessa cella, l'iniziale del nome degli alunni.
 
 3. avere a disposizione il **percorso assoluto**, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
@@ -138,7 +138,7 @@ Per stampare in .html i test a risposta aperta sulla FO con i dati di questo ese
 - Aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
 - Da linea di comando lanciare il modulo 'main' come segue:
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx  --id_classe=5A`
 
 (se non funziona, o se siamo nel caso  del punto 9, utilizzare il comando:
 
