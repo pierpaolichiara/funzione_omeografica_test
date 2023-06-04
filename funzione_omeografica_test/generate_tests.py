@@ -10,7 +10,8 @@ from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 import random as rn
-import funzione_omeografica_test.empty_folder as ef
+from funzione_omeografica_test.empty_folder import empty_folder
+
 def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: str)-> str:
     """
     Questa funzione legge il template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
@@ -36,24 +37,22 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
         return text_line
 
 
-def convert_to_html(md_input_string:str, htm_output_file:str):
+def generate_param_strings(coeffs):
     """
-    Questa funzione converte un testo da formato .md a formato .html in un nuovo file.
+    # TODO
+    """
+    a, b, c, d = coeffs
+    a_sign = "-" if a < 0 else ""
+    a_str = "" if a == 0 else f"{a_sign} x" if abs(a) == 1 else f"{a_sign}{abs(a)} x"
+    b_sign = "-" if b < 0 else "" if (b == 0 or a_str == "") else "+"
+    b_str = f"{b_sign} {abs(b)}" if b != 0 else f""
+    c_sign = "-" if c < 0 else ""
+    c_str = f"{c_sign}" if abs(c) == 1 else f"{c_sign}{abs(c)}"
+    d_sign = "-" if d < 0 else "" if d == 0 else "+"
+    d_str = f"{d_sign} {abs(d)}" if d != 0 else f""
+    return a_str, b_str, c_str, d_str
 
-    Input
-    -----
-    md_input_string: str
-        stringa di testo in .md da convertire in html
-    htm_output_file: str
-        file .html in cui viene trascritta la stringa di testo in input
-   """
-    html_string = markdown.markdown(md_input_string, extensions=['markdown.extensions.tables'])
-    #utilizziamo il costrutto with open per garantire una sicura chiusura del file quando non e' piu' utilizzato
-    with open(htm_output_file, 'w') as f:
-        f.write(html_string)
-
-
-def generate_test_from_template(template_content_str: str, output_dir: str, coeffs: list, student_name: str):
+def generate_test_from_template(template_content_str: str, coeffs: list, student_name: str):
     """
     Questa funzione genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
@@ -65,8 +64,6 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     -----
     template_content_str: str
         stringa che contiene il template del testo
-    output_dir: str
-        indirizzo cartella dove salvare i testi generati dalla funzione
     coeffs: list
         lista di valori di 4 coefficienti interi [a, b, c, d], da inserire al posto degli omologhi placeholders
     student_name: str
@@ -75,8 +72,7 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
     #Conosciamo già i placeholder, quindi li listiamo direttamente
     placeholder_student_name = '*NOME_STUDENTE*'
     placeholder_date = '*DATA*'
-    placeholder_parameters = ['*VALORE_A*', '*VALORE_B*', '*VALORE_C*', '*VALORE_D*']
-
+    placeholder_parameters = ['*VALORE_AX*', '*VALORE_B*', '*VALORE_C*', '*VALORE_D*']
 
     #Dividiamo la stringa contenente il testo del template in sottostringhe corrispondenti alle righe del template,
     #in corrispondenza del carattere di 'a-capo', perche' nel ciclo for piu' sotto ci servira' il testo del template
@@ -100,28 +96,17 @@ def generate_test_from_template(template_content_str: str, output_dir: str, coef
         #testo finale della verifica
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
-        for placeholder_param, coef in zip(placeholder_parameters, coeffs):
-            maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, f"{coef}")
+
+        params_strings = generate_param_strings(coeffs)
+        for placeholder_param, param_str in zip(placeholder_parameters, params_strings):
+            maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, param_str)
+
         test_text_lines.append(maybe_processed_line)
 
-#FIXME:DA DIVIDERE QUI IN DUE FUNZIONI DIVERSE
-
-    #crea una cartella 'output', se al percorso in input non corrisponde nessuna cartella, che ci serve perche' altrimenti
-    # si genera un errore nella generazione dei test individuali
-    if not os.path.exists(output_dir):
-        os.makedirs(output_dir)
-
-    #svuota la cartella di output se gia' esistente
-#FIXME: SVUOTARE OUTPUT DIR PRIMA DI SALVARCI I NUOVI TEST DENTRO
-    ef.empty_folder(output_dir)
-
-    #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
-    output_path_html = os.path.join(output_dir, f"test_{student_name}.html")
-
     #data la lista di stringhe text_test_lines, concatena ogni stringa di testo per avere tutto il testo in una unica
-    #stringa perche e'piu' semplice da convertire in un file html rispetto a una lista di stringhe
     md_input_str = ''.join(test_text_lines)
-    convert_to_html(md_input_string=md_input_str, htm_output_file=output_path_html)
+    html_string = markdown.markdown(md_input_str, extensions=['markdown.extensions.tables'])
+    return html_string
 
 
 def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple, class_id: str):
@@ -153,9 +138,20 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
 
     #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED-> lo prendo dal main
     rn.seed(class_id)
+
+    #crea una cartella 'output', se al percorso in input non corrisponde nessuna cartella, che ci serve perche' altrimenti
+    # si genera un errore nella generazione dei test individuali
+    if not os.path.exists(output_dir):
+        os.makedirs(output_dir)
+    else:
+        #svuota la cartella di output se gia' esistente
+        empty_folder(output_dir)
+
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
-        generate_test_from_template(template_content_str=template_content_str, output_dir=output_dir, coeffs=abcd_list, student_name=student_name)
+        student_test_html = generate_test_from_template(template_content_str=template_content_str, coeffs=abcd_list, student_name=student_name)
 
-if __name__ == "__main__":
-    main()
+        #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
+        output_path_html = os.path.join(output_dir, f"test_{student_name}.html")
+        with open(output_path_html, 'w') as f:
+            f.write(student_test_html)

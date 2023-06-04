@@ -41,17 +41,16 @@ def main():
 
     #identificativo classe da inserire in random.seed
     id_classe = args.id_classe
-    #fixme: modifica sotto non recepita
     print(f"I test verranno associati all'identificativo id_classe= {id_classe}.")
 
     #con la seguente funzione, se viene indicata una cartella in input, si usa quella come cartella_output, altrimenti
     # ne viene creata una
     cartella_output = get_output_folder_name(output_folder_path=args.cartella_output)
-    #fixme: modifica sotto non recepita, aggiunto "generati"
     print(f"I test generati verranno salvati in {cartella_output}.")
 
     #generazione dei test in html a partire dai dati in input
-    generate_tests(template_content_str=TEMPLATE_CONTENT, output_dir=cartella_output, student_lists=nomi_alunni, function_domain=estremi_dominio, class_id=id_classe)
+    generate_tests(template_content_str=TEMPLATE_CONTENT, output_dir=cartella_output, student_lists=nomi_alunni,
+                   function_domain=estremi_dominio, class_id=id_classe)
 
 
 if __name__ == "__main__":

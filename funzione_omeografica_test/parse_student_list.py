@@ -49,10 +49,3 @@ def parse_student_list(student_list_path: str)-> list:
     #converte il contenuto della colonna "COGNOME" in una lista
         names = dataframe["COGNOME"].tolist()
         return names
-
-print(parse_student_list())
-
-
-
-
-

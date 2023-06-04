@@ -5,16 +5,7 @@ TEMPLATE_CONTENT = "# Verifica sullo studio di funzione omeografica\n" \
                    "\n" \
                    "Studiare la funzione omeografica\n" \
                    "\n" \
-                   "![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\\frac{ax&plus;b}{cx&plus;d})\n" \
-                   "\n" \
-                   "con i seguenti valori dei parametri:\n" \
-                   "\n" \
-                   "| Parametro | Valore     |\n" \
-                   "|-----|------------|\n" \
-                   "| `a` | *VALORE_A* |\n" \
-                   "| `b` | *VALORE_B* |\n" \
-                   "| `c` | *VALORE_C* |\n" \
-                   "| `d` | *VALORE_D* |\n" \
+                   "![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\\frac{*VALORE_AX* *VALORE_B*}{*VALORE_C*x *VALORE_D*})\n" \
                    "\n" \
                    "## Domande\n" \
                    "\n" \
