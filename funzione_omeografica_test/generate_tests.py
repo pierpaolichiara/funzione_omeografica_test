@@ -9,6 +9,8 @@ import os
 from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
+import sympy
+from sympy import Symbol
 import random as rn
 from funzione_omeografica_test.empty_folder import empty_folder
 
@@ -36,21 +38,29 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
     else:
         return text_line
 
+def num_den(coeffs: list)->tuple:
+    """
+    Questa funzione esegue il calcolo simbolico sostituendo 4 coefficienti [a,b,c,d] nelle espressioni algebriche
+    ax+b e cx+d, e converte i due risultati in stringhe di una tupla
 
-def generate_param_strings(coeffs):
+    Input
+    -----
+    coeffs: list
+        lista di 4 interi
+
+    Output
+    ------
+    (num_str, den_str): tuple
+        (ax+b, cx+d) calcolati econvertiti in stringhe
     """
-    # TODO
-    """
+    x = Symbol('x')
     a, b, c, d = coeffs
-    a_sign = "-" if a < 0 else ""
-    a_str = "" if a == 0 else f"{a_sign} x" if abs(a) == 1 else f"{a_sign}{abs(a)} x"
-    b_sign = "-" if b < 0 else "" if (b == 0 or a_str == "") else "+"
-    b_str = f"{b_sign} {abs(b)}" if b != 0 else f""
-    c_sign = "-" if c < 0 else ""
-    c_str = f"{c_sign}" if abs(c) == 1 else f"{c_sign}{abs(c)}"
-    d_sign = "-" if d < 0 else "" if d == 0 else "+"
-    d_str = f"{d_sign} {abs(d)}" if d != 0 else f""
-    return a_str, b_str, c_str, d_str
+    num = a * x + b
+    den = c * x + d
+    num_str = str(num).replace('*', '')
+    den_str = str(den).replace('*', '')
+    return (num_str, den_str)
+
 
 def generate_test_from_template(template_content_str: str, coeffs: list, student_name: str):
     """
@@ -72,7 +82,7 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
     #Conosciamo già i placeholder, quindi li listiamo direttamente
     placeholder_student_name = '*NOME_STUDENTE*'
     placeholder_date = '*DATA*'
-    placeholder_parameters = ['*VALORE_AX*', '*VALORE_B*', '*VALORE_C*', '*VALORE_D*']
+    placeholder_fraction = ['*NUMERATOR*', '*DENOMINATOR*']
 
     #Dividiamo la stringa contenente il testo del template in sottostringhe corrispondenti alle righe del template,
     #in corrispondenza del carattere di 'a-capo', perche' nel ciclo for piu' sotto ci servira' il testo del template
@@ -97,9 +107,9 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
 
-        params_strings = generate_param_strings(coeffs)
-        for placeholder_param, param_str in zip(placeholder_parameters, params_strings):
-            maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_param, param_str)
+        params_strings = num_den(coeffs)
+        for placeholder_frac, param_str in zip(placeholder_fraction, params_strings):
+            maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_frac, param_str)
 
         test_text_lines.append(maybe_processed_line)
 

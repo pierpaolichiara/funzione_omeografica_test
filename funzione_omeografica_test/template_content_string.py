@@ -5,7 +5,7 @@ TEMPLATE_CONTENT = "# Verifica sullo studio di funzione omeografica\n" \
                    "\n" \
                    "Studiare la funzione omeografica\n" \
                    "\n" \
-                   "![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\\frac{*VALORE_AX* *VALORE_B*}{*VALORE_C*x *VALORE_D*})\n" \
+                   "![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\\frac{*NUMERATOR*}{*DENOMINATOR*})\n" \
                    "\n" \
                    "## Domande\n" \
                    "\n" \
