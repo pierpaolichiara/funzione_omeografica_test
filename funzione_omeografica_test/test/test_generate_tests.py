@@ -3,6 +3,8 @@ import os
 import glob
 import funzione_omeografica_test.generate_tests as mod
 from funzione_omeografica_test.empty_folder import empty_folder
+from hypothesis import given, assume, strategies as st
+
 #Abbiamo provato a estarre la funzione generate_test inserendo (template_content_str, student list, function domain)
 #parametrizzati con hypothesis, ma si e'preferito procedere qui con pochi casi mirati al sovraccarico di calcolo
 # di tutte le combinazioni possibili degli input con hypothesis
@@ -35,10 +37,12 @@ input= [
 ]
 
 @pytest.mark.parametrize(('student_list, extremes'),input)
-def test_generate_tests(student_list, extremes):
-    """ Data una lista di nomi e una tupla di estremi interi, con estremo sinistro<estremo destro,
+def test_num_generate_tests(student_list, extremes):
+    """
+    Data una lista di nomi e una tupla di estremi interi, con estremo sinistro<estremo destro,
     questa funzione controlla che i test generati da 'generate_tests' a partire dai dati in input siano in numero uguale
-    alla lunghezza della lista in input"""
+    alla lunghezza della lista in input.
+    """
     current_working_dir = os.getcwd()
     cartella_output = os.path.join(current_working_dir, 'html_di_prova')
     # e' necessario svuotare la cartella_output ogni volta che il test viene eseguito su una lista di quelle in input
@@ -51,4 +55,26 @@ def test_generate_tests(student_list, extremes):
     mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list, function_domain=extremes, class_id=class_id)
     num_files = count_files_in_folder(cartella_output)
     empty_folder(cartella_output)
-    assert len(student_list)==num_files
+    assert len(student_list) == num_files
+
+
+
+input=  [
+        (["student1", "student2"], "class1", (-10, 10)),
+        (["student3", "student4"], "class2", (11, 20))
+        ]
+@pytest.mark.parametrize("student_list, class_id, extremes", input)
+def test_name_generate_tests(student_list, class_id, extremes, tmp_path):
+    """
+    Data una lista di nomi e un suo codice identificativo, una tupla di estremi interi, con estremo sinistro<estremo destro,
+    questa funzione controlla che i test generati da 'generate_tests' vengano salvati col nome giusto nella cartella corretta.
+    """
+    cartella_output = tmp_path / "test_output"
+    cartella_output.mkdir()
+    text = '0+. -abc{}'
+    mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list,
+                       function_domain=extremes, class_id=class_id)
+
+    for student_name in student_list:
+        path = cartella_output / f'test_{class_id}_{student_name}.html'
+        assert path.exists()

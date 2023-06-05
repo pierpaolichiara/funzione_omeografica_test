@@ -51,7 +51,7 @@ def num_den(coeffs: list)->tuple:
     Output
     ------
     (num_str, den_str): tuple
-        (ax+b, cx+d) calcolati econvertiti in stringhe
+        (ax+b, cx+d) calcolati e convertiti in stringhe
     """
     x = Symbol('x')
     a, b, c, d = coeffs

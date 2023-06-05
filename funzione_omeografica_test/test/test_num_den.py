@@ -32,7 +32,7 @@ def test_bd_in_num_den(coeffs: list):
     """
     Dati una lista di 4 interi,
     assumendo che il secondo e il quarto siano diversi da 0,
-    questa test verifica che i loro valori assolut siano presenti rispettivamente nel primo e secondo elemento
+    questo test verifica che i loro valori assoluti siano presenti rispettivamente nel primo e secondo elemento
     della tupla generata dalla funzione 'num_den'.
     """
     b,d = coeffs[1], coeffs[3]
