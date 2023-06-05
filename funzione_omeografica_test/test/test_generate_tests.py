@@ -2,7 +2,7 @@ import pytest
 import os
 import glob
 import funzione_omeografica_test.generate_tests as mod
-import funzione_omeografica_test.empty_folder as ef
+from funzione_omeografica_test.empty_folder import empty_folder
 #Abbiamo provato a estarre la funzione generate_test inserendo (template_content_str, student list, function domain)
 #parametrizzati con hypothesis, ma si e'preferito procedere qui con pochi casi mirati al sovraccarico di calcolo
 # di tutte le combinazioni possibili degli input con hypothesis
@@ -41,12 +41,14 @@ def test_generate_tests(student_list, extremes):
     alla lunghezza della lista in input"""
     current_working_dir = os.getcwd()
     cartella_output = os.path.join(current_working_dir, 'html_di_prova')
+    # e' necessario svuotare la cartella_output ogni volta che il test viene eseguito su una lista di quelle in input
+    # perche' se la cartella esisteva gia' perche' creata in un test precedente, i test generati nella sessione corrente
+    # si sommerebbero a quelli creati a partire dalla lista in input precedente, e il valore num_files sarebbe quindi
+    #non legato a un input ma cumulativo di tutti gli input
+    empty_folder(cartella_output)
     text='0+. -abc{}'
-    mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list, function_domain=extremes)
+    class_id="5A"
+    mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list, function_domain=extremes, class_id=class_id)
     num_files = count_files_in_folder(cartella_output)
-    #e' necessario svuotare la cartella_output ogni volta che il test viene eseguito su una lista di quelle in input
-    # perche' altrimenti i file che si generano per ogni lista in input si sommerebbero a quelli creati
-    # a partire dalla lista in input precedente, e il valore num_files sarebbe quindi non legato a un input ma cumulativa
-    # di tutti gli input
-    ef.empty_folder(cartella_output)
+    empty_folder(cartella_output)
     assert len(student_list)==num_files
