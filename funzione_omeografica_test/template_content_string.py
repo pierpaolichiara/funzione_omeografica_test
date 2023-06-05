@@ -1,5 +1,6 @@
 TEMPLATE_CONTENT = "# Verifica sullo studio di funzione omeografica\n" \
                    "\n" \
+                   "### Classe: *ID_CLASSE*\n" \
                    "### Nome: *NOME_STUDENTE*\n" \
                    "### Data: *DATA*\n" \
                    "\n" \

@@ -30,7 +30,7 @@ def replace_placeholder(text_line: str, placeholder_id: str, placeholder_value: 
 
     Output
     ------
-    str: e'la stringa in input con eventuale segnaposto sostituito col suo valore
+    str: stringa in input con eventuale segnaposto sostituito col suo valore
     """
     if placeholder_id in text_line:
         new_line = text_line.replace(placeholder_id, placeholder_value)
@@ -62,11 +62,10 @@ def num_den(coeffs: list)->tuple:
     return (num_str, den_str)
 
 
-def generate_test_from_template(template_content_str: str, coeffs: list, student_name: str):
+def generate_test_from_template(template_content_str: str, coeffs: list, student_name: str, class_id: str):
     """
     Questa funzione genera un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
-
 
     Input
     -----
@@ -76,8 +75,16 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
         lista di valori di 4 coefficienti interi [a, b, c, d], da inserire al posto degli omologhi placeholders
     student_name: str
         cognome dello studente da inserire al posto dell' omologo placeholder
+    class_id: str
+        codice identificativo della lista sudenti a cui appartiene lo student_name, inserito in input
+
+    Output
+    ------
+    html_string: str
+        stringa contenente il testo di verifica di un alunno composto a partire dagli input
     """
     #Conosciamo già i placeholder, quindi li listiamo direttamente
+    placeholder_class_id = '*ID_CLASSE*'
     placeholder_student_name = '*NOME_STUDENTE*'
     placeholder_date = '*DATA*'
     placeholder_fraction = ['*NUMERATOR*', '*DENOMINATOR*']
@@ -104,7 +111,7 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
         #testo finale della verifica
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
-
+        maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_class_id, class_id)
         params_strings = num_den(coeffs)
         for placeholder_frac, param_str in zip(placeholder_fraction, params_strings):
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_frac, param_str)
@@ -161,9 +168,9 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
 
     for student_name in student_lists:
         abcd_list = generate_abcd_omeo(e1, e2)
-        student_test_html = generate_test_from_template(template_content_str=template_content_str, coeffs=abcd_list, student_name=student_name)
-
+        student_test_html = generate_test_from_template(template_content_str=template_content_str, coeffs=abcd_list, student_name=student_name, class_id=class_id)
         #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{class_id}_{student_name}.html'
+        #e ci salva la stringa con il test dello studente
         output_path_html = os.path.join(output_dir, f"test_{class_id}_{student_name}.html")
         with open(output_path_html, 'w') as f:
             f.write(student_test_html)
