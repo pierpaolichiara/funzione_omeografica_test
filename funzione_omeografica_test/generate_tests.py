@@ -64,11 +64,9 @@ def num_den(coeffs: list)->tuple:
 
 def generate_test_from_template(template_content_str: str, coeffs: list, student_name: str):
     """
-    Questa funzione genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
+    Questa funzione genera un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input.
 
-    Il file generato si chiama "test_{student_name}.html" e si trova nella cartella "output" che viene generata quando
-    si lancia il main.py.
 
     Input
     -----
@@ -121,8 +119,11 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
 
 def generate_tests(template_content_str: str, output_dir: str, student_lists: list, function_domain: tuple, class_id: str):
     """
-    Questa funzione genera, con un ciclo, un insieme di testi di verifica, uno diverso per studente di una lista, dove
-    a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato.
+    Questa funzione genera, con un ciclo, un insieme di test di verifica associato a un codice identificativo, un test
+    diverso per ogni studente di una lista indicata, dove a cambiare sono il cognome dello studente e i coefficienti che
+    variano all'interno di un dominio indicato.
+    Ogni insieme di test generati viene salvato nella cartella "output" generata quando si lancia il main.py.
+    Il nome di ogni file e' "test_{class_id}_{student_name}.html"
 
     Input
     -----
@@ -135,18 +136,19 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
     function_domain: tuple
         intervallo di interi, estremi compresi, in cui vengono scelti i coefficienti della lista di interi associata a
         ogni cognome con il modulo [generate_abcd_omeo.py](https://github.com/pierpaolichiara/funzione_omeografica_test)
-
+    class_id: str
+        codice scelto dall'utente in fase di input identificativo dei test generati per il gruppo di alunni spercificato
+        nella student_list
 
     Vedi anche:
     ----------
     random.seed(): https://docs.python.org/3/library/random.html?highlight=random%20seed#random.seed
     """
     e1, e2 = function_domain
-    #prima di generare i test per ogni alunno con coefficienti random, inizializziamo un random seed, perche' vogliamo
-    # che se l'utente si dovesse trovare, per via di piccole modifiche o altro, a lanciare piu' volte il programma,
+    #prima di generare i test per ogni alunno con coefficienti random, inizializziamo un random seed, scelto dall'utente in input,
+    # perche' vogliamo che se l'utente si dovesse trovare, per via di piccole modifiche o altro, a lanciare piu' volte il programma,
     # una volta selezionata la lista di studenti, a ogni alunno venga assegnata sempre la stessa quaterna.
 
-    #FIXME: FAR INSERIRE ALL'UTENTE UN NUMERO PER RANDOM SEED-> lo prendo dal main
     rn.seed(class_id)
 
     #crea una cartella 'output', se al percorso in input non corrisponde nessuna cartella, che ci serve perche' altrimenti
@@ -161,7 +163,7 @@ def generate_tests(template_content_str: str, output_dir: str, student_lists: li
         abcd_list = generate_abcd_omeo(e1, e2)
         student_test_html = generate_test_from_template(template_content_str=template_content_str, coeffs=abcd_list, student_name=student_name)
 
-        #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{student_name}.html'
-        output_path_html = os.path.join(output_dir, f"test_{student_name}.html")
+        #crea il percorso completo per un file html nella cartella 'output' denominato 'test_{class_id}_{student_name}.html'
+        output_path_html = os.path.join(output_dir, f"test_{class_id}_{student_name}.html")
         with open(output_path_html, 'w') as f:
             f.write(student_test_html)
