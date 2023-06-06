@@ -160,7 +160,7 @@ Per stampare in .html i test a risposta aperta sulla FO con i dati di questo ese
 
 - i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
 o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, denominati con il cognome dell'alunno nel seguente modo:
-*test_<CODICE>_<COGNOME>.html* , ad esempio "test_FO_5A_ALFA.html", "test_FO_5A_BETA.html"...
+*test_< CODICE>_< COGNOME >.html* , ad esempio "test_FO_5A_ALFA.html", "test_FO_5A_BETA.html"...
 
 **N.B.1**: l'utilizzo del codice identificativo scelto nel punto 4 e inserito ogni volta che si esegue il programma come da punto 9, inserendo come input 
 un determinato file excel con i cognomi di una classe, fa si che per ogni alunno si ottengono ogni volta gli stessi coefficienti, 
