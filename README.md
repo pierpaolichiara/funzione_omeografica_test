@@ -174,7 +174,7 @@ cambiare il codice identificativo del punto 4 quando si lancia il programma.
 Riportiamo un esempio di test di verifica stampato:
 
 
-![img_1.png](img_1.png)
+![img_3.png](img_3.png)
 
 
 ## Funzione_omeografica_test: struttura della libreria 
