@@ -165,10 +165,10 @@ o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, 
 **N.B.1**: l'utilizzo del codice identificativo scelto nel punto 4 e inserito ogni volta che si esegue il programma come da punto 9, inserendo come input 
 un determinato file excel con i cognomi di una classe, fa si che per ogni alunno si ottengono ogni volta gli stessi coefficienti, 
 in modo che se l'utente fosse costretto a chiudere il programma o rilanciarlo per qualche motivo dopo aver magari gia' 
-stampato le verifiche, o se vuole stampare la stessa verifica per due liste di alunni diverse, inserendo il codice associato a ogni excel
+stampato le verifiche, o se vuole stampare la stessa verifica (stesso template) per due liste di alunni diverse, inserendo il codice associato a ogni excel
 e' sicuro che i coefficienti di ogni alunno non vengono cambiati. 
 
-**N.B.2**: se si vogliono stampare sue versioni diverse della verifica per la stessa classe (lo stesso file excel), basta 
+**N.B.2**: se si vogliono stampare due versioni diverse della verifica per la stessa classe (lo stesso file excel), basta 
 cambiare il codice identificativo del punto 4 quando si lancia il programma.
 
 Riportiamo un esempio di test di verifica stampato:
@@ -237,6 +237,9 @@ Contiene tre funzioni:
     
             C.N.S.2:  a*d-c*b≠0
 
+**b5.** [**empty_folder.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/empty_folder.py):
+Questa funzione rimuove tutti i file all'interno della cartella in input. Verra' usata in generate_test.py e nei test di controllo.
+
 **b6.** [**generate_test.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_tests.py):
 questo modulo contiene le funzioni necessarie a generare, per ogni cognome di una lista, un testo in cui compaiono la data corrente,
 il cognome e dei parametri associati al cognome. Ogni testo viene convertito successivamente in .html per una migliore fruibilita' da parte dell'utente finale.
@@ -260,7 +263,7 @@ E' un modulo costituito da piu'funzioni:
 ## Verificare il corretto funzionamento del codice
 
 Per assicurarsi che il codice funzioni correttamente si possono compilare dei test forniti scaricando il repository,
-posizionandosi da linea di comando, nella sottocartella "funzione_omeografica_test\funzione_omeografica_test\test" e poi 
+posizionandosi da linea di comando, nella sottocartella `funzione_omeografica_test\funzione_omeografica_test\test` e poi 
 lanciando il comando
 
 **`pytest`**

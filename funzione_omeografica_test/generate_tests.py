@@ -9,7 +9,6 @@ from datetime import date
 from funzione_omeografica_test.generate_abcd_omeo import generate_abcd_omeo
 import markdown
 from sympy import Symbol
-#from sympy import Poly
 import random as rn
 from funzione_omeografica_test.empty_folder import empty_folder
 
@@ -51,19 +50,18 @@ def num_den(coeffs: list)->tuple:
     ------
     (num_str, den_str): tuple
         (ax+b, cx+d) calcolati e convertiti in stringhe
+
+    Esempio
+    -------
+    num_den
     """
     x = Symbol('x')
+    #non controlliamo la lista in input perche' 'num_den' e' utilizzata sotto in 'generate_tests' dove
+    # l'input 'coeffs' e' generato dalla funzione 'generate_abcd_omeo' che da' in output una lista di 4 interi.
     a, b, c, d = coeffs
     #il programma calcola i due oggetti seguenti e li memorizza con l'ordine dei monomi che da' una migliore resa estetica
     num_x = a * x + b
     den_x = c * x + d
-    # Creazione dell'oggetto polinomiale per manipolazione successiva
-     #  num = Poly(num, x)
-     #   den = Poly(den, x)
-    # Ordiniamo i monomi di num e den per grado decrescente, per avere una formula
-    # finale nel test piu' pulita e uguale per tutti gli studenti nella forma (ax+b)/(cx+d)
-     # num_x = num.as_ordered_terms()
-    # den_x = den.as_ordered_terms()
     num_str = str(num_x).replace('*', '')
     den_str = str(den_x).replace('*', '')
     return (num_str, den_str)
@@ -119,14 +117,14 @@ def generate_test_from_template(template_content_str: str, coeffs: list, student
         maybe_processed_line = replace_placeholder(template_line, placeholder_student_name, student_name)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_date, today_date_str)
         maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_class_id, class_id)
-        params_strings = num_den(coeffs)
-        # sostituire i coefficienti a, b, c, d (sotto: coeffs) direttamente all'interno della formula attraverso i relativi
-        # placeholder porterebbe a inconvenienti di segni all'interno della formula: es, a=-1, b=-2, c=-3, d=+4 produrrebbe
-        #               f(x)=(-1*a+-2)/(-3*c+4),
+
+        # Resta da sostituire i coefficienti a, b, c, d (sotto: coeffs) all'interno della formula attraverso relativi
+        # placeholder: farlo direttamente porterebbe a inconvenienti di segno all'interno della formula: es, a=-1, b=-2, c=-3, d=+4 produrrebbe
+        #               f(x)=(-1*x+-2)/(-3*x+4),
         # pertanto si rende necessario l'uso della funzione num_den: calcoliamo numeratore e denominatore della funzione
         # omeografica utilizzando le funzionalita' di Sympy, per poi convertirli in stringa in modo da poter togliere il simbolo * della moltiplicazione.
         # per un migliore rendering estetico nel testo finale
-
+        params_strings = num_den(coeffs)
         for placeholder_frac, param_str in zip(placeholder_fraction, params_strings):
             maybe_processed_line = replace_placeholder(maybe_processed_line, placeholder_frac, param_str)
 
