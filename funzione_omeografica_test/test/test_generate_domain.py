@@ -90,11 +90,11 @@ def test_reverse_generate_domain(e1, e2):
     il test verifica che il dominio generato dalla funzione generate_domain sia opposto al dominio che si ottiene
     invertendo gli estremi e cambiandone il segno
     """
-    if e1 < e2:
-        list_pos=mod.generate_domain(e_min=e1, e_max=e2)
-        list_neg=mod.generate_domain(e_min=-e2, e_max=-e1)
-        vet_pos=np.array(list_pos)
-        vet_neg=np.array(list_neg)
-        assert_array_equal(vet_pos,-1*np.flip(vet_neg))
+    assume (e1<e2)
+    list_pos=mod.generate_domain(e_min=e1, e_max=e2)
+    list_neg=mod.generate_domain(e_min=-e2, e_max=-e1)
+    vet_pos=np.array(list_pos)
+    vet_neg=np.array(list_neg)
+    assert_array_equal(vet_pos,-1*np.flip(vet_neg))
     return
 
