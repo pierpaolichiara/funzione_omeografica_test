@@ -12,7 +12,7 @@ def test_not_path_parse_student_list(path:str):
     il test verifica che la funzione [parse_student_list](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py)
     fornisca il corretto tipo di errore.
     """
-    expected_error = NameError
+    expected_error = NameError or TypeError
     with pytest.raises(expected_error):
         assert mod.parse_student_list(path)
 
