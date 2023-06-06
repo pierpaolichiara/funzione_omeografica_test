@@ -1,0 +1,41 @@
+       TO DO 
+	
+
+	- creare cartella con id clesse dove salvare i file
+	- scrivere espressioni in ordine decrescente di grado
+
+	- aggiornare readme con random seed
+
+
+
+DONE
+        - creare documentazione per test_convert_to_html: lo fa generate test
+	- cambiare altri test: togliere convert in html....
+	- test di num den
+	- nel test generato sostituire direttamente i valori creati	
+	- permette all'utente di scegliere il random seed
+        - generate_test_from_template non deve salvare i file, devono essere salvati da generate_tests
+	- cancellare file in piu'( content string...)
+
+- lasciare solo indicazioni allo script
+        - completare la documentazione di convert_to_html
+        - creare documentazione per test_convert_to_html
+        - usare la funzione assume di hypothesis
+        - separare test_get_output_folder
+        - spostare i print di logging fuori dalla funzione
+
+#                   fr"f(x) = \frac{{{*VALORE_A*}x + {*VALORE_B*}}}{{{C}x + {D}}}"\
+
+                   "![equation1](https://latex.codecogs.com/svg.image?&space;f(x)=\\frac{*VALORE_AX* *VALORE_B*}{*VALORE_C*x *VALORE_D*})\n" \
+
+		AGGIUNTO TEST A GENERATE_TEST
+		INSERITO NOME CODICE NEL NOME FILE
+	- lasciare solo indicazioni allo script CORRETTO, punto 10 e  aggiunto 4
+        - nel test generato sostituire direttamente i valori creati  AGGIUNTA FUNZIONE NUM DEN E TEST. SOSTITUZIONEDIRETTA CREA PROBLEMI DI SEGNI
+        - completare la documentazione di convert_to_html FATTA ED ELIMINATA  1 LUGLIO
+        - creare documentazione per test_convert_to_html  FATTA ED ELIMINATA   2 LUGLIO
+        - spostare i print di logging fuori dalla funzione    2 LUGLIO
+        - permette all'utente di scegliere il random seed    3 LUGLIO
+        - generate_test_from_template non deve salvare i file, devono essere salvati da generate_tests TERZO DEL 4 LUGLIO
+        - usare la funzione assume di hypothesis   3 LUGLIO TEST GENERATE DOMAIN
+        - separare test_get_output_folder    2 LUGLIO
