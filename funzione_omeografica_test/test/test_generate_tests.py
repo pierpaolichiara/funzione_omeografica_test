@@ -64,7 +64,7 @@ input=  [
         (["student3", "student4"], "class2", (11, 20))
         ]
 @pytest.mark.parametrize("student_list, class_id, extremes", input)
-def test_name_generate_tests(student_list, class_id, extremes, tmp_path):
+def test_filename_generate_tests(student_list, class_id, extremes, tmp_path):
     """
     Data una lista di nomi e un suo codice identificativo, una tupla di estremi interi, con estremo sinistro<estremo destro,
     questa funzione controlla che i test generati da 'generate_tests' vengano salvati col nome giusto nella cartella corretta.
@@ -72,7 +72,7 @@ def test_name_generate_tests(student_list, class_id, extremes, tmp_path):
     cartella_output = tmp_path / "test_output"
     cartella_output.mkdir()
     text = '0+. -abc{}'
-    mod.generate_tests(template_content_str=text, output_dir=cartella_output, student_lists=student_list,
+    mod.generate_tests(template_content_str=text, output_dir=str(cartella_output), student_lists=student_list,
                        function_domain=extremes, class_id=class_id)
 
     for student_name in student_list:
