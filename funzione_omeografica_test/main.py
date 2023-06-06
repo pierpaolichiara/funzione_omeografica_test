@@ -32,7 +32,6 @@ def main():
     #assegniamo gli input ricevuti a delle variabili python, dopo averli resi in una forma piu' funzionale al programma
     estremi_dominio_input = args.estremi_dominio
     estremi_dominio = parse_function_domain(domain_extremes=estremi_dominio_input)
-    #fixme: modifica sotto non recepita
     print(f"Gli estremi del dominio sono {estremi_dominio}.")
 
     #estrazione lista di nomi alunni

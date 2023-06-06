@@ -1,6 +1,6 @@
 import os
 import funzione_omeografica_test.get_output_folder_name as mod
-#FIXME:
+
 def test_no_path_get_output_folder_name():
     """
     In assenza di input,

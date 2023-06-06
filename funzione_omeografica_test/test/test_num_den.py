@@ -1,7 +1,4 @@
-import sympy
-from sympy import Symbol
 from funzione_omeografica_test.generate_tests import num_den
-import hypothesis
 from hypothesis import given, assume, strategies as st
 
 @given(coeffs=st.lists(st.integers(), min_size=4, max_size=4))
@@ -40,6 +37,6 @@ def test_bd_in_num_den(coeffs: list):
     assume(d != 0)
     N, D = num_den(coeffs)
     #non facciamo in questo test verifiche sel primo e terzo elemento della lista perche' ci sarebbero da escludere
-    # altri due casi da trattare a parte oltre lo zero (+1 e -1 che moltiplicano 'x')"
+    # altri due casi da trattare a parte oltre lo zero (+1 e -1 che moltiplicano 'x' sia in N che in D)"
     assert str(abs(b)) in N
     assert str(abs(d)) in D

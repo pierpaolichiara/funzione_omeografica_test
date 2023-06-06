@@ -1,5 +1,4 @@
 import pytest
-import hypothesis
 from hypothesis import given
 import hypothesis.strategies as st
 import funzione_omeografica_test.generate_abcd_omeo as mod

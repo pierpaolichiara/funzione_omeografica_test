@@ -1,11 +1,9 @@
-import pandas as pd
 import os
-import hypothesis
 import pytest
 from hypothesis import given
 import hypothesis.strategies as st
 import funzione_omeografica_test.parse_student_list as mod
-import pathlib
+
 
 @given(path=st.text())
 def test_not_path_parse_student_list(path:str):
@@ -33,7 +31,7 @@ def test_not_xls_parse_student_list():
 
 #selezioniamo due file all'interno del nostro pacchetto formattati e configurati in modo che il programma
 # di generazione dei test funzioni
-file_input=[ "esempio_input\CLASSE_5A.xlsx", "funzione_omeografica_test/test/excel_di_prova/COLONNA_D.xlsx"]
+file_input=[ "esempio_input/CLASSE_5A.xlsx", "funzione_omeografica_test/test/excel_di_prova/COLONNA_D.xlsx"]
 @pytest.mark.parametrize('path_input',file_input)
 def test_xls_ok_parse_student_list(path_input: str):
     """
