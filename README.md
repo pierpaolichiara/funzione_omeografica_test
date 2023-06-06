@@ -60,7 +60,9 @@ il cognome, nella stessa cella, l'iniziale del nome degli alunni.
 3. avere a disposizione il **percorso assoluto**, all'interno del dispositivo in uso, in cui e' salvato il file <classe>.xlsx 
 o <classe>.xls del punto 2
 
-4. facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
+4. decidere un codice identificativo da associare ai test generati per la lista di alunni scelta (es. 5B, omeo5c, FO_5A, 3Dver2...)
+
+5. facoltativo: avere a disposizione il percorso assoluto, all'interno del dispositivo in uso, in cui salvare i test di 
 verifica generati in output per la classe scelta
 
 #### Prerequisiti di configurazione
@@ -80,25 +82,26 @@ La libreria e' stata testata
 #### Installazione e utilizzo
 Per poter usare la libreria e' necessario aprire una CLI e, da linea di comando,
 
-5. clonare il repository **https://github.com/pierpaolichiara/funzione_omeografica_test** con il seguente comando:
+6. clonare il repository **https://github.com/pierpaolichiara/funzione_omeografica_test** con il seguente comando:
 
 `git clone https://github.com/pierpaolichiara/funzione_omeografica_test`
 
-6. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
+7. aprire la cartella 'funzione_omeografica_test' che e' stata scaricata con il comando 
 
 `cd funzione_omeografica_test`
 
-7. installare la libreria 
+8. installare la libreria 
 
 `pip install .`
 
-8. lanciare il file main.py come segue
+9. lanciare il file main.py come segue
 
-`genera_test --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
+`genera_test --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx> --id_classe=<codice>`
 
 dove sostituire 
 - a `e_min` ed `e_max` gli estremi scelti nel punto 1 
 - a `<classe.xlsx>` il percorso assoluto del file excel (o relativo se nella cartella corrente), estensione compresa xls o xlsx, con l'elenco degli alunni del punto 2
+- a `<codice>` il codice identificativo scelto nel punto 4
 - (facoltativo) si puo' specificare, volendo, la cartella in cui si vuole vengano salvati i test generati. 
 Per farlo bisogna aggiungere al comando precedente quanto segue:
 
@@ -106,17 +109,17 @@ Per farlo bisogna aggiungere al comando precedente quanto segue:
 
 e sostituire a `<percorso_cartella_output>`, o il percorso assoluto della cartella di output desiderata individuato nel 
 punto 4, o il nome desiderato per la cartella di output, che verra' creata all'interno della cartella 'funzione_omeografica_test'
-del punto 6. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli output verra' comunicata da CLI
+del punto 7. In ogni caso, una volta lanciato il main.py, la cartella di salvataggio degli output verra' comunicata da CLI
 (se l'utente riscontra problemi di riconoscimento del percorso assoluto, puo' provare a inserirlo tra " "). 
-Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi'denominati: **test_COGNOME.html**.
+Aprendo tale cartella l'utente trovera' stampati i test in output come .html, cosi' denominati: **test_CODICE_COGNOME.html**.
 
-9. Qualora il comando del punto 8 non dovesse funzionare, l'installazione della libreria non dovesse andare a buon fine o 
-se non si vuole installare la libreria (punto 7), si possono comunque generare i test di verifica sulla FO 
-procedendo dopo il punto 6 con l'esecuzione del seguente comando:
+10. Qualora il comando del punto 9 non dovesse funzionare, l'installazione della libreria non dovesse andare a buon fine o 
+se non si vuole installare la libreria (punto 8), si possono comunque generare i test di verifica sulla FO 
+procedendo dopo il punto 7 con l'esecuzione del seguente comando:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx> --id_classe=<codice>`
 
-per cui valgono tutte le sostituzioni e aggiunte indicate nel punto 8.
+per cui valgono tutte le sostituzioni e aggiunte indicate nel punto 9.
 
 ### Esempio
 Consideriamo questi dati come esempio di utilizzo della libreria:
@@ -127,40 +130,46 @@ Consideriamo questi dati come esempio di utilizzo della libreria:
 
 percorso file CLASSE_5A = `esempio_input\CLASSE_5A`
 
-Dunque vogliamo generare test di verifica sulla FO, con coefficienti [a,b,c,d] generati automaticamente dal programma, 
-scelti all'interno dell'intervallo (-9,9)  estremi inclusi, per la classe 5A il cui elenco degli studenti e' presente nel 
-file indicato, di cui riportiamo le prime due colonne
+`codice` = `FO_5A`
+
+Dunque vogliamo generare test di verifica sulla FO identificato con il codice 'FO_5A', con coefficienti [a,b,c,d] 
+generati automaticamente dal programma, scelti all'interno dell'intervallo (-9,9)  estremi inclusi, per la classe 5A 
+il cui elenco degli studenti e' presente nel file indicato, di cui riportiamo le prime due colonne
 
 ![img_4.png](img_4.png)
 
-Per stampare in .html i test a risposta aperta sulla FO con i dati di questo esempio come input: 
-- Scaricare la libreria
-- Aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
-- Da linea di comando lanciare il modulo 'main' come segue:
+Per stampare in .html i test a risposta aperta sulla FO con i dati di questo esempio come input dobbiamo: 
+- scaricare la libreria
+- aprire un terminale e collocarsi nella cartella dove e' stata scaricata la libreria
+- da linea di comando lanciare il modulo 'main' come segue:
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx  --id_classe=5A`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx  --id_classe=FO_5A`
 
-(se non funziona, o se siamo nel caso  del punto 9, utilizzare il comando:
+(se non funziona, o se siamo nel caso del punto 10, utilizzare il comando:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>`   )
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx> --id_classe=FO_5A`)
 
 9. E' anche possibile, e facoltativo, indicare il percorso di una cartella di output dove si vuole che vengano salvati i test generati,
   sostituendo al comando precedente il seguente:
 
-`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx --cartella_output=<percorso_cartella_output>`
+`genera_test --estremi_dominio=(-9,9) --elenco_alunni=esempio_input\CLASSE_5A.xlsx --id_classe=FO_5A --cartella_output=<percorso_cartella_output>`
 
-(se non funziona, o se siamo nel caso  del punto 9, utilizzare il comando:
+(se non funziona, o se siamo nel caso  del punto 10, utilizzare il comando:
 
-`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>  --cartella_output=<percorso_cartella_output>`   )
+`python funzione_omeografica_test\main.py --estremi_dominio=(e_min,e_max) --elenco_alunni=<classe.xlsx>  --id_classe=<codice> --cartella_output=<percorso_cartella_output>`   )
 
 - i test stampati in .html sono disponibili nella sottocartella 'funzione_omeografica_test/output', 
 o nella cartella indicata dall'utente al punto precedente, riportata nella CLI, denominati con il cognome dell'alunno nel seguente modo:
-*test_<COGNOME>.html* , ad esempio "test_ALFA.html", "test_BETA.html"...
+*test_<CODICE>_<COGNOME>.html* , ad esempio "test_FO_5A_ALFA.html", "test_FO_5A_BETA.html"...
 
-**N.B.**: ogni volta che si esegue il programma come da punto 8, utilizzando come input un determinato file excel con i cognomi di 
-una classe, per ogni alunno si ottengono ogni volta gli stessi coefficienti, in modo che se l'utente fosse costretto a 
-chiudere il programma o rilanciarlo per qualche motivo dopo aver magari gia' stampato le verifiche, e'sicuro che i coefficienti di 
-ogni alunno non vengono cambiati.
+**N.B.1**: l'utilizzo del codice identificativo scelto nel punto 4 e inserito ogni volta che si esegue il programma come da punto 9, inserendo come input 
+un determinato file excel con i cognomi di una classe, fa si che per ogni alunno si ottengono ogni volta gli stessi coefficienti, 
+in modo che se l'utente fosse costretto a chiudere il programma o rilanciarlo per qualche motivo dopo aver magari gia' 
+stampato le verifiche, o se vuole stampare la stessa verifica per due liste di alunni diverse, inserendo il codice associato a ogni excel
+e' sicuro che i coefficienti di ogni alunno non vengono cambiati. 
+
+**N.B.2**: se si vogliono stampare sue versioni diverse della verifica per la stessa classe (lo stesso file excel), basta 
+cambiare il codice identificativo del punto 4 quando si lancia il programma.
 
 Riportiamo un esempio di test di verifica stampato:
 
@@ -202,7 +211,8 @@ altrimenti lo crea a partire dall'input indicato
 e' il file con il testo della verifica sulla funzione omeografica, modificabile dall'utente
 
 **b4.** [**parse_student_list.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/parse_student_list.py): 
-e' il file che permette di leggere un file excel impostato come da indicazioni ed estrarne una lista di cognomi.questo modulo serve a estrarre i cognomi degli alunni di una classe da un file excel e generare una lista con i cognomi,
+e' il file che permette di leggere un file excel impostato come da indicazioni ed estrarne una lista di cognomi. 
+Questo modulo serve a estrarre i cognomi degli alunni di una classe da un file excel e generare una lista con i cognomi,
 da utilizzare nel modulo 'main.py' come variabile della funzione 'generate_tests'.
 
 **b5.**[**generate_abcd_omeo.py**](https://github.com/pierpaolichiara/funzione_omeografica_test/blob/main/funzione_omeografica_test/generate_abcd_omeo.py):
@@ -235,13 +245,16 @@ E' un modulo costituito da piu'funzioni:
 -   **replace_placeholder**: legge un template e sostituisce i segnaposti (placeholder <>) con i valori opportuni stringa per stringa,
     riscrivendo il testo del file riga per riga
  
--  **generate_test_from_template**: genera e salva, in una cartella indicata, un testo .html a partire da un template sotto forma di stringa,
+-   **num_den**: calcola le espressioni algebriche simboliche in x, 'a*x+b' e 'c*x+d', (rispettivamente numeratore e 
+    denominatore della FO) sostituendo 4 coefficienti [a,b,c,d] in input, e converte i due risultati in stringhe di una tupla,
+    per poi restituirle senza il simbolo '*'.
+
+-   **generate_test_from_template**: genera un testo .html a partire da un template sotto forma di stringa,
     sostituendo a dei segnaposti i valori indicati in input
 
--   **convert_to_html**: converte un testo da formato .md a formato .html in un nuovo file  
-
--   **generate_tests**:genera, con un ciclo, un insieme di testi di verifica, uno diverso per ogni studente di una lista, dove
-      a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato
+-   **generate_tests**:genera con un ciclo, un insieme di testi di verifica, uno diverso per ogni studente di una lista, 
+    dove a cambiare sono il cognome dello studente e i coefficienti che variano all'interno di un dominio indicato. 
+    Salva in .html, in una cartella indicata, i test generati. 
 
 
 ## Verificare il corretto funzionamento del codice
@@ -254,7 +267,7 @@ lanciando il comando
 
 In questo modo tutti i test presenti nella cartella [test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test/test),
 il cui nome del file inizia con "test_", verranno eseguiti. Nel caso in cui tutto funziona correttamente dovrebbe comparire una 
-linea di testo in verde che comunica che 43 test sono stati superati ("43 passed").
+linea di testo in verde che comunica che 51 test sono stati superati ("51 passed").
 
 Documentazione piu' dettagliata su cosa testa ogni singolo test svolto e' reperibile all'interno della cartella [test](https://github.com/pierpaolichiara/funzione_omeografica_test/tree/main/funzione_omeografica_test/test).
 Qui sono a disposizione gli scripts dei test eseguiti. Aprendo ogni file *.py, sotto la definizione del test, c'e'
